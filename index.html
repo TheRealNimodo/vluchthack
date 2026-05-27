@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VluchtHack — Live Prijzen + AI Analyse</title>
+<title>VluchtHack — AI Vliegticket Analyse</title>
+<meta name="description" content="7 professionele AI-strategieën die jou helpen de goedkoopste vliegtickets te vinden. Analyseer jouw route en bespaar tot 40%.">
+<meta name="theme-color" content="#03102b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -147,7 +150,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:12px
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">✦ De ultieme vliegtickethacks</div>
+  <div class="hero-badge">✦ Slimmer boeken met AI</div>
   <h1>VluchtHack <span>AI analyse</span></h1>
   <p>7 professionele AI-strategieën die luchtvaartmaatschappijen liever geheimhouden. Vul je route in en laat AI je vlucht analyseren.</p>
 </div>
@@ -187,7 +190,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:12px
   </div>
   <button class="btn-search-main" id="searchBtn" onclick="startFullSearch()">
     <span id="searchBtnIcon">🔍</span>
-    <span id="searchBtnText">Zoek de beste strategie om je tickets te boeken</span>
+    <span id="searchBtnText">Analyseer mijn route</span>
   </button>
 </div>
 
@@ -256,7 +259,7 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:12px
 
 </main>
 
-<footer>VluchtHack &copy; 2026 · FlightAPI.io · AI-aangedreven · Geen advertenties</footer>
+<footer>VluchtHack &copy; 2026 · AI-aangedreven · Geen advertenties</footer>
 
 <script>
 // ── CONFIGURATIE ──
@@ -622,7 +625,7 @@ async function startFullSearch() {
     document.getElementById('errorWrap').style.display = 'block';
     document.getElementById('errorBody').textContent = 'Alle AI-analyses zijn mislukt. Controleer of je Anthropic API-sleutel correct is ingesteld in de code.';
     btn.disabled = false;
-    document.getElementById('searchBtnText').textContent = 'Opnieuw zoeken';
+    document.getElementById('searchBtnText').textContent = 'Analyseer mijn route';
     return;
   }
 
@@ -630,7 +633,7 @@ async function startFullSearch() {
   document.getElementById('top5Wrap').style.display = 'block';
   document.getElementById('top5Wrap').scrollIntoView({behavior:'smooth',block:'start'});
   btn.disabled = false;
-  document.getElementById('searchBtnText').textContent = 'Opnieuw zoeken';
+  document.getElementById('searchBtnText').textContent = 'Analyseer mijn route';
 }
 
 // ── HELPERS ──

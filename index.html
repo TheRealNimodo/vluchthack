@@ -6,263 +6,238 @@
 <title>VluchtHack — Goedkoopste Vliegtickets met AI</title>
 <meta name="description" content="Analyseer jouw vluchtroute met 7 professionele AI-strategieën en bespaar tot 40% op vliegtickets. Gratis, zonder advertenties.">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#03102b">
 <link rel="canonical" href="https://vluchthack.nl">
-
-<!-- Open Graph -->
 <meta property="og:title" content="VluchtHack — Goedkoopste Vliegtickets met AI">
 <meta property="og:description" content="7 AI-strategieën die luchtvaartmaatschappijen liever geheimhouden. Gratis, zonder advertenties.">
 <meta property="og:url" content="https://vluchthack.nl">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VluchtHack — Goedkoopste Vliegtickets met AI">
-<meta name="twitter:description" content="7 AI-strategieën die luchtvaartmaatschappijen liever geheimhouden.">
-
-<!-- Schema.org -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"VluchtHack","url":"https://vluchthack.nl","description":"AI-analyse van vliegticketprijzen met 7 professionele strategieën","applicationCategory":"TravelApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
 </script>
-
-<!-- Google Analytics GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S3B3NZ2Z3F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-S3B3NZ2Z3F');
-</script>
-
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S3B3NZ2Z3F"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S3B3NZ2Z3F');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy:#03102b;--blue:#1251c5;--blue-bright:#2563ff;
-  --accent:#00d4ff;--accent2:#38ffb0;--white:#f4f6ff;
-  --white-70:rgba(244,246,255,0.7);
-  --muted:rgba(180,200,255,0.55);--card-bg:rgba(255,255,255,0.04);
-  --card-border:rgba(255,255,255,0.09);--radius:14px;--radius-sm:8px;
+  --blue:#2563ff; --blue-light:#eff6ff; --blue-mid:#dbeafe;
+  --green:#16a34a; --green-light:#f0fdf4;
+  --g50:#f9fafb; --g100:#f3f4f6; --g200:#e5e7eb;
+  --g300:#d1d5db; --g400:#9ca3af; --g500:#6b7280;
+  --g700:#374151; --g800:#1f2937; --g900:#111827;
+  --white:#fff; --r:12px; --rs:8px; --rxs:6px;
+  --sh:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(18,81,197,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(0,212,255,.08) 0%,transparent 55%);pointer-events:none;z-index:0;}
-nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px);background:rgba(3,16,43,.82);border-bottom:1px solid var(--card-border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px;}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:var(--white);display:flex;align-items:center;gap:8px;}
-.logo-dot{color:var(--accent);}
-.nav-pill{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--accent);font-size:12px;font-weight:500;padding:5px 14px;border-radius:99px;letter-spacing:.04em;}
-main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:3rem 1.5rem 5rem;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero{text-align:center;margin-bottom:2.5rem;animation:fadeUp .6s ease both;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(56,255,176,.08);border:1px solid rgba(56,255,176,.25);color:var(--accent2);font-size:12px;font-weight:500;padding:5px 14px;border-radius:99px;margin-bottom:1.25rem;letter-spacing:.05em;}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:.75rem;}
-.hero h1 span{color:var(--accent);}
-.hero-features{display:flex;flex-direction:column;gap:8px;margin-top:1.25rem;margin-bottom:.5rem;text-align:left;max-width:320px;margin-left:auto;margin-right:auto;}
-.hero-feature{display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.75);}
-.hero-feature::before{content:'';display:none;}
-.hero-feature > :first-child{color:var(--accent);font-weight:700;font-size:15px;flex-shrink:0;}
-.hero p{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.65;}
+body{font-family:'Inter',sans-serif;background:var(--g50);color:var(--g900);min-height:100vh;font-size:15px;line-height:1.6;}
 
+/* ── NAV ── */
+nav{background:var(--white);border-bottom:1px solid var(--g200);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;color:var(--g900);display:flex;align-items:center;gap:5px;}
+.logo em{color:var(--blue);font-style:normal;}
+.nav-stats{display:flex;align-items:center;}
+.nav-stat{display:flex;flex-direction:column;align-items:center;padding:0 16px;}
+.nav-stat b{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;color:var(--blue);line-height:1.2;}
+.nav-stat span{font-size:10px;color:var(--g400);white-space:nowrap;}
+.nav-divider{width:1px;height:22px;background:var(--g200);}
 
+/* ── LAYOUT ── */
+main{max-width:820px;margin:0 auto;padding:3rem 1.5rem 6rem;}
 
-/* SOCIAL PROOF */
-.social-proof{display:flex;align-items:center;justify-content:center;gap:0;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);padding:1rem 1.5rem;margin-bottom:1.25rem;flex-wrap:wrap;}
-.sp-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 1.5rem;}
-.sp-num{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--accent);}
-.sp-label{font-size:11px;color:var(--muted);text-align:center;}
-.sp-divider{width:1px;height:32px;background:var(--card-border);}
+/* ── HERO ── */
+.hero{text-align:center;margin-bottom:2.5rem;}
+.hero-tag{display:inline-block;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:500;padding:4px 14px;border-radius:99px;margin-bottom:1rem;}
+.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.03em;color:var(--g900);margin-bottom:.6rem;}
+.hero h1 em{color:var(--blue);font-style:normal;}
+.hero p{color:var(--g500);max-width:480px;margin:0 auto 1.5rem;font-size:.95rem;}
+.checks{display:inline-flex;flex-direction:column;gap:5px;text-align:left;}
+.check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--g700);}
+.check-dot{width:17px;height:17px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green);flex-shrink:0;}
 
-/* HOW IT WORKS */
-.howto-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap;}
-.howto-step{display:flex;align-items:center;gap:10px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:10px 14px;}
-.howto-num{width:28px;height:28px;border-radius:50%;background:var(--blue-bright);color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.howto-text{font-size:12px;color:var(--muted);line-height:1.5;}
-.howto-text strong{color:var(--white);display:block;margin-bottom:2px;}
-.howto-arrow{color:var(--muted);font-size:18px;}
+/* ── SEARCH CARD ── */
+.search-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.75rem;margin-bottom:2rem;box-shadow:var(--sh);}
+.card-label{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem;}
+.route-row{display:grid;grid-template-columns:1fr 38px 1fr;gap:10px;align-items:end;margin-bottom:10px;}
+.dates-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+.fl{display:flex;flex-direction:column;gap:4px;}
+.fl label{font-size:11px;font-weight:500;color:var(--g500);letter-spacing:.02em;}
+input[type=text],input[type=date],select{background:var(--white);border:1px solid var(--g300);color:var(--g900);border-radius:var(--rxs);padding:9px 11px;font-size:14px;font-family:'Inter',sans-serif;outline:none;width:100%;transition:border-color .15s,box-shadow .15s;}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,255,.1);}
+input::placeholder{color:var(--g400);}
+select option{background:var(--white);}
+.swap{background:var(--g100);border:1px solid var(--g200);color:var(--g500);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .15s;align-self:flex-end;}
+.swap:hover{background:var(--blue-light);border-color:var(--blue-mid);color:var(--blue);}
+.btn{width:100%;background:var(--blue);border:none;color:var(--white);border-radius:var(--rs);padding:13px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;}
+.btn:hover{opacity:.88;}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
 
-/* SEARCH */
-.search-card{background:var(--card-bg);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:2rem;margin-bottom:2rem;animation:fadeUp .6s .1s ease both;}
-.search-card h2{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;}
-.route-row{display:grid;grid-template-columns:1fr 44px 1fr;gap:10px;align-items:center;margin-bottom:12px;}
-.dates-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;}
-.field-group{display:flex;flex-direction:column;gap:5px;}
-.field-label{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;}
-.field-input{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--white);border-radius:var(--radius-sm);padding:10px 14px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;width:100%;transition:border-color .2s;}
-.field-input:focus{border-color:var(--accent);}
-.field-input::placeholder{color:rgba(180,200,255,.3);}
-.field-input option{background:#071a3e;}
-.swap-btn{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);color:var(--accent);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:background .2s;align-self:flex-end;}
-.swap-btn:hover{background:rgba(0,212,255,.2);}
+/* ── SECTION HEADER ── */
+.sec{display:flex;align-items:center;gap:10px;margin-bottom:.9rem;}
+.sec-title{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.08em;text-transform:uppercase;}
+.sec-line{flex:1;height:1px;background:var(--g200);}
 
-/* BIG SEARCH BTN */
-.btn-search-main{width:100%;background:var(--blue-bright);border:none;color:#fff;border-radius:var(--radius-sm);padding:14px 20px;font-size:16px;font-weight:600;font-family:'Syne',sans-serif;cursor:pointer;transition:opacity .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:-.01em;}
-.btn-search-main:hover{opacity:.88;}
-.btn-search-main:active{transform:scale(.99);}
-.btn-search-main:disabled{opacity:.4;cursor:not-allowed;}
+/* ── STRATEGY GRID ── */
+.strat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:2rem;}
+.strat{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.875rem;transition:border-color .15s,box-shadow .15s;}
+.strat:hover{border-color:var(--blue-mid);box-shadow:var(--sh);}
+.strat-n{font-size:10px;font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+.strat-i{font-size:18px;margin-bottom:5px;}
+.strat-t{font-size:12px;font-weight:600;color:var(--g900);margin-bottom:3px;line-height:1.3;}
+.strat-d{font-size:11px;color:var(--g500);line-height:1.5;}
 
-/* LIVE RESULTS */
-.live-section{display:none;animation:fadeUp .4s ease both;margin-bottom:2rem;}
-.live-section.show{display:block;}
-.section-title{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;}
+/* ── SITE CHIPS ── */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:2.5rem;}
+.chip{display:inline-flex;align-items:center;gap:5px;background:var(--white);border:1px solid var(--g200);color:var(--g700);font-size:13px;padding:6px 13px;border-radius:99px;cursor:pointer;text-decoration:none;transition:all .15s;}
+.chip:hover{background:var(--blue-light);border-color:var(--blue-mid);color:var(--blue);}
+.chip-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);}
 
-/* FLIGHT CARDS */
-.flights-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;}
-.flight-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);padding:1rem 1.25rem;display:grid;grid-template-columns:1fr auto 1fr auto auto;gap:12px;align-items:center;}
-.flight-card.best{border-color:var(--accent2);background:rgba(56,255,176,.04);}
-.fc-airport{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--white);}
-.fc-time{font-size:12px;color:var(--muted);margin-top:2px;}
-.fc-arrow{color:var(--muted);font-size:18px;text-align:center;}
-.fc-stops{font-size:11px;color:var(--muted);text-align:center;margin-top:2px;}
-.fc-duration{font-size:12px;color:var(--muted);text-align:center;}
-.fc-price{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--accent2);text-align:right;}
-.fc-per{font-size:11px;color:var(--muted);text-align:right;margin-top:2px;}
-.fc-airline{font-size:11px;color:var(--muted);text-align:right;}
-.best-badge{display:inline-block;background:rgba(56,255,176,.12);border:1px solid rgba(56,255,176,.3);color:var(--accent2);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;letter-spacing:.05em;}
+/* ── RESULTS ── */
+.results{display:none;animation:up .3s ease both;}
+.results.show{display:block;}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* PROGRESS */
-.progress-wrap{margin-bottom:1.5rem;}
-.steps-list{display:flex;flex-direction:column;gap:8px;}
-.step-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:10px 14px;}
-.step-dot{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;}
-.step-name{flex:1;font-size:13px;color:rgba(220,235,255,.8);}
-.step-status{font-size:12px;color:var(--muted);}
+/* Flight cards */
+.flights{display:flex;flex-direction:column;gap:7px;margin-bottom:1.5rem;}
+.fc{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.875rem 1.125rem;display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:16px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.fc.best{border-color:#93c5fd;background:var(--blue-light);}
+.fc-code{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:var(--g900);}
+.fc-time{font-size:11px;color:var(--g500);}
+.fc-mid{text-align:center;}
+.fc-arrow{color:var(--g300);font-size:15px;}
+.fc-stop{font-size:10px;color:var(--g500);}
+.fc-dur{font-size:11px;color:var(--g500);}
+.fc-right{text-align:right;}
+.fc-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--blue);}
+.fc-pp{font-size:10px;color:var(--g400);}
+.fc-air{font-size:11px;color:var(--g500);}
+.best-tag{display:inline-block;background:var(--blue);color:var(--white);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;margin-top:3px;}
+.book-btn{display:inline-block;margin-top:4px;font-size:11px;color:var(--blue);border:1px solid var(--blue-mid);border-radius:99px;padding:2px 9px;text-decoration:none;transition:all .15s;}
+.book-btn:hover{background:var(--blue);color:var(--white);}
 
-/* TOP 5 */
-.top5-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:10px;}
-.top5-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.top5-rank{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;}
-.top5-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--white);}
-.top5-summary{font-size:13px;color:rgba(200,220,255,.85);line-height:1.6;margin-bottom:8px;}
-.top5-best{background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:8px;padding:10px 12px;}
-.top5-best-lbl{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
-.top5-best-val{font-size:13px;color:var(--white);}
+/* Progress */
+.steps{display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;}
+.step{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--g200);border-radius:var(--rxs);padding:9px 13px;}
+.step-dot{width:22px;height:22px;border-radius:50%;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.step-name{flex:1;font-size:13px;color:var(--g700);}
+.step-st{font-size:12px;color:var(--g400);}
+
+/* Top 5 */
+.t5{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1.125rem 1.25rem;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.t5-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.t5-rank{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;}
+.t5-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--g900);}
+.t5-body{font-size:13px;color:var(--g600,#4b5563);line-height:1.65;margin-bottom:10px;}
+.t5-box{background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:var(--rxs);padding:10px 12px;}
+.t5-box-lbl{font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;}
+.t5-box-val{font-size:13px;color:var(--g800);}
 .pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;}
-.pill-green{background:rgba(56,255,176,.1);border:1px solid rgba(56,255,176,.25);color:var(--accent2);}
-.pill-amber{background:rgba(250,199,117,.1);border:1px solid rgba(250,199,117,.25);color:#FAC775;}
+.pill-b{background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-mid);}
+.pill-g{background:var(--green-light);color:var(--green);border:1px solid #bbf7d0;}
 
-/* FULL ANALYSIS */
-details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;margin-bottom:10px;}
-details summary{padding:1rem 1.25rem;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}
+/* Details */
+details{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;margin-bottom:7px;}
+details summary{padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}
 details summary::-webkit-details-marker{display:none;}
-.tip-row{display:flex;gap:8px;font-size:13px;color:rgba(220,235,255,.85);line-height:1.5;margin-bottom:5px;}
-.tip-arrow{color:var(--accent);flex-shrink:0;}
+details[open] summary{border-bottom:1px solid var(--g100);}
+.tip-row{display:flex;gap:8px;font-size:13px;color:var(--g700);line-height:1.5;margin-bottom:4px;}
+.tip-arrow{color:var(--blue);flex-shrink:0;}
 
-/* DIRECT LINKS */
-.sites-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;}
-.site-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid var(--card-border);color:var(--muted);font-size:13px;padding:7px 14px;border-radius:99px;cursor:pointer;text-decoration:none;transition:all .2s;}
-.site-chip:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:var(--white);}
-.site-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+/* Error */
+.err{background:#fef2f2;border:1px solid #fecaca;border-radius:var(--rs);padding:1.25rem;}
+.err-t{font-weight:600;color:#dc2626;margin-bottom:5px;font-size:14px;}
+.err-b{font-size:13px;color:#991b1b;}
 
-/* TIPS */
-.tips-strip{display:flex;flex-direction:column;gap:0;margin-top:2rem;}
-.tip{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--card-border);}.tip:last-child{border-bottom:none;}
-.tip-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
-.tip-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:5px;}
-.tip-body{font-size:13px;color:var(--muted);line-height:1.6;}
+/* Tips */
+.tips-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.5rem;margin-top:2.5rem;box-shadow:var(--sh);}
+.tip{display:flex;align-items:flex-start;gap:13px;padding:13px 0;border-bottom:1px solid var(--g100);}
+.tip:last-child{border-bottom:none;padding-bottom:0;}
+.tip:first-of-type{padding-top:0;}
+.tip-icon{font-size:19px;flex-shrink:0;margin-top:1px;}
+.tip-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
+.tip-body{font-size:13px;color:var(--g500);line-height:1.6;}
 
-/* SPINNER */
+/* Spinner */
 @keyframes spin{to{transform:rotate(360deg)}}
-.spinner{width:14px;height:14px;border:2px solid rgba(0,212,255,.3);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+.spinner{width:10px;height:10px;border:1.5px solid var(--g200);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;}
 
-/* STRATEGY GRID */
-.strategies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:2rem;}
-.strat-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.1rem;transition:border-color .2s,transform .15s;}
-.strat-card:hover{border-color:rgba(0,212,255,.3);transform:translateY(-2px);}
-.strat-num{font-size:10px;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
-.strat-icon{font-size:22px;margin-bottom:8px;}
-.strat-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--white);margin-bottom:5px;line-height:1.3;}
-.strat-desc{font-size:11px;color:var(--muted);line-height:1.5;}
-footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:12px;color:rgba(180,200,255,.3);border-top:1px solid var(--card-border);}
+/* Footer */
+footer{background:var(--white);border-top:1px solid var(--g200);text-align:center;padding:1.5rem;font-size:12px;color:var(--g400);}
+footer a{color:var(--g400);text-decoration:none;}
+footer a:hover{color:var(--blue);}
 
-@media(max-width:600px){
-  .route-row{grid-template-columns:1fr 40px 1fr;}
-  .dates-row{grid-template-columns:1fr 1fr;}
-  .dates-row .field-group:last-child{grid-column:1/-1;}
+/* Mobile */
+@media(max-width:620px){
   nav{padding:0 1rem;}
-  main{padding:2rem 1rem 4rem;}
+  .nav-stats{display:none;}
+  main{padding:1.5rem 1rem 4rem;}
   .search-card{padding:1.25rem;}
-  .flight-card{grid-template-columns:1fr auto;grid-template-rows:auto auto auto;}
-  .social-proof{gap:0;padding:.75rem;}
-  .sp-item{padding:0 .75rem;}
-  .sp-num{font-size:15px;}
-  .howto-row{flex-direction:column;align-items:stretch;}
-  .howto-arrow{display:none;}
-  .howto-step{justify-content:flex-start;}
-  .hero-features{max-width:100%;padding:0 1rem;}
-  .strategies-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .route-row{grid-template-columns:1fr 36px 1fr;}
+  .dates-row{grid-template-columns:1fr 1fr;}
+  .dates-row .fl:last-child{grid-column:1/-1;}
+  .strat-grid{grid-template-columns:repeat(2,1fr);}
+  .fc{grid-template-columns:auto 1fr auto;}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">✈ VluchtHack<span class="logo-dot">.</span></div>
-  <div class="nav-pill" style="background:rgba(56,255,176,.1);border-color:rgba(56,255,176,.3);color:#38ffb0;">100% gratis ✓</div>
+  <div class="logo">✈ Vlucht<em>Hack</em></div>
+  <div class="nav-stats">
+    <div class="nav-stat"><b>7</b><span>AI-strategieën</span></div>
+    <div class="nav-divider"></div>
+    <div class="nav-stat"><b>tot 40%</b><span>besparing mogelijk</span></div>
+    <div class="nav-divider"></div>
+    <div class="nav-stat"><b>60 sec</b><span>analysetijd</span></div>
+    <div class="nav-divider"></div>
+    <div class="nav-stat"><b>gratis</b><span>geen account nodig</span></div>
+  </div>
 </nav>
 
 <main>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">✦ Slimmer boeken met AI</div>
-  <h1>VluchtHack <span>AI analyse</span></h1>
-  <p>7 professionele AI-strategieën die luchtvaartmaatschappijen liever geheimhouden. Vul je route in en laat AI je vlucht analyseren.</p>
-  <div class="hero-features">
-    <div class="hero-feature">✓ <span>7 gepersonaliseerde boekaanbevelingen</span></div>
-    <div class="hero-feature">✓ <span>Geschatte besparing per strategie</span></div>
-    <div class="hero-feature">✓ <span>Directe links naar de goedkoopste sites</span></div>
-    <div class="hero-feature">✓ <span>Analyse in minder dan 60 seconden</span></div>
+  <div class="hero-tag">AI vliegticket analyse</div>
+  <h1>Bespaar slim op<br>jouw volgende <em>vlucht</em></h1>
+  <p>Vul je route in en ontvang 7 gepersonaliseerde AI-strategieën om goedkoper te boeken.</p>
+  <div class="checks">
+    <div class="check"><div class="check-dot">✓</div>7 boekaanbevelingen op maat</div>
+    <div class="check"><div class="check-dot">✓</div>Geschatte besparing per strategie</div>
+    <div class="check"><div class="check-dot">✓</div>Directe links naar de goedkoopste sites</div>
+    <div class="check"><div class="check-dot">✓</div>Klaar in minder dan 60 seconden</div>
   </div>
-</div>
-
-<!-- SOCIAL PROOF -->
-<div class="social-proof">
-  <div class="sp-item"><span class="sp-num">7</span><span class="sp-label">AI-strategieën</span></div>
-  <div class="sp-divider"></div>
-  <div class="sp-item"><span class="sp-num">tot 40%</span><span class="sp-label">besparing mogelijk</span></div>
-  <div class="sp-divider"></div>
-  <div class="sp-item"><span class="sp-num">60 sec</span><span class="sp-label">analyse tijd</span></div>
-  <div class="sp-divider"></div>
-  <div class="sp-item"><span class="sp-num">gratis</span><span class="sp-label">geen account nodig</span></div>
-</div>
-
-<!-- HOE WERKT HET -->
-<div class="howto-row">
-  <div class="howto-step"><div class="howto-num">1</div><div class="howto-text"><strong>Vul je route in</strong><br>Vertrek, bestemming en datum</div></div>
-  <div class="howto-arrow">→</div>
-  <div class="howto-step"><div class="howto-num">2</div><div class="howto-text"><strong>AI analyseert</strong><br>7 strategieën parallel</div></div>
-  <div class="howto-arrow">→</div>
-  <div class="howto-step"><div class="howto-num">3</div><div class="howto-text"><strong>Bespaar geld</strong><br>Top 5 beste opties op maat</div></div>
 </div>
 
 <!-- SEARCH -->
 <div class="search-card">
-  <h2>✈ Jouw route</h2>
+  <div class="card-label">✈ Jouw route</div>
   <div class="route-row">
-    <div class="field-group">
-      <label class="field-label">Van (IATA code of stad)</label>
-      <input class="field-input" id="origin" placeholder="bijv. AMS of Amsterdam" type="text">
+    <div class="fl">
+      <label>Van</label>
+      <input id="origin" type="text" placeholder="bijv. AMS of Amsterdam">
     </div>
-    <button class="swap-btn" onclick="swapCities()" title="Wissel">⇄</button>
-    <div class="field-group">
-      <label class="field-label">Naar (IATA code of stad)</label>
-      <input class="field-input" id="dest" placeholder="bijv. BCN of Barcelona" type="text">
+    <button class="swap" onclick="swapCities()" title="Wissel">⇄</button>
+    <div class="fl">
+      <label>Naar</label>
+      <input id="dest" type="text" placeholder="bijv. BCN of Barcelona">
     </div>
   </div>
   <div class="dates-row">
-    <div class="field-group">
-      <label class="field-label">Vertrekdatum</label>
-      <input class="field-input" id="dep" type="date">
+    <div class="fl">
+      <label>Vertrekdatum</label>
+      <input id="dep" type="date">
     </div>
-    <div class="field-group">
-      <label class="field-label">Retourdatum (optioneel)</label>
-      <input class="field-input" id="ret" type="date">
+    <div class="fl">
+      <label>Retourdatum (optioneel)</label>
+      <input id="ret" type="date">
     </div>
-    <div class="field-group">
-      <label class="field-label">Passagiers</label>
-      <select class="field-input" id="pax">
+    <div class="fl">
+      <label>Passagiers</label>
+      <select id="pax">
         <option value="1">1 volwassene</option>
         <option value="2">2 volwassenen</option>
         <option value="3">3 volwassenen</option>
@@ -270,509 +245,266 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:12px
       </select>
     </div>
   </div>
-  <button class="btn-search-main" id="searchBtn" onclick="startFullSearch()">
+  <button class="btn" id="searchBtn" onclick="startFullSearch()">
     <span id="searchBtnIcon">🔍</span>
     <span id="searchBtnText">Analyseer mijn route</span>
   </button>
 </div>
 
-<!-- 7 STRATEGIE TEGELS -->
-<h2 class="section-title">AI voert alle 7 strategieën uit op jouw route</h2>
-<div class="strategies-grid">
-  <div class="strat-card"><div class="strat-num">01</div><div class="strat-icon">🗺️</div><div class="strat-title">Verborgen Routescanner</div><div class="strat-desc">Verborgen city-tickets, alternatieve luchthavens & multi-leg combinaties die airlines verbergen</div></div>
-  <div class="strat-card"><div class="strat-num">02</div><div class="strat-icon">🛡️</div><div class="strat-title">Prijsmanipulatie Ontmaskerd</div><div class="strat-desc">Vermijd prijsinflatie door cookies, herhaalzoekopdrachten, browser & IP-detectie</div></div>
-  <div class="strat-card"><div class="strat-num">03</div><div class="strat-icon">🌍</div><div class="strat-title">Landsprijs Omzeiler</div><div class="strat-desc">Simuleer ticketprijzen vanuit andere landen & valuta's voor lagere basistarieven</div></div>
-  <div class="strat-card"><div class="strat-num">04</div><div class="strat-icon">⏱️</div><div class="strat-title">Ideale Boekmoment Vinder</div><div class="strat-desc">Goedkoopste boekdagen, tijdvensters & vertrekperiodes op basis van historische data</div></div>
-  <div class="strat-card"><div class="strat-num">05</div><div class="strat-icon">📋</div><div class="strat-title">Tariefregels Kraker</div><div class="strat-desc">Tariefklassen, routelogica & prijsregels die stilletjes jouw totaalkosten verlagen</div></div>
-  <div class="strat-card"><div class="strat-num">06</div><div class="strat-icon">📊</div><div class="strat-title">Airline vs Boekingssite</div><div class="strat-desc">Airlines, Skyscanner, Kayak, Momondo vergeleken op verborgen kosten & marges</div></div>
-  <div class="strat-card"><div class="strat-num">07</div><div class="strat-icon">🔔</div><div class="strat-title">Prijsdaling Bewaker</div><div class="strat-desc">Volg prijsdalingen zonder ze te veroorzaken — alerts, timing & gedragsregels</div></div>
+<!-- STRATEGIES -->
+<div class="sec"><div class="sec-title">Wat analyseert de AI</div><div class="sec-line"></div></div>
+<div class="strat-grid">
+  <div class="strat"><div class="strat-n">01</div><div class="strat-i">🗺️</div><div class="strat-t">Verborgen Routescanner</div><div class="strat-d">Alternatieve luchthavens & multi-leg combinaties</div></div>
+  <div class="strat"><div class="strat-n">02</div><div class="strat-i">🛡️</div><div class="strat-t">Prijsmanipulatie Ontmaskerd</div><div class="strat-d">Vermijd prijsinflatie via cookies & herhaalzoekopdrachten</div></div>
+  <div class="strat"><div class="strat-n">03</div><div class="strat-i">🌍</div><div class="strat-t">Landsprijs Omzeiler</div><div class="strat-d">Goedkoper boeken vanuit een ander land of valuta</div></div>
+  <div class="strat"><div class="strat-n">04</div><div class="strat-i">⏱️</div><div class="strat-t">Ideale Boekmoment Vinder</div><div class="strat-d">Beste dag & tijdvenster om te boeken</div></div>
+  <div class="strat"><div class="strat-n">05</div><div class="strat-i">📋</div><div class="strat-t">Tariefregels Kraker</div><div class="strat-d">Tariefklassen & routelogica die de prijs verlagen</div></div>
+  <div class="strat"><div class="strat-n">06</div><div class="strat-i">📊</div><div class="strat-t">Airline vs Boekingssite</div><div class="strat-d">Directe vergelijking op verborgen kosten & marges</div></div>
+  <div class="strat"><div class="strat-n">07</div><div class="strat-i">🔔</div><div class="strat-t">Prijsdaling Bewaker</div><div class="strat-d">Volg prijsdalingen zonder ze zelf te veroorzaken</div></div>
 </div>
 
 <!-- DIRECT LINKS -->
-<h2 class="section-title" style="margin-top:2rem;">Of zoek direct op vergelijkingssites</h2>
-<div class="sites-row">
-  <a class="site-chip" onclick="openSite('google')"><span class="dot"></span>Google Flights</a>
-  <a class="site-chip" onclick="openSite('skyscanner')"><span class="dot"></span>Skyscanner</a>
-  <a class="site-chip" onclick="openSite('kayak')"><span class="dot"></span>Kayak</a>
-  <a class="site-chip" onclick="openSite('momondo')"><span class="dot"></span>Momondo</a>
-  <a class="site-chip" onclick="openSite('kiwi')"><span class="dot"></span>Kiwi.com</a>
-  <a class="site-chip" onclick="openAllSites()">🚀 Open alle sites</a>
+<div class="sec"><div class="sec-title">Of zoek direct op</div><div class="sec-line"></div></div>
+<div class="chips">
+  <a class="chip" onclick="openSite('google')"><span class="chip-dot"></span>Google Flights</a>
+  <a class="chip" onclick="openSite('skyscanner')"><span class="chip-dot"></span>Skyscanner</a>
+  <a class="chip" onclick="openSite('kayak')"><span class="chip-dot"></span>Kayak</a>
+  <a class="chip" onclick="openSite('momondo')"><span class="chip-dot"></span>Momondo</a>
+  <a class="chip" onclick="openSite('kiwi')"><span class="chip-dot"></span>Kiwi.com</a>
+  <a class="chip" onclick="openAllSites()">🚀 Open alle tegelijk</a>
 </div>
 
-<!-- LIVE RESULTS -->
-<div class="live-section" id="liveSection">
+<!-- RESULTS -->
+<div class="results" id="liveSection">
 
-  <!-- Live flights -->
-  <div id="flightsWrap" style="display:none;">
-    <div class="section-title" id="flightsTitle">Live vluchten ophalen…</div>
-    <div class="flights-grid" id="flightsGrid"></div>
+  <div id="flightsWrap" style="display:none;margin-bottom:1.5rem;">
+    <div class="sec"><div class="sec-title" id="flightsTitle">Vluchten ophalen…</div><div class="sec-line"></div></div>
+    <div class="flights" id="flightsGrid"></div>
   </div>
 
-  <!-- AI progress -->
   <div id="progressWrap" style="display:none;margin-bottom:1.5rem;">
-    <div class="section-title">AI voert alle 7 strategieën uit…</div>
-    <div class="steps-list" id="stepsList"></div>
+    <div class="sec"><div class="sec-title">AI analyseert jouw route</div><div class="sec-line"></div></div>
+    <div class="steps" id="stepsList"></div>
   </div>
 
-  <!-- Top 5 -->
   <div id="top5Wrap" style="display:none;">
-    <div class="section-title" id="top5Title">🏆 Top 5 beste strategieën voor jouw route</div>
+    <div class="sec"><div class="sec-title" id="top5Title">🏆 Top 5 beste strategieën</div><div class="sec-line"></div></div>
     <div id="top5List"></div>
-    <div class="section-title" style="margin-top:1.5rem;">📋 Volledige analyse — alle strategieën</div>
+    <div class="sec" style="margin-top:1.5rem;"><div class="sec-title">Alle 7 strategieën</div><div class="sec-line"></div></div>
     <div id="fullAnalysisList"></div>
   </div>
 
-  <!-- Error -->
-  <div id="errorWrap" style="display:none;background:rgba(255,107,107,.07);border:1px solid rgba(255,107,107,.25);border-radius:var(--radius);padding:1.25rem;">
-    <div style="font-family:'Syne',sans-serif;font-weight:700;color:#ff6b6b;margin-bottom:6px;">⚠ Fout</div>
-    <div style="font-size:13px;color:rgba(255,200,200,.8);" id="errorBody"></div>
+  <div id="errorWrap" style="display:none;">
+    <div class="err"><div class="err-t">⚠ Er ging iets mis</div><div class="err-b" id="errorBody"></div></div>
   </div>
 
 </div>
 
 <!-- TIPS -->
-<div class="tips-strip">
-  <h2 class="section-title" style="margin-bottom:1rem;">💡 5 tips om zelf beter te boeken</h2>
-  <div class="tip">
-    <div class="tip-icon">🕵️</div>
-    <div><div class="tip-title">Zoek altijd in incognitomodus</div><div class="tip-body">Browsers slaan je zoekopdrachten op. Luchtvaartmaatschappijen verhogen de prijs bij herhaaldelijk zoeken. Open altijd een privévenster.</div></div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">🗓️</div>
-    <div><div class="tip-title">Dinsdag en woensdag zijn het goedkoopst</div><div class="tip-body">Vliegtickets zijn gemiddeld 15–25% goedkoper als je op dinsdag of woensdag boekt. Weekenden zijn duurder door hogere vraag.</div></div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">⏰</div>
-    <div><div class="tip-title">Boek 6 tot 8 weken van tevoren</div><div class="tip-body">Dit is het optimale boekraam voor Europese vluchten. Prijzen dalen vaak nog tot 6 weken voor vertrek — te vroeg boeken is niet altijd goedkoper.</div></div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">✈️</div>
-    <div><div class="tip-title">Overweeg een alternatief vliegveld</div><div class="tip-body">Eindhoven (EIN), Rotterdam (RTM) of Brussel (BRU) zijn vaak goedkoper dan Amsterdam. Reken de extra reistijd en kosten mee.</div></div>
-  </div>
-  <div class="tip">
-    <div class="tip-icon">🌐</div>
-    <div><div class="tip-title">Gebruik een VPN voor lagere prijzen</div><div class="tip-body">Boek met een VPN ingesteld op India of Brazilië — sommige routes zijn tot 30% goedkoper vanuit andere landen. Gebruik dezelfde valuta als het land.</div></div>
-  </div>
+<div class="tips-card">
+  <div class="sec" style="margin-bottom:1rem;"><div class="sec-title">5 tips om zelf beter te boeken</div><div class="sec-line"></div></div>
+  <div class="tip"><div class="tip-icon">🕵️</div><div><div class="tip-title">Zoek altijd in incognitomodus</div><div class="tip-body">Browsers slaan je zoekopdrachten op. Luchtvaartmaatschappijen verhogen de prijs bij herhaaldelijk zoeken.</div></div></div>
+  <div class="tip"><div class="tip-icon">🗓️</div><div><div class="tip-title">Dinsdag en woensdag zijn het goedkoopst</div><div class="tip-body">Vliegtickets zijn gemiddeld 15–25% goedkoper op dinsdag of woensdag. Weekenden zijn duurder.</div></div></div>
+  <div class="tip"><div class="tip-icon">⏰</div><div><div class="tip-title">Boek 6 tot 8 weken van tevoren</div><div class="tip-body">Dit is het optimale boekraam voor Europese vluchten. Te vroeg boeken is niet altijd goedkoper.</div></div></div>
+  <div class="tip"><div class="tip-icon">✈️</div><div><div class="tip-title">Overweeg een alternatief vliegveld</div><div class="tip-body">Eindhoven (EIN), Rotterdam (RTM) of Brussel (BRU) zijn vaak goedkoper dan Amsterdam.</div></div></div>
+  <div class="tip"><div class="tip-icon">🌐</div><div><div class="tip-title">Gebruik een VPN voor lagere prijzen</div><div class="tip-body">Boek vanuit India of Brazilië via VPN — soms tot 30% goedkoper. Gebruik de lokale valuta.</div></div></div>
 </div>
 
 </main>
 
-<footer>VluchtHack &copy; 2026 · AI-aangedreven · Geen advertenties · Geen account nodig · Jouw routedata wordt niet opgeslagen · <a href="/privacy.html" style="color:rgba(180,200,255,.4);text-decoration:none;">Privacybeleid</a></footer>
+<footer>
+  VluchtHack &copy; 2026 · AI-aangedreven · Geen advertenties · Geen account nodig ·
+  <a href="/privacy.html">Privacybeleid</a>
+</footer>
 
 <script>
-// ── CONFIGURATIE ──
-const FLIGHTAPI_KEY = 'VLUCHT_KEY'; // server-side via proxy
-// Sleutels staan veilig server-side in Netlify Environment Variables
-
 const STRATEGY_PROMPTS = [
-  { id:0, title:'Verborgen Routescanner', icon:'🗺️',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een professioneel vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax} passagier(s).
-${flights ? 'Live FlightAPI.io prijzen: ' + flights : ''}
-Analyseer verborgen city-tickets, alternatieve luchthavens (150km radius), en multi-leg combinaties. Vergelijk directe vs gesplitste routes.
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":25,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste specifieke optie","platforms":["platform1","platform2"]}`
-  },
-  { id:1, title:'Prijsmanipulatie Ontmaskerd', icon:'🛡️',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een vluchtprijsexpert. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.
-${flights ? 'Live prijzen als referentie: ' + flights : ''}
-Analyseer prijsmanipulatie via cookies, herhaalzoekopdrachten, IP, browser. Geef exacte stappen om dit te vermijden.
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":15,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"meest effectieve methode","platforms":["platform1","platform2"]}`
-  },
-  { id:2, title:'Landsprijs Omzeiler', icon:'🌍',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.
-${flights ? 'Referentieprijs FlightAPI.io: ' + flights : ''}
-Analyseer vanuit welk land/valuta dit ticket goedkoopst is. Geef legale stappen (VPN, valuta, boekingssite).
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":30,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste land/valuta combinatie","platforms":["platform1","platform2"]}`
-  },
-  { id:3, title:'Ideale Boekmoment Vinder', icon:'⏱️',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.
-${flights ? 'Huidige live prijs: ' + flights : ''}
-Analyseer historische prijspatronen: goedkoopste boekdagen, optimaal tijdvenster, vertrekperiodes. Verklaar vraagcycli en tariefherstels.
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":20,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"exacte ideale boektiming","platforms":["platform1","platform2"]}`
-  },
-  { id:4, title:'Tariefregels Kraker', icon:'📋',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax} passagier(s).
-${flights ? 'Live tarieven: ' + flights : ''}
-Ontleed fare buckets, tariefklassen, routelogica en open-jaw mogelijkheden die de totaalprijs verlagen.
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":18,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste tariefklasse combinatie","platforms":["platform1","platform2"]}`
-  },
-  { id:5, title:'Airline vs Boekingssite', icon:'📊',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.
-${flights ? 'FlightAPI.io basisprijs: ' + flights : ''}
-Vergelijk directe airline-website vs Google Flights, Skyscanner, Kayak, Momondo, Kiwi. Identificeer verborgen kosten en marges per platform.
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":12,"moeite_score":1,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste platform voor deze route","platforms":["platform1","platform2"]}`
-  },
-  { id:6, title:'Prijsdaling Bewaker', icon:'🔔',
-    build:(o,d,dep,ret,pax,flights)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.
-${flights ? 'Huidige prijs als startpunt: ' + flights : ''}
-Maak een prijsvolg-strategie: zoekfrequentie, timing-resets, alert-instellingen, gedragsregels om cookies schoon te houden.
-Antwoord ALLEEN als geldig JSON:
-{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":22,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste alert-instelling en timing","platforms":["platform1","platform2"]}`
-  }
+  { id:0, title:'Verborgen Routescanner', icon:'🗺️', build:(o,d,dep,ret,pax,f)=>`Je bent een professioneel vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax} passagier(s).\n${f?'Live prijzen: '+f:''}\nAnalyseer verborgen city-tickets, alternatieve luchthavens (150km radius), multi-leg combinaties.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":25,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste optie","platforms":["platform1"]}` },
+  { id:1, title:'Prijsmanipulatie Ontmaskerd', icon:'🛡️', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsexpert. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Referentie: '+f:''}\nAnalyseer prijsmanipulatie via cookies, herhaalzoekopdrachten, IP, browser. Geef exacte stappen.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":15,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"methode","platforms":["platform1"]}` },
+  { id:2, title:'Landsprijs Omzeiler', icon:'🌍', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Referentieprijs: '+f:''}\nAnalyseer vanuit welk land/valuta dit ticket goedkoopst is.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":30,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"land/valuta","platforms":["platform1"]}` },
+  { id:3, title:'Ideale Boekmoment Vinder', icon:'⏱️', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Huidige prijs: '+f:''}\nAnalyseer goedkoopste boekdagen, optimaal tijdvenster, vertrekperiodes.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":20,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"ideale timing","platforms":["platform1"]}` },
+  { id:4, title:'Tariefregels Kraker', icon:'📋', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax} passagier(s).\n${f?'Live tarieven: '+f:''}\nOntleed fare buckets, tariefklassen, open-jaw mogelijkheden.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":18,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"tariefklasse","platforms":["platform1"]}` },
+  { id:5, title:'Airline vs Boekingssite', icon:'📊', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Basisprijs: '+f:''}\nVergelijk airline-website vs Google Flights, Skyscanner, Kayak, Momondo, Kiwi op kosten & marges.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":12,"moeite_score":1,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste platform","platforms":["platform1"]}` },
+  { id:6, title:'Prijsdaling Bewaker', icon:'🔔', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Startprijs: '+f:''}\nMaak een prijsvolg-strategie: zoekfrequentie, alert-instellingen, gedragsregels.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":22,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"alert-instelling","platforms":["platform1"]}` }
 ];
 
-// ── FLIGHTAPI.IO VLUCHT ZOEKEN ──
 async function searchFlights(origin, dest, dep, ret, pax) {
-  const orig = (origin.match(/\b([A-Z]{3})\b/)?.[1] || origin.slice(0,3)).toUpperCase();
-  const dst  = (dest.match(/\b([A-Z]{3})\b/)?.[1] || dest.slice(0,3)).toUpperCase();
-  const adults = pax || '1';
-
-  let url;
-  if (ret) {
-    url = `https://api.flightapi.io/roundtrip/VLUCHT_KEY/${orig}/${dst}/${dep}/${ret}/${adults}/0/0/Economy/EUR`;
-  } else {
-    url = `https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${orig}/${dst}/${dep}/${adults}/0/0/Economy/EUR`;
-  }
-
-  // Roep via proxy aan zodat sleutels server-side blijven
-  const proxyUrl = '/api/flights?url=' + encodeURIComponent(url);
-  const res = await fetch(proxyUrl);
-  if (!res.ok) throw new Error(`FlightAPI fout: ${res.status}`);
+  const o = (origin.match(/\b([A-Z]{3})\b/)?.[1] || origin.slice(0,3)).toUpperCase();
+  const d = (dest.match(/\b([A-Z]{3})\b/)?.[1] || dest.slice(0,3)).toUpperCase();
+  const url = ret
+    ? `https://api.flightapi.io/roundtrip/VLUCHT_KEY/${o}/${d}/${dep}/${ret}/${pax}/0/0/Economy/EUR`
+    : `https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${o}/${d}/${dep}/${pax}/0/0/Economy/EUR`;
+  const res = await fetch('/api/flights?url=' + encodeURIComponent(url));
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
   if (data.message) throw new Error(data.message);
   if (data.error) throw new Error(data.error);
-
-  console.log('FlightAPI response keys:', Object.keys(data));
-  if (data.places?.length) console.log('Voorbeeld place object:', data.places[0]);
-  if (data.carriers?.length) console.log('Voorbeeld carrier object:', data.carriers[0]);
-
   return data;
 }
 
 function parseFlights(data) {
-  const itineraries = data.itineraries || [];
-  const legs        = data.legs        || [];
-  const carriers    = data.carriers    || [];
-  const places      = data.places      || [];
-
-  if (!itineraries.length) return [];
-
-  // Bouw een snelle lookup map voor places
-  const placeMap = {};
-  places.forEach(p => { if (p.id !== undefined) placeMap[p.id] = p; });
-
-  // Helper: haal IATA code op uit place object
-  // Confirmed field from API: display_code (e.g. "LIS", "ZRH", "AMS")
-  function getIata(place) {
-    if (!place) return null;
-    return place.display_code || place.iata || place.displayCode || place.code || place.iataCode || null;
-  }
-
-  // Helper: haal luchthavencodes uit leg-ID (bijv. "12126-2405200600--32317-0-15130-2405200700")
-  function codesFromLegId(legId, depPlaceId, arrPlaceId) {
-    const dep = getIata(placeMap[depPlaceId]);
-    const arr = getIata(placeMap[arrPlaceId]);
-    return { dep: dep || 'n/b', arr: arr || 'n/b' };
-  }
-
-  return itineraries
-    .map(it => {
-      const legId  = it.leg_ids?.[0];
-      const leg    = legs.find(l => l.id === legId);
-      if (!leg) return null;
-
-      const stops  = leg.stop_count || 0;
-      const durMin = leg.duration   || 0;
-      const durStr = `${Math.floor(durMin/60)}u ${durMin%60}m`;
-
-      const { dep: depAirport, arr: arrAirport } = codesFromLegId(legId, leg.origin_place_id, leg.destination_place_id);
-
-      const depTime = leg.departure ? leg.departure.slice(11,16) : '--:--';
-      const arrTime = leg.arrival   ? leg.arrival.slice(11,16)   : '--:--';
-
-      const carrierId = leg.marketing_carrier_ids?.[0];
-      const carrier   = carriers.find(c => c.id === carrierId) || {};
-      const airline   = carrier.name || carrier.display_code || carrier.iata || carrier.displayCode || 'Onbekend';
-
-      const pricing = it.pricing_options?.[0];
-      const price   = pricing?.price?.amount || 0;
-      const bookUrl = pricing?.items?.[0]?.url || '#';
-
-      return { depAirport, arrAirport, depTime, arrTime, stops, dur: durStr, price, airline, bookUrl,
-               raw: `${airline} ${depAirport}→${arrAirport} €${Math.round(price)} ${stops===0?'direct':stops+' stop(s)'}` };
-    })
-    .filter(Boolean)
-    .sort((a,b) => a.price - b.price);
+  const its = data.itineraries || [], legs = data.legs || [];
+  const carriers = data.carriers || [], places = data.places || [];
+  if (!its.length) return [];
+  const pm = {}; places.forEach(p => { if (p.id !== undefined) pm[p.id] = p; });
+  const iata = p => p ? (p.display_code || p.iata || p.displayCode || null) : null;
+  return its.map(it => {
+    const leg = legs.find(l => l.id === it.leg_ids?.[0]);
+    if (!leg) return null;
+    const carrier = carriers.find(c => c.id === leg.marketing_carrier_ids?.[0]) || {};
+    const pricing = it.pricing_options?.[0];
+    return {
+      dep: iata(pm[leg.origin_place_id]) || 'n/b',
+      arr: iata(pm[leg.destination_place_id]) || 'n/b',
+      depT: leg.departure?.slice(11,16) || '--:--',
+      arrT: leg.arrival?.slice(11,16) || '--:--',
+      stops: leg.stop_count || 0,
+      dur: `${Math.floor((leg.duration||0)/60)}u ${(leg.duration||0)%60}m`,
+      price: pricing?.price?.amount || 0,
+      airline: carrier.name || carrier.display_code || 'Onbekend',
+      url: pricing?.items?.[0]?.url || '#'
+    };
+  }).filter(Boolean).sort((a,b) => a.price - b.price);
 }
 
-function renderFlights(flights, origin, dest, dep) {
+function renderFlights(flights, dep) {
   const grid = document.getElementById('flightsGrid');
   const title = document.getElementById('flightsTitle');
-  if (!flights.length) {
-    title.textContent = 'Geen vluchten gevonden voor deze datum.';
-    return '';
-  }
-  const minPrice = flights[0].price;
-  title.textContent = `Live vluchten — ${flights[0].depAirport} → ${flights[0].arrAirport} · ${dep} · ${flights.length} resultaten`;
-  grid.innerHTML = '';
-  flights.slice(0, 6).forEach((f, i) => {
-    const best = i === 0;
-    grid.innerHTML += `
-    <div class="flight-card${best?' best':''}">
-      <div>
-        <div class="fc-airport">${f.depAirport}</div>
-        <div class="fc-time">${f.depTime}</div>
-        ${best?'<div style="margin-top:4px;"><span class="best-badge">Goedkoopst</span></div>':''}
-      </div>
-      <div>
-        <div class="fc-arrow">→</div>
-        <div class="fc-stops">${f.stops===0?'Direct':f.stops+' stop'}</div>
-        <div class="fc-duration">${f.dur}</div>
-      </div>
-      <div>
-        <div class="fc-airport">${f.arrAirport}</div>
-        <div class="fc-time">${f.arrTime}</div>
-      </div>
-      <div>
-        <div class="fc-price">€${Math.round(f.price)}</div>
-        <div class="fc-per">p.p.</div>
-        <div class="fc-airline">${f.airline}</div>
-        ${f.bookUrl && f.bookUrl !== '#' ? `<a href="${f.bookUrl}" target="_blank" style="display:inline-block;margin-top:6px;font-size:11px;color:var(--accent);text-decoration:none;border:1px solid rgba(0,212,255,.3);border-radius:99px;padding:2px 10px;">Boek →</a>` : ''}
-      </div>
-    </div>`;
-  });
-  const summary = flights.slice(0,3).map(f=>f.raw).join(' | ');
-  return `Goedkoopste optie: €${minPrice} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop(s)'}). Top-3: ${summary}`;
+  if (!flights.length) { title.textContent = 'Geen vluchten gevonden.'; return ''; }
+  title.textContent = `${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} vluchten gevonden`;
+  grid.innerHTML = flights.slice(0,5).map((f,i) => `
+    <div class="fc${i===0?' best':''}">
+      <div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div>
+      <div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div>
+      <div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div>
+      <div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div>${f.url!=='#'?`<a class="book-btn" href="${f.url}" target="_blank">Boek →</a>`:''}</div>
+    </div>`).join('');
+  return `Goedkoopst: €${Math.round(flights[0].price)} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop'}). ` +
+         flights.slice(0,3).map(f=>`${f.airline} ${f.dep}→${f.arr} €${Math.round(f.price)}`).join(' | ');
 }
 
-// ── AI CALL ──
 async function callAI(prompt) {
-  const res = await fetch('/api/ai', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages: [{ role: 'user', content: prompt }] })
-  });
+  const res = await fetch('/api/ai', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({messages:[{role:'user',content:prompt}]}) });
   const data = await res.json();
   if (data.error) throw new Error(data.error.message || data.error);
-  const raw = data.content?.map(b => b.text || '').join('') || '{}';
-  return JSON.parse(raw.replace(/```json|```/g, '').trim());
+  const raw = data.content?.map(b=>b.text||'').join('') || '{}';
+  return JSON.parse(raw.replace(/```json|```/g,'').trim());
 }
 
-// ── STEP UI ──
 function buildSteps() {
-  const list = document.getElementById('stepsList');
-  list.innerHTML = '';
-  STRATEGY_PROMPTS.forEach(p => {
-    list.innerHTML += `
-    <div class="step-item" id="step-${p.id}">
-      <div class="step-dot" id="dot-${p.id}">${p.icon}</div>
-      <div class="step-name">${p.title}</div>
-      <div class="step-status" id="status-${p.id}">wachten…</div>
-    </div>`;
-  });
+  document.getElementById('stepsList').innerHTML = STRATEGY_PROMPTS.map(p =>
+    `<div class="step" id="step-${p.id}"><div class="step-dot" id="dot-${p.id}">${p.icon}</div><div class="step-name">${p.title}</div><div class="step-st" id="st-${p.id}">wachten…</div></div>`
+  ).join('');
 }
 
 function setStep(id, state) {
-  const dot = document.getElementById('dot-'+id);
-  const status = document.getElementById('status-'+id);
+  const dot = document.getElementById('dot-'+id), st = document.getElementById('st-'+id);
   if (!dot) return;
-  if (state==='running') {
-    dot.innerHTML='<div class="spinner" style="width:10px;height:10px;border-width:1.5px;"></div>';
-    dot.style.background='#00d4ff';
-    status.textContent='bezig…'; status.style.color='#00d4ff';
-  } else if (state==='done') {
-    dot.innerHTML='✓'; dot.style.background='#38ffb0';
-    dot.style.fontSize='10px'; dot.style.color='#03102b';
-    status.textContent='klaar'; status.style.color='#38ffb0';
-  } else if (state==='error') {
-    dot.innerHTML='✗'; dot.style.background='#ff6b6b';
-    dot.style.fontSize='10px'; dot.style.color='#fff';
-    status.textContent='fout'; status.style.color='#ff6b6b';
-  }
+  if (state==='running') { dot.innerHTML='<div class="spinner"></div>'; dot.style.cssText='background:#dbeafe;border-color:#93c5fd;'; st.textContent='bezig…'; st.style.color='#2563ff'; }
+  else if (state==='done') { dot.innerHTML='✓'; dot.style.cssText='background:#dcfce7;border-color:#86efac;font-size:11px;color:#16a34a;'; st.textContent='klaar'; st.style.color='#16a34a'; }
+  else { dot.innerHTML='✗'; dot.style.cssText='background:#fee2e2;border-color:#fca5a5;font-size:11px;color:#dc2626;'; st.textContent='fout'; st.style.color='#dc2626'; }
 }
 
-const MEDALS = ['🥇 #1','🥈 #2','🥉 #3','✦ #4','✦ #5','✦ #6','✦ #7'];
-const MEDAL_COLORS = ['#FFD700','#C0C0C0','#CD7F32','#00d4ff','#38ffb0','#a78bfa','#fb923c'];
-
-function moeiteLabel(s) {
-  if(s<=1) return {label:'Zeer eenvoudig',color:'#38ffb0'};
-  if(s<=2) return {label:'Eenvoudig',color:'#38ffb0'};
-  if(s<=3) return {label:'Gemiddeld',color:'#FAC775'};
-  if(s<=4) return {label:'Vraagt inspanning',color:'#EF9F27'};
-  return {label:'Complex',color:'#ff6b6b'};
+const MEDALS = ['🥇 #1','🥈 #2','🥉 #3','✦ #4','✦ #5'];
+const MC = ['#f59e0b','#9ca3af','#cd7c32','#2563ff','#7c3aed'];
+function ml(s) {
+  if(s<=1) return {l:'Zeer eenvoudig',c:'#16a34a'};
+  if(s<=2) return {l:'Eenvoudig',c:'#16a34a'};
+  if(s<=3) return {l:'Gemiddeld',c:'#d97706'};
+  if(s<=4) return {l:'Vraagt inspanning',c:'#ea580c'};
+  return {l:'Complex',c:'#dc2626'};
 }
 
-// ── RENDER TOP 5 ──
 function renderTop5(results) {
-  const sorted = [...results].sort((a,b) => {
-    const sA = (a.geschatte_besparing_pct||10)*0.7 + (6-(a.moeite_score||3))*4;
-    const sB = (b.geschatte_besparing_pct||10)*0.7 + (6-(b.moeite_score||3))*4;
-    return sB - sA;
-  });
-
-  const list = document.getElementById('top5List');
-  list.innerHTML = '';
-  sorted.slice(0,5).forEach((r, rank) => {
-    const color = MEDAL_COLORS[rank] || '#00d4ff';
-    const medal = MEDALS[rank] || `✦ #${rank+1}`;
-    const ml = moeiteLabel(r.moeite_score||3);
-    list.innerHTML += `
-    <div class="top5-card" style="border-left:3px solid ${color};">
-      <div class="top5-header">
-        <span style="font-size:22px;">${r._icon}</span>
-        <div style="flex:1;">
-          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <span class="top5-rank" style="color:${color};">${medal}</span>
-            <span class="top5-title">${r._title}</span>
-          </div>
-          <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;">
-            <span class="pill pill-green">💰 ~${Math.round(r.geschatte_besparing_pct||10)}% besparing</span>
-            <span class="pill" style="background:transparent;color:${ml.color};border:none;padding:0;">⚡ ${ml.label}</span>
-          </div>
-        </div>
-      </div>
-      <p class="top5-summary">${r.samenvatting||''}</p>
-      <div class="top5-best">
-        <div class="top5-best-lbl">Beste aanpak</div>
-        <div class="top5-best-val">${r.beste_optie||''}</div>
-      </div>
+  const sorted = [...results].sort((a,b) => ((b.geschatte_besparing_pct||10)*.7 + (6-(b.moeite_score||3))*4) - ((a.geschatte_besparing_pct||10)*.7 + (6-(a.moeite_score||3))*4));
+  document.getElementById('top5List').innerHTML = sorted.slice(0,5).map((r,i) => {
+    const c=MC[i]||'#2563ff', m=ml(r.moeite_score||3);
+    return `<div class="t5" style="border-left:3px solid ${c};">
+      <div class="t5-head"><span style="font-size:21px">${r._icon}</span>
+        <div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill pill-b">💰 ~${Math.round(r.geschatte_besparing_pct||10)}% besparing</span><span style="font-size:12px;color:${m.c}">⚡ ${m.l}</span></div></div></div>
+      <p class="t5-body">${r.samenvatting||''}</p>
+      <div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div>
     </div>`;
-  });
+  }).join('');
 
-  // Full analysis
-  const full = document.getElementById('fullAnalysisList');
-  full.innerHTML = '';
-  sorted.forEach((r, rank) => {
+  document.getElementById('fullAnalysisList').innerHTML = sorted.map(r => {
     const tips = Array.isArray(r.concrete_tips)?r.concrete_tips:[];
-    const platforms = Array.isArray(r.platforms)?r.platforms:[];
-    const ml = moeiteLabel(r.moeite_score||3);
-    full.innerHTML += `
-    <details>
-      <summary>
-        <span style="font-size:18px;">${r._icon}</span>
-        <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--white);flex:1;">${r._title}</span>
-        <span class="pill pill-green" style="font-size:11px;">~${Math.round(r.geschatte_besparing_pct||10)}%</span>
-        <span style="font-size:11px;color:var(--muted);margin-left:6px;">▼</span>
-      </summary>
-      <div style="padding:0 1.25rem 1.25rem;">
-        <p style="font-size:13px;color:rgba(200,220,255,.85);line-height:1.6;margin-bottom:10px;">${r.samenvatting||''}</p>
-        ${tips.length?`<div style="margin-bottom:10px;"><div style="font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">→</span><span>${t}</span></div>`).join('')}</div>`:''}
-        ${platforms.length?`<div style="display:flex;gap:6px;flex-wrap:wrap;"><div style="font-size:11px;color:var(--muted);width:100%;margin-bottom:4px;text-transform:uppercase;font-weight:600;letter-spacing:.06em;">Platforms</div>${platforms.map(p=>`<span style="font-size:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--muted);border-radius:99px;padding:3px 10px;">${p}</span>`).join('')}</div>`:''}
-        <div style="margin-top:8px;font-size:12px;color:${ml.color};">⚡ Moeite: ${ml.label} (${r.moeite_score||3}/5)</div>
+    const plats = Array.isArray(r.platforms)?r.platforms:[];
+    const m = ml(r.moeite_score||3);
+    return `<details>
+      <summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span><span class="pill pill-b" style="font-size:11px">~${Math.round(r.geschatte_besparing_pct||10)}%</span><span style="font-size:11px;color:var(--g400);margin-left:6px">▼</span></summary>
+      <div style="padding:.875rem 1.125rem">
+        <p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>
+        ${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">→</span><span>${t}</span></div>`).join('')}</div>`:''}
+        ${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:var(--g600,#4b5563);border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''} 
+        <div style="margin-top:8px;font-size:12px;color:${m.c}">⚡ Moeite: ${m.l}</div>
       </div>
     </details>`;
-  });
+  }).join('');
 }
 
-// ── MAIN SEARCH FUNCTION ──
 async function startFullSearch() {
-  const origin = document.getElementById('origin').value.trim();
-  const dest   = document.getElementById('dest').value.trim();
-  const dep    = document.getElementById('dep').value;
-  const ret    = document.getElementById('ret').value;
-  const pax    = document.getElementById('pax').value;
-
-  if (!origin || !dest) { alert('Vul vertrek en bestemming in.'); return; }
+  const origin=document.getElementById('origin').value.trim(), dest=document.getElementById('dest').value.trim();
+  const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value, pax=document.getElementById('pax').value;
+  if (!origin||!dest) { alert('Vul vertrek en bestemming in.'); return; }
   if (!dep) { alert('Vul een vertrekdatum in.'); return; }
-
-  // GA4 event tracking
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'analyse_gestart', {
-      'event_category': 'gebruik',
-      'event_label': origin + ' → ' + dest,
-      'route': origin + '-' + dest,
-      'passagiers': pax
-    });
-  }
-  const btn = document.getElementById('searchBtn');
-  btn.disabled = true;
-  document.getElementById('searchBtnText').textContent = 'Bezig…';
-  document.getElementById('liveSection').classList.add('show');
-  document.getElementById('liveSection').scrollIntoView({behavior:'smooth',block:'start'});
-  document.getElementById('flightsWrap').style.display = 'block';
-  document.getElementById('progressWrap').style.display = 'none';
-  document.getElementById('top5Wrap').style.display = 'none';
-  document.getElementById('errorWrap').style.display = 'none';
-  document.getElementById('flightsGrid').innerHTML = '';
-  document.getElementById('flightsTitle').textContent = 'Live vluchten ophalen via FlightAPI.io…';
-
-  let flightSummary = '';
-
-  // ── STAP 1: FlightAPI.io live prijzen ──
+  if (typeof gtag!=='undefined') gtag('event','analyse_gestart',{event_category:'gebruik',event_label:origin+' → '+dest});
+  const btn=document.getElementById('searchBtn');
+  btn.disabled=true;
+  document.getElementById('searchBtnText').textContent='Bezig…';
+  const ls=document.getElementById('liveSection');
+  ls.classList.add('show');
+  ls.scrollIntoView({behavior:'smooth',block:'start'});
+  ['flightsWrap','progressWrap','top5Wrap','errorWrap'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('flightsGrid').innerHTML='';
+  document.getElementById('flightsTitle').textContent='Vluchten ophalen…';
+  document.getElementById('flightsWrap').style.display='block';
+  let fs='';
   try {
-    document.getElementById('searchBtnText').textContent = 'Live prijzen ophalen…';
-    const data = await searchFlights(origin, dest, dep, ret, pax);
-    const flights = parseFlights(data);
-    flightSummary = renderFlights(flights, origin, dest, dep);
+    document.getElementById('searchBtnText').textContent='Vluchten ophalen…';
+    fs=renderFlights(parseFlights(await searchFlights(origin,dest,dep,ret,pax)), dep);
   } catch(e) {
-    console.warn('FlightAPI fout:', e);
-    document.getElementById('flightsTitle').textContent = `⚠ Vluchtprijzen niet beschikbaar (${e.message}) — AI-analyse gaat door.`;
+    console.warn('FlightAPI:',e);
+    document.getElementById('flightsTitle').textContent=`Vluchtprijzen niet beschikbaar — AI-analyse gaat door.`;
   }
-
-  // ── STAP 2: AI strategieën ──
-  document.getElementById('progressWrap').style.display = 'block';
+  document.getElementById('progressWrap').style.display='block';
   buildSteps();
-  document.getElementById('searchBtnText').textContent = 'AI analyseert…';
-
-  const results = [];
-  for (const strategy of STRATEGY_PROMPTS) {
-    setStep(strategy.id, 'running');
+  document.getElementById('searchBtnText').textContent='AI analyseert…';
+  const results=[];
+  for (const s of STRATEGY_PROMPTS) {
+    setStep(s.id,'running');
     try {
-      const prompt = strategy.build(origin, dest, dep, ret, pax, flightSummary);
-      const json = await callAI(prompt);
-      json._title = strategy.title;
-      json._icon  = strategy.icon;
-      json._id    = strategy.id;
-      if (typeof json.geschatte_besparing_pct !== 'number') json.geschatte_besparing_pct = 10;
-      if (typeof json.moeite_score !== 'number') json.moeite_score = 3;
-      results.push(json);
-      setStep(strategy.id, 'done');
-    } catch(e) {
-      console.warn('Strategie fout:', strategy.title, e);
-      setStep(strategy.id, 'error');
-    }
+      const j=await callAI(s.build(origin,dest,dep,ret,pax,fs));
+      j._title=s.title; j._icon=s.icon; j._id=s.id;
+      if (typeof j.geschatte_besparing_pct!=='number') j.geschatte_besparing_pct=10;
+      if (typeof j.moeite_score!=='number') j.moeite_score=3;
+      results.push(j); setStep(s.id,'done');
+    } catch(e) { console.warn(s.title,e); setStep(s.id,'error'); }
   }
-
-  if (results.length === 0) {
-    document.getElementById('errorWrap').style.display = 'block';
-    document.getElementById('errorBody').textContent = 'Alle AI-analyses zijn mislukt. Controleer of je Anthropic API-sleutel correct is ingesteld in de code.';
-    btn.disabled = false;
-    document.getElementById('searchBtnText').textContent = 'Analyseer mijn route';
-    return;
+  if (!results.length) {
+    document.getElementById('errorWrap').style.display='block';
+    document.getElementById('errorBody').textContent='Alle AI-analyses zijn mislukt. Controleer de API-sleutels.';
+    btn.disabled=false; document.getElementById('searchBtnText').textContent='Analyseer mijn route'; return;
   }
-
   renderTop5(results);
-  document.getElementById('top5Wrap').style.display = 'block';
+  document.getElementById('top5Wrap').style.display='block';
   document.getElementById('top5Wrap').scrollIntoView({behavior:'smooth',block:'start'});
-  btn.disabled = false;
-  document.getElementById('searchBtnText').textContent = 'Analyseer mijn route';
+  btn.disabled=false; document.getElementById('searchBtnText').textContent='Analyseer mijn route';
 }
 
-// ── HELPERS ──
-function swapCities() {
-  const o = document.getElementById('origin'), d = document.getElementById('dest');
-  [o.value, d.value] = [d.value, o.value];
-}
-
-function formatDate(s){ return s?s.replace(/-/g,''):''; }
-
+function swapCities() { const o=document.getElementById('origin'),d=document.getElementById('dest'); [o.value,d.value]=[d.value,o.value]; }
+function fmt(s){ return s?s.replace(/-/g,''):''; }
 function openSite(site) {
-  const o = (document.getElementById('origin').value.match(/([A-Z]{3})/)?.[1] || document.getElementById('origin').value.slice(0,3)).toUpperCase();
-  const d = (document.getElementById('dest').value.match(/([A-Z]{3})/)?.[1] || document.getElementById('dest').value.slice(0,3)).toUpperCase();
-  const dep = document.getElementById('dep').value;
-  const ret = document.getElementById('ret').value;
-  const urls = {
-    google:`https://www.google.com/flights?q=vluchten+van+${o}+naar+${d}`,
-    skyscanner:`https://www.skyscanner.nl/transport/vluchten/${o.toLowerCase()}/${d.toLowerCase()}/${formatDate(dep)}/${formatDate(ret)}/`,
-    kayak:`https://www.kayak.nl/flights/${o}-${d}/${dep}/${ret}/`,
-    momondo:`https://www.momondo.nl/vlucht-zoeken/${o}-${d}/${dep}/${ret}/`,
-    kiwi:`https://www.kiwi.com/nl/search/results/${o}/${d}/${dep}/${ret}/`
-  };
+  const o=(document.getElementById('origin').value.match(/([A-Z]{3})/)?.[1]||document.getElementById('origin').value.slice(0,3)).toUpperCase();
+  const d=(document.getElementById('dest').value.match(/([A-Z]{3})/)?.[1]||document.getElementById('dest').value.slice(0,3)).toUpperCase();
+  const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value;
+  const urls={google:`https://www.google.com/flights?q=vluchten+van+${o}+naar+${d}`,skyscanner:`https://www.skyscanner.nl/transport/vluchten/${o.toLowerCase()}/${d.toLowerCase()}/${fmt(dep)}/${fmt(ret)}/`,kayak:`https://www.kayak.nl/flights/${o}-${d}/${dep}/${ret}/`,momondo:`https://www.momondo.nl/vlucht-zoeken/${o}-${d}/${dep}/${ret}/`,kiwi:`https://www.kiwi.com/nl/search/results/${o}/${d}/${dep}/${ret}/`};
   if(urls[site]) window.open(urls[site],'_blank');
 }
+function openAllSites() { ['google','skyscanner','kayak','momondo','kiwi'].forEach((s,i)=>setTimeout(()=>openSite(s),i*300)); }
 
-function openAllSites() {
-  ['google','skyscanner','kayak','momondo','kiwi'].forEach((s,i)=>setTimeout(()=>openSite(s),i*300));
-}
-
-// ── INIT ──
-const pad = n=>String(n).padStart(2,'0');
-const today = new Date();
+const pad=n=>String(n).padStart(2,'0'), today=new Date();
 document.getElementById('dep').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
 const r=new Date(today); r.setDate(r.getDate()+7);
 document.getElementById('ret').value=`${r.getFullYear()}-${pad(r.getMonth()+1)}-${pad(r.getDate())}`;

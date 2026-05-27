@@ -107,8 +107,8 @@ details summary::-webkit-details-marker{display:none;}
 .site-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
 /* TIPS */
-.tips-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:2rem;}
-.tip{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);padding:1rem;}
+.tips-strip{display:flex;flex-direction:column;gap:0;margin-top:2rem;}
+.tip{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--card-border);}.tip:last-child{border-bottom:none;}
 .tip-icon{font-size:20px;margin-bottom:6px;}
 .tip-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:var(--white);margin-bottom:4px;}
 .tip-body{font-size:11px;color:var(--muted);line-height:1.5;}
@@ -250,11 +250,27 @@ footer{position:relative;z-index:1;text-align:center;padding:2rem;font-size:12px
 
 <!-- TIPS -->
 <div class="tips-strip">
-  <div class="tip"><div class="tip-icon">🕵️</div><div class="tip-title">Altijd incognito</div><div class="tip-body">Zoek in privémodus. Cookies verhogen prijzen bij herhaaldelijk zoeken.</div></div>
-  <div class="tip"><div class="tip-icon">🗓️</div><div class="tip-title">Di & wo goedkoopst</div><div class="tip-body">Vliegtickets zijn 15–25% goedkoper op dinsdag en woensdag.</div></div>
-  <div class="tip"><div class="tip-icon">⏰</div><div class="tip-title">6–8 weken vooruit</div><div class="tip-body">Het optimale boekraam voor Europese vluchten.</div></div>
-  <div class="tip"><div class="tip-icon">✈️</div><div class="tip-title">Alternatief vliegveld</div><div class="tip-body">EIN, RTM of BRU zijn vaak goedkoper dan AMS.</div></div>
-  <div class="tip"><div class="tip-icon">🌐</div><div class="tip-title">VPN = lagere prijs</div><div class="tip-body">Boek vanuit India of Brazilië — soms 30% goedkoper.</div></div>
+  <div class="section-title" style="margin-bottom:1rem;">💡 5 tips om zelf beter te boeken</div>
+  <div class="tip">
+    <div class="tip-icon">🕵️</div>
+    <div><div class="tip-title">Zoek altijd in incognitomodus</div><div class="tip-body">Browsers slaan je zoekopdrachten op. Luchtvaartmaatschappijen verhogen de prijs bij herhaaldelijk zoeken. Open altijd een privévenster.</div></div>
+  </div>
+  <div class="tip">
+    <div class="tip-icon">🗓️</div>
+    <div><div class="tip-title">Dinsdag en woensdag zijn het goedkoopst</div><div class="tip-body">Vliegtickets zijn gemiddeld 15–25% goedkoper als je op dinsdag of woensdag boekt. Weekenden zijn duurder door hogere vraag.</div></div>
+  </div>
+  <div class="tip">
+    <div class="tip-icon">⏰</div>
+    <div><div class="tip-title">Boek 6 tot 8 weken van tevoren</div><div class="tip-body">Dit is het optimale boekraam voor Europese vluchten. Prijzen dalen vaak nog tot 6 weken voor vertrek — te vroeg boeken is niet altijd goedkoper.</div></div>
+  </div>
+  <div class="tip">
+    <div class="tip-icon">✈️</div>
+    <div><div class="tip-title">Overweeg een alternatief vliegveld</div><div class="tip-body">Eindhoven (EIN), Rotterdam (RTM) of Brussel (BRU) zijn vaak goedkoper dan Amsterdam. Reken de extra reistijd en kosten mee.</div></div>
+  </div>
+  <div class="tip">
+    <div class="tip-icon">🌐</div>
+    <div><div class="tip-title">Gebruik een VPN voor lagere prijzen</div><div class="tip-body">Boek met een VPN ingesteld op India of Brazilië — sommige routes zijn tot 30% goedkoper vanuit andere landen. Gebruik dezelfde valuta als het land.</div></div>
+  </div>
 </div>
 
 </main>
@@ -332,7 +348,7 @@ async function searchFlights(origin, dest, dep, ret, pax) {
   }
 
   // Roep via proxy aan zodat sleutels server-side blijven
-  const proxyUrl = '/.netlify/functions/flights?url=' + encodeURIComponent(url);
+  const proxyUrl = '/api/flights?url=' + encodeURIComponent(url);
   const res = await fetch(proxyUrl);
   if (!res.ok) throw new Error(`FlightAPI fout: ${res.status}`);
   const data = await res.json();
@@ -444,7 +460,7 @@ function renderFlights(flights, origin, dest, dep) {
 
 // ── AI CALL ──
 async function callAI(prompt) {
-  const res = await fetch('/.netlify/functions/ai', {
+  const res = await fetch('/api/ai', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ messages: [{ role: 'user', content: prompt }] })

@@ -356,9 +356,10 @@ function parseFlights(data) {
   places.forEach(p => { if (p.id !== undefined) placeMap[p.id] = p; });
 
   // Helper: haal IATA code op uit place object
+  // Confirmed field from API: display_code (e.g. "LIS", "ZRH", "AMS")
   function getIata(place) {
     if (!place) return null;
-    return place.iata || place.displayCode || place.code || place.iataCode || null;
+    return place.display_code || place.iata || place.displayCode || place.code || place.iataCode || null;
   }
 
   // Helper: haal luchthavencodes uit leg-ID (bijv. "12126-2405200600--32317-0-15130-2405200700")
@@ -385,7 +386,7 @@ function parseFlights(data) {
 
       const carrierId = leg.marketing_carrier_ids?.[0];
       const carrier   = carriers.find(c => c.id === carrierId) || {};
-      const airline   = carrier.name || carrier.iata || carrier.displayCode || 'Onbekend';
+      const airline   = carrier.name || carrier.display_code || carrier.iata || carrier.displayCode || 'Onbekend';
 
       const pricing = it.pricing_options?.[0];
       const price   = pricing?.price?.amount || 0;

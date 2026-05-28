@@ -105,6 +105,7 @@ input[type=text],input[type=date],select{background:var(--white);border:1px soli
 input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,255,.1);}
 input::placeholder{color:var(--g400);}
 .swap{background:var(--g100);border:1px solid var(--g200);color:var(--g500);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .15s;align-self:flex-end;}
+.swap-label{display:none;}
 .swap:hover{background:var(--blue-light);border-color:var(--blue-mid);color:var(--blue);}
 .btn{width:100%;background:var(--blue);border:none;color:var(--white);border-radius:var(--rs);padding:13px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;}
 .btn:hover{opacity:.88;}
@@ -262,21 +263,75 @@ footer a{color:var(--g400);text-decoration:none;}
 footer a:hover{color:var(--blue);}
 
 /* MOBILE */
+/* ── HAMBURGER MENU ── */
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;font-size:22px;color:var(--g700);line-height:1;}
+.mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--g200);padding:1rem;z-index:99;flex-direction:column;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--g200);background:var(--g50);font-size:14px;font-weight:500;color:var(--g700);cursor:pointer;font-family:'Inter',sans-serif;width:100%;}
+.mobile-menu-btn.biz-active{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
+
 @media(max-width:620px){
+  /* NAV */
   nav{padding:0 1rem;}
   .nav-stats{display:none;}
-  .biz-banner{padding:8px 1rem;}
-  main{padding:1.5rem 1rem 4rem;}
+  .nav-right{display:none;}
+  .hamburger{display:block;}
+  .biz-banner{padding:8px 1rem;font-size:12px;}
+
+  /* LAYOUT */
+  main{padding:1.5rem 1rem 5rem;}
   .search-card{padding:1.25rem;}
-  .route-row{grid-template-columns:1fr 36px 1fr;}
-  .dates-row{grid-template-columns:1fr 1fr;}
-  .strat-grid{grid-template-columns:repeat(2,1fr);}
-  .fc{grid-template-columns:auto 1fr auto;}
+
+  /* ROUTE ROW — stacked */
+  .route-row{display:flex;flex-direction:column;gap:8px;}
+  .swap{width:100%;border-radius:var(--rxs);height:40px;font-size:13px;border-radius:var(--rxs);}
+  .swap-label{display:inline;font-size:13px;margin-left:4px;}
+
+  /* DATES — stacked */
+  .dates-row{grid-template-columns:1fr;}
+
+  /* INPUTS — 16px to prevent iOS zoom */
+  input[type=text],input[type=date],select{font-size:16px !important;}
+
+  /* PASSAGIERS — 2 kolommen */
+  .pax-row{grid-template-columns:1fr 1fr;}
+  .counter-btn{min-width:44px;min-height:44px;font-size:20px;}
+  .counter-row{padding:8px 12px;}
+
+  /* STRATEGIE GRID — 1 kolom horizontaal */
+  .strat-grid{grid-template-columns:1fr;}
+  .strat{display:flex;align-items:flex-start;gap:10px;padding:.75rem;}
+  .strat-i{font-size:20px;flex-shrink:0;margin-bottom:0;}
+  .strat-n{margin-bottom:2px;}
+
+  /* FLIGHT CARDS — gestapeld */
+  .fc{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px;padding:.75rem;}
+  .fc-mid{grid-row:1;grid-column:1/3;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--g100);padding-bottom:8px;margin-bottom:0;}
+  .fc-right{grid-column:2;text-align:right;}
+  .best-tag{font-size:10px;padding:2px 8px;}
+
+  /* BOOK BUTTON — 44px touch target */
+  .book-btn{padding:8px 14px;font-size:12px;display:inline-block;margin-top:6px;}
+  .chip{min-height:40px;padding:8px 14px;}
+
+  /* TRACKER */
+  .tracker-row{grid-template-columns:1fr;}
+  .tracker-row .fl:last-child{grid-column:1;}
+
+  /* OVER GRID */
   .over-grid{grid-template-columns:1fr;}
+
+  /* BIZ GRID */
   .biz-grid{grid-template-columns:1fr 1fr;}
-  .tracker-row{grid-template-columns:1fr 1fr;}
-  .tracker-row .fl:last-child{grid-column:1/-1;}
-  .pax-row{grid-template-columns:repeat(3,1fr);}
+
+  /* AUTOCOMPLETE — above keyboard */
+  .ac-list{position:fixed;left:1rem;right:1rem;bottom:auto;top:auto;max-height:40vh;z-index:200;}
+
+  /* DATUMGRID — scroll indicator */
+  .dpg-scroll{-webkit-mask-image:linear-gradient(to right,black 85%,transparent 100%);mask-image:linear-gradient(to right,black 85%,transparent 100%);}
+
+  /* SEARCH BTN — extra bottom margin */
+  .btn{min-height:52px;font-size:16px;}
 }
 </style>
 </head>
@@ -303,7 +358,17 @@ footer a:hover{color:var(--blue);}
       <span class="biz-dot" id="bizDot"></span><span id="bizToggleLabel">Zakelijk reizen</span>
     </button>
   </div>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-btn" id="mobileLangBtn" onclick="toggleLang();toggleMenu()">
+    🌐 <span id="mobileLangLabel">Schakel naar English</span>
+  </button>
+  <button class="mobile-menu-btn" id="mobileBizBtn" onclick="toggleBusiness();toggleMenu()">
+    💼 <span id="mobileBizLabel">Zakelijk reizen</span>
+  </button>
+</div>
 
 <div class="biz-banner" id="bizBanner">
   💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.
@@ -340,7 +405,7 @@ footer a:hover{color:var(--blue);}
         <div class="ac-list" id="originList"></div>
       </div>
     </div>
-    <button class="swap" onclick="swapCities()" title="Wissel">⇄</button>
+    <button class="swap" onclick="swapCities()" title="Wissel">⇄ <span class="swap-label">Wissel</span></button>
     <div class="fl">
       <label data-nl="Naar" data-en="To">Naar</label>
       <div class="ac-wrap">
@@ -654,6 +719,23 @@ document.addEventListener('click', e => {
   });
 });
 
+// ── HAMBURGER MENU ──
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('hamburger');
+  const open = menu.classList.toggle('open');
+  btn.textContent = open ? '✕' : '☰';
+}
+// Sluit menu bij klik buiten
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.getElementById('hamburger');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== hamburger) {
+    menu.classList.remove('open');
+    hamburger.textContent = '☰';
+  }
+});
+
 // ── TAAL TOGGLE ──
 let lang = 'nl';
 const T = {
@@ -731,6 +813,7 @@ function toggleLang() {
   const isEn = lang === 'en';
   document.getElementById('langNL').classList.toggle('active', !isEn);
   document.getElementById('langEN').classList.toggle('active', isEn);
+  document.getElementById('mobileLangLabel').textContent = isEn ? 'Schakel naar Nederlands' : 'Switch to English';
   document.documentElement.lang = lang;
 
   // Hero
@@ -827,6 +910,11 @@ function toggleBusiness() {
   toggle.classList.toggle('active', bizMode);
   banner.classList.toggle('show', bizMode);
   panel.classList.toggle('show', bizMode);
+  const mobileBizBtn = document.getElementById('mobileBizBtn');
+  if (mobileBizBtn) {
+    mobileBizBtn.classList.toggle('biz-active', bizMode);
+    document.getElementById('mobileBizLabel').textContent = bizMode ? 'Zakelijk uit' : 'Zakelijk reizen';
+  }
   if (bizMode) {
     // Zet Business class als default
     document.getElementById('cabin').value = 'Business';

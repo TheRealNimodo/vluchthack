@@ -503,31 +503,31 @@ function ml(s) {
 }
 
 function renderTop5(results) {
-  const sorted = [...results].sort((a,b) => ((b.geschatte_besparing_pct||10)*.7 + (6-(b.moeite_score||3))*4) - ((a.geschatte_besparing_pct||10)*.7 + (6-(a.moeite_score||3))*4));
-  document.getElementById('top5List').innerHTML = sorted.slice(0,5).map((r,i) => {
+  const regular = results.filter(r => !r._bonus);
+  const bonus   = results.filter(r =>  r._bonus);
+  const sortedReg = [...regular].sort((a,b) => ((b.geschatte_besparing_pct||10)*.7 + (6-(b.moeite_score||3))*4) - ((a.geschatte_besparing_pct||10)*.7 + (6-(a.moeite_score||3))*4));
+  const top5 = sortedReg.slice(0,5);
+  const allSorted = [...sortedReg, ...bonus];
+
+  document.getElementById('top5Title').textContent = '\ud83c\udfc6 Top 5 beste strategieën voor jouw route';
+  document.getElementById('top5List').innerHTML = top5.map((r,i) => {
     const c=MC[i]||'#2563ff', m=ml(r.moeite_score||3);
-    return `<div class="t5" style="border-left:3px solid ${c};">
-      <div class="t5-head"><span style="font-size:21px">${r._icon}</span>
-        <div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill pill-b">💰 ~${Math.round(r.geschatte_besparing_pct||10)}% besparing</span><span style="font-size:12px;color:${m.c}">⚡ ${m.l}</span></div></div></div>
-      <p class="t5-body">${r.samenvatting||''}</p>
-      <div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div>
-    </div>`;
+    return `<div class="t5" style="border-left:3px solid ${c};"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill pill-b">\ud83d\udcb0 ~${Math.round(r.geschatte_besparing_pct||10)}% besparing</span><span style="font-size:12px;color:${m.c}">\u26a1 ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
   }).join('');
 
-  document.getElementById('fullAnalysisList').innerHTML = sorted.map(r => {
+  if (bonus.length) {
+    document.getElementById('top5List').innerHTML += '<div style="margin-top:1.25rem;"><div class="sec"><div class="sec-title">\ud83c\udf31 Bonus — duurzame alternatieven</div><div class="sec-line"></div></div></div>' +
+    bonus.map((r,i) => {
+      const m = ml(r.moeite_score||3);
+      return `<div class="t5" style="border-left:3px solid #16a34a;margin-top:8px;"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:#16a34a;">#${top5.length+i+1}</span><span class="t5-title">${r._title}</span><span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;">bonus</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-size:12px;color:${m.c}">\u26a1 ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
+    }).join('');
+  }
+
+  document.getElementById('fullAnalysisList').innerHTML = allSorted.map(r => {
     const tips = Array.isArray(r.concrete_tips)?r.concrete_tips:[];
     const plats = Array.isArray(r.platforms)?r.platforms:[];
     const m = ml(r.moeite_score||3);
-    return `<details>
-      <summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span><span class="pill pill-b" style="font-size:11px">~${Math.round(r.geschatte_besparing_pct||10)}%</span><span style="font-size:11px;color:var(--g400);margin-left:6px">▼</span></summary>
-      <div style="padding:.875rem 1.125rem">
-        <p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>
-        ${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">→</span><span>${t}</span></div>`).join('')}</div>`:''}
-        ${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:var(--g600,#4b5563);border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''} 
-        <div style="margin-top:8px;font-size:12px;color:${m.c}">⚡ Moeite: ${m.l}</div>
-      </div>
-    </details>`;
+    return `<details><summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span>${r._bonus?'<span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;margin-right:4px">bonus</span>':''}<span class="pill pill-b" style="font-size:11px">~${Math.round(r.geschatte_besparing_pct||10)}%</span><span style="font-size:11px;color:var(--g400);margin-left:6px">\u25bc</span></summary><div style="padding:.875rem 1.125rem"><p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">\u2192</span><span>${t}</span></div>`).join('')}</div>`:''}${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:var(--g600,#4b5563);border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''}<div style="margin-top:8px;font-size:12px;color:${m.c}">\u26a1 Moeite: ${m.l}</div></div></details>`;
   }).join('');
 }
 
@@ -727,7 +727,7 @@ async function startFullSearch() {
     setStep(s.id,'running');
     try {
       const j=await callAI(s.build(origin,dest,dep,ret,pax,fs));
-      j._title=s.title; j._icon=s.icon; j._id=s.id;
+      j._title=s.title; j._icon=s.icon; j._id=s.id; j._bonus=!!s.bonus;
       if (typeof j.geschatte_besparing_pct!=='number') j.geschatte_besparing_pct=10;
       if (typeof j.moeite_score!=='number') j.moeite_score=3;
       results.push(j); setStep(s.id,'done');

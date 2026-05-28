@@ -160,7 +160,25 @@ details[open] summary{border-bottom:1px solid var(--g100);}
 .tip-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
 .tip-body{font-size:13px;color:var(--g500);line-height:1.6;}
 
-/* Spinner */
+/* Date price grid */
+.dpg-label{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+.dpg-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory;}
+.dpg-scroll::-webkit-scrollbar{display:none;}
+.dpg-day{flex:0 0 auto;scroll-snap-align:center;background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:8px 12px;text-align:center;cursor:pointer;transition:all .15s;min-width:72px;}
+.dpg-day:hover{border-color:var(--blue-mid);background:var(--blue-light);}
+.dpg-day.active{border-color:var(--blue);background:var(--blue);color:var(--white);}
+.dpg-day.active .dpg-d,.dpg-day.active .dpg-p,.dpg-day.active .dpg-wd{color:var(--white)!important;}
+.dpg-day.loading{opacity:.5;pointer-events:none;}
+.dpg-wd{font-size:10px;color:var(--g400);margin-bottom:2px;}
+.dpg-d{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--g900);margin-bottom:2px;}
+.dpg-p{font-size:12px;font-weight:600;color:var(--blue);}
+.dpg-p.cheap{color:var(--green);}
+.dpg-p.exp{color:#dc2626;}
+.dpg-p.loading-p{color:var(--g300);}
+.dpg-sub{font-size:10px;color:var(--g400);margin-top:1px;}
+.dpg-day.active .dpg-sub{color:rgba(255,255,255,.7)!important;}
+
+
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{width:10px;height:10px;border:1.5px solid var(--g200);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;}
 
@@ -280,6 +298,17 @@ footer a:hover{color:var(--blue);}
 
   <div id="flightsWrap" style="display:none;margin-bottom:1.5rem;">
     <div class="sec"><div class="sec-title" id="flightsTitle">Vluchten ophalen…</div><div class="sec-line"></div></div>
+
+    <!-- DATE PRICE GRID -->
+    <div id="datePriceWrap" style="display:none;margin-bottom:1rem;">
+      <div class="dpg-label">Prijzen rondom jouw datum — klik op een dag om te wisselen</div>
+      <div class="dpg-scroll" id="depGrid"></div>
+      <div id="retGridWrap" style="display:none;margin-top:6px;">
+        <div class="dpg-label" style="margin-top:6px;">Retourvlucht</div>
+        <div class="dpg-scroll" id="retGrid"></div>
+      </div>
+    </div>
+
     <div class="flights" id="flightsGrid"></div>
   </div>
 
@@ -445,6 +474,167 @@ function renderTop5(results) {
   }).join('');
 }
 
+// ── DATE PRICE GRID ──
+const WD = ['zo','ma','di','wo','do','vr','za'];
+
+function addDays(dateStr, days) {
+  const d = new Date(dateStr); d.setDate(d.getDate() + days);
+  const pad = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
+
+function formatDayLabel(dateStr) {
+  const d = new Date(dateStr);
+  return { wd: WD[d.getDay()], day: d.getDate() + ' ' + ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'][d.getMonth()] };
+}
+
+async function fetchDayPrice(origin, dest, dep, pax) {
+  try {
+    const o = (origin.match(/\b([A-Z]{3})\b/)?.[1] || origin.slice(0,3)).toUpperCase();
+    const d = (dest.match(/\b([A-Z]{3})\b/)?.[1] || dest.slice(0,3)).toUpperCase();
+    const url = `https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${o}/${d}/${dep}/${pax}/0/0/Economy/EUR`;
+    const res = await fetch('/api/flights?url=' + encodeURIComponent(url));
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data.message || data.error) return null;
+    const its = (data.itineraries || []).sort((a,b) => (a.pricing_options?.[0]?.price?.amount||9999) - (b.pricing_options?.[0]?.price?.amount||9999));
+    return its[0]?.pricing_options?.[0]?.price?.amount || null;
+  } catch { return null; }
+}
+
+let _retPriceMap = {}, _depPriceMap = {};
+
+async function buildDateGrid(origin, dest, centerDep, centerRet, pax) {
+  const hasRet = !!centerRet;
+  _retPriceMap = {}; _depPriceMap = {};
+  document.getElementById('datePriceWrap').style.display = 'block';
+  const depLabel = document.querySelector('#datePriceWrap .dpg-label');
+  if (depLabel) depLabel.textContent = hasRet
+    ? 'Vertrekdatum — totaalprijs retour p.p. — klik om te wisselen'
+    : 'Vertrekdatum — enkele reis p.p. — klik om te wisselen';
+  if (hasRet) document.getElementById('retGridWrap').style.display = 'block';
+
+  const dates = Array.from({length:11}, (_,i) => addDays(centerDep, i-5));
+  const depGrid = document.getElementById('depGrid');
+  depGrid.innerHTML = '';
+  dates.forEach(date => {
+    const lbl = formatDayLabel(date);
+    const div = document.createElement('div');
+    div.className = `dpg-day${date===centerDep?' active':''} loading`;
+    div.id = `dep-${date}`;
+    div.innerHTML = `<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;
+    div.onclick = () => switchDate('dep', date, origin, dest, pax);
+    depGrid.appendChild(div);
+  });
+  setTimeout(() => { const a=depGrid.querySelector('.active'); if(a) a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 100);
+
+  const depPrices = await Promise.all(dates.map(d => fetchDayPrice(origin, dest, d, pax)));
+  dates.forEach((date,i) => { if(depPrices[i]!==null) _depPriceMap[date]=depPrices[i]; });
+  let baseRetPrice = null;
+  if (hasRet) { baseRetPrice = await fetchDayPrice(dest, origin, centerRet, pax); if(baseRetPrice!==null) _retPriceMap[centerRet]=baseRetPrice; }
+
+  const displayDep = depPrices.map(p => p===null?null : (hasRet&&baseRetPrice!==null ? p+baseRetPrice : p));
+  const validDep = displayDep.filter(p=>p!==null);
+  const minDep=Math.min(...validDep), maxDep=Math.max(...validDep);
+  dates.forEach((date,i) => {
+    const el=document.getElementById(`dep-${date}`); if(!el) return;
+    el.classList.remove('loading');
+    const pe=el.querySelector('.dpg-p'), se=el.querySelector('.dpg-sub');
+    if(displayDep[i]!==null){
+      pe.textContent=`€${Math.round(displayDep[i])}`; pe.classList.remove('loading-p');
+      if(displayDep[i]===minDep) pe.classList.add('cheap');
+      else if(displayDep[i]===maxDep) pe.classList.add('exp');
+      if(se) se.textContent = hasRet ? 'retour p.p.' : 'enkel p.p.';
+    } else { pe.textContent='n/b'; pe.classList.remove('loading-p'); if(se) se.textContent=''; }
+  });
+
+  if (hasRet) {
+    const retDates = Array.from({length:11}, (_,i) => addDays(centerRet, i-5));
+    const retGrid = document.getElementById('retGrid');
+    retGrid.innerHTML = '';
+    retDates.forEach(date => {
+      const lbl = formatDayLabel(date);
+      const div = document.createElement('div');
+      div.className = `dpg-day${date===centerRet?' active':''} loading`;
+      div.id = `ret-${date}`;
+      div.innerHTML = `<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;
+      div.onclick = () => switchDate('ret', date, origin, dest, pax);
+      retGrid.appendChild(div);
+    });
+    setTimeout(() => { const a=retGrid.querySelector('.active'); if(a) a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 150);
+    const retPrices = await Promise.all(retDates.map(d => fetchDayPrice(dest, origin, d, pax)));
+    retDates.forEach((date,i) => { if(retPrices[i]!==null) _retPriceMap[date]=retPrices[i]; });
+    const baseDepPrice = _depPriceMap[centerDep]||null;
+    const displayRet = retPrices.map(p => p===null?null : (baseDepPrice!==null ? p+baseDepPrice : p));
+    const validRet=displayRet.filter(p=>p!==null), minRet=Math.min(...validRet), maxRet=Math.max(...validRet);
+    retDates.forEach((date,i) => {
+      const el=document.getElementById(`ret-${date}`); if(!el) return;
+      el.classList.remove('loading');
+      const pe=el.querySelector('.dpg-p'), se=el.querySelector('.dpg-sub');
+      if(displayRet[i]!==null){
+        pe.textContent=`€${Math.round(displayRet[i])}`; pe.classList.remove('loading-p');
+        if(displayRet[i]===minRet) pe.classList.add('cheap');
+        else if(displayRet[i]===maxRet) pe.classList.add('exp');
+        if(se) se.textContent='retour p.p.';
+      } else { pe.textContent='n/b'; pe.classList.remove('loading-p'); if(se) se.textContent=''; }
+    });
+  }
+}
+async function switchDate(type, date, origin, dest, pax) {
+  const grid = document.getElementById(type === 'dep' ? 'depGrid' : 'retGrid');
+  grid.querySelectorAll('.dpg-day').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById(`${type}-${date}`);
+  if (target) { target.classList.add('active'); target.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
+  document.getElementById(type === 'dep' ? 'dep' : 'ret').value = date;
+
+  const dep = document.getElementById('dep').value;
+  const ret = document.getElementById('ret').value;
+  const hasRet = !!ret;
+
+  // Update prices in the OTHER grid to reflect new total
+  if (hasRet) {
+    if (type === 'dep') {
+      // Heen dag gewijzigd → update retour grid met nieuwe basisprijs heen
+      const newDepPrice = _depPriceMap[date] || null;
+      document.getElementById('retGrid').querySelectorAll('.dpg-day').forEach(el => {
+        const retDate = el.id.replace('ret-','');
+        const retP = _retPriceMap[retDate] || null;
+        const pe = el.querySelector('.dpg-p'), se = el.querySelector('.dpg-sub');
+        if (pe && retP !== null && newDepPrice !== null) {
+          pe.textContent = `€${Math.round(retP + newDepPrice)}`;
+          if (se) se.textContent = 'retour p.p.';
+        }
+      });
+    } else {
+      // Retour dag gewijzigd → fetch nieuwe retourprijs, update dep grid
+      let newRetPrice = _retPriceMap[date] || null;
+      if (newRetPrice === null) {
+        newRetPrice = await fetchDayPrice(dest, origin, date, pax);
+        if (newRetPrice !== null) _retPriceMap[date] = newRetPrice;
+      }
+      document.getElementById('depGrid').querySelectorAll('.dpg-day').forEach(el => {
+        const depDate = el.id.replace('dep-','');
+        const depP = _depPriceMap[depDate] || null;
+        const pe = el.querySelector('.dpg-p'), se = el.querySelector('.dpg-sub');
+        if (pe && depP !== null && newRetPrice !== null) {
+          pe.textContent = `€${Math.round(depP + newRetPrice)}`;
+          if (se) se.textContent = 'retour p.p.';
+        }
+      });
+    }
+  }
+
+  // Vluchten herladen
+  document.getElementById('flightsTitle').textContent = 'Vluchten ophalen voor nieuwe datum…';
+  document.getElementById('flightsGrid').innerHTML = '';
+  try {
+    const data = await searchFlights(origin, dest, dep, ret, pax);
+    renderFlights(parseFlights(data), dep);
+  } catch(e) {
+    document.getElementById('flightsTitle').textContent = 'Vluchtprijzen niet beschikbaar voor deze datum.';
+  }
+}
+
 async function startFullSearch() {
   const origin=document.getElementById('origin').value.trim(), dest=document.getElementById('dest').value.trim();
   const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value, pax=document.getElementById('pax').value;
@@ -464,7 +654,10 @@ async function startFullSearch() {
   let fs='';
   try {
     document.getElementById('searchBtnText').textContent='Vluchten ophalen…';
-    fs=renderFlights(parseFlights(await searchFlights(origin,dest,dep,ret,pax)), dep);
+    const data = await searchFlights(origin,dest,dep,ret,pax);
+    fs = renderFlights(parseFlights(data), dep);
+    // Build date price grid in background (non-blocking)
+    buildDateGrid(origin, dest, dep, ret||'', pax);
   } catch(e) {
     console.warn('FlightAPI:',e);
     document.getElementById('flightsTitle').textContent=`Vluchtprijzen niet beschikbaar — AI-analyse gaat door.`;

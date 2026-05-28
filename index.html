@@ -150,7 +150,7 @@ select option{background:var(--white);}
 
 /* Progress */
 .steps{display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;}
-.step{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--g200);border-radius:var(--rxs);padding:9px 13px;}
+.step{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--g200);border-radius:var(--rxs);padding:9px 13px;max-height:60px;overflow:hidden;}
 .step-dot{width:22px;height:22px;border-radius:50%;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
 .step-name{flex:1;font-size:13px;color:var(--g700);}
 .step-st{font-size:12px;color:var(--g400);}
@@ -486,10 +486,40 @@ function buildSteps() {
 
 function setStep(id, state) {
   const dot = document.getElementById('dot-'+id), st = document.getElementById('st-'+id);
+  const item = document.getElementById('step-'+id);
   if (!dot) return;
-  if (state==='running') { dot.innerHTML='<div class="spinner"></div>'; dot.style.cssText='background:#dbeafe;border-color:#93c5fd;'; st.textContent='bezig…'; st.style.color='#2563ff'; }
-  else if (state==='done') { dot.innerHTML='✓'; dot.style.cssText='background:#dcfce7;border-color:#86efac;font-size:11px;color:#16a34a;'; st.textContent='klaar'; st.style.color='#16a34a'; }
-  else { dot.innerHTML='✗'; dot.style.cssText='background:#fee2e2;border-color:#fca5a5;font-size:11px;color:#dc2626;'; st.textContent='fout'; st.style.color='#dc2626'; }
+  if (state==='running') {
+    dot.innerHTML='<div class="spinner"></div>';
+    dot.style.cssText='background:#dbeafe;border-color:#93c5fd;';
+    st.textContent='bezig…'; st.style.color='#2563ff';
+  } else if (state==='done') {
+    dot.innerHTML='✓';
+    dot.style.cssText='background:#dcfce7;border-color:#86efac;font-size:11px;color:#16a34a;';
+    st.textContent='klaar'; st.style.color='#16a34a';
+    // Fade out and collapse after short delay
+    setTimeout(() => {
+      if (item) {
+        item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';
+        item.style.opacity='0';
+        item.style.maxHeight='0';
+        item.style.marginBottom='0';
+        item.style.padding='0';
+        item.style.overflow='hidden';
+      }
+    }, 600);
+  } else {
+    dot.innerHTML='✗';
+    dot.style.cssText='background:#fee2e2;border-color:#fca5a5;font-size:11px;color:#dc2626;';
+    st.textContent='fout'; st.style.color='#dc2626';
+    setTimeout(() => {
+      if (item) {
+        item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';
+        item.style.opacity='0'; item.style.maxHeight='0';
+        item.style.marginBottom='0'; item.style.padding='0';
+        item.style.overflow='hidden';
+      }
+    }, 800);
+  }
 }
 
 const MEDALS = ['🥇 #1','🥈 #2','🥉 #3','✦ #4','✦ #5'];

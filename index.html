@@ -1049,7 +1049,7 @@ function renderFlights(flights, dep) {
   title.textContent=`${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} ${flights.length===1?'vlucht':'vluchten'}`;
   const ts=document.getElementById('flightTimestamp');
   ts.style.display='block'; ts.textContent=`Prijzen opgehaald om ${now} — kunnen variëren bij boeking`;
-  grid.innerHTML=flights.slice(0,5).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div>${f.url!=='#'?`<a class="book-btn" href="${f.url}" target="_blank">Boek →</a>`:''}</div></div>`).join('');
+  grid.innerHTML=flights.slice(0,5).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div>`<a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a>`</div></div>`).join('');
   return `Goedkoopst: €${Math.round(flights[0].price)} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop'}). `+flights.slice(0,3).map(f=>`${f.airline} ${f.dep}→${f.arr} €${Math.round(f.price)}`).join(' | ');
 }
 
@@ -1081,6 +1081,14 @@ function setStep(id, state) {
     const pct = Math.round(doneCount/STRATEGY_PROMPTS.length*100);
     document.getElementById('progressFill').style.width=pct+'%';
     document.getElementById('progressLabel').textContent=`${doneCount} van ${STRATEGY_PROMPTS.length} strategieën klaar`;
+    if(doneCount===STRATEGY_PROMPTS.length){
+      setTimeout(()=>{
+        const pw=document.getElementById('progressWrap');
+        pw.style.transition='opacity .6s ease';
+        pw.style.opacity='0';
+        setTimeout(()=>pw.style.display='none',650);
+      },800);
+    }
     setTimeout(()=>{ if(item){item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';item.style.opacity='0';item.style.maxHeight='0';item.style.marginBottom='0';item.style.padding='0';item.style.overflow='hidden';}},600);
   } else {
     dot.innerHTML='✗'; dot.style.cssText='background:#fee2e2;border-color:#fca5a5;font-size:11px;color:#dc2626;'; st.textContent='fout'; st.style.color='#dc2626';
@@ -1102,7 +1110,7 @@ function renderTop5(results) {
   document.getElementById('top5Title').textContent='🏆 Top 5 beste strategieën voor jouw route';
   document.getElementById('top5List').innerHTML=top5.map((r,i)=>{
     const c=MC[i]||'#2563ff',m=ml(r.moeite_score||3);
-    return `<div class="t5" style="border-left:3px solid ${c};"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill pill-b">💰 ~${Math.round(r.geschatte_besparing_pct||10)}% besparing</span><span style="font-size:12px;color:${m.c}">⚡ ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
+    return `<div class="t5" style="border-left:3px solid ${c};"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-size:12px;color:${m.c}">⚡ ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
   }).join('');
   if (bonus.length) {
     document.getElementById('top5List').innerHTML+='<div style="margin-top:1.25rem;"><div class="sec"><div class="sec-title">🌱 Bonus — duurzame alternatieven</div><div class="sec-line"></div></div></div>'+
@@ -1111,7 +1119,7 @@ function renderTop5(results) {
   document.getElementById('top5List').innerHTML+=`<div style="font-size:11px;color:var(--g400);text-align:right;margin-top:8px;">Analyse uitgevoerd op ${now} · Prijzen kunnen variëren</div>`;
   document.getElementById('fullAnalysisList').innerHTML=allSorted.map(r=>{
     const tips=Array.isArray(r.concrete_tips)?r.concrete_tips:[], plats=Array.isArray(r.platforms)?r.platforms:[], m=ml(r.moeite_score||3);
-    return `<details><summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span>${r._bonus?'<span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;margin-right:4px">bonus</span>':''}<span class="pill pill-b" style="font-size:11px">~${Math.round(r.geschatte_besparing_pct||10)}%</span><span style="font-size:11px;color:var(--g400);margin-left:6px">▼</span></summary><div style="padding:.875rem 1.125rem"><p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">→</span><span>${t}</span></div>`).join('')}</div>`:''}${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:#4b5563;border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''}<div style="margin-top:8px;font-size:12px;color:${m.c}">⚡ Moeite: ${m.l}</div></div></details>`;
+    return `<details><summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span>${r._bonus?'<span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;margin-right:4px">bonus</span>':''}<span style="font-size:11px;color:var(--g400);margin-left:6px">▼</span></summary><div style="padding:.875rem 1.125rem"><p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">→</span><span>${t}</span></div>`).join('')}</div>`:''}${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:#4b5563;border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''}<div style="margin-top:8px;font-size:12px;color:${m.c}">⚡ Moeite: ${m.l}</div></div></details>`;
   }).join('');
 }
 

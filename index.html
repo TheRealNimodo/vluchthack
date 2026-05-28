@@ -90,7 +90,7 @@ main{max-width:820px;margin:0 auto;padding:3rem 1.5rem 6rem;}
 
 /* ── SEARCH CARD ── */
 .search-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.75rem;margin-bottom:2rem;box-shadow:var(--sh);}
-.card-label{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem;}
+.card-label{font-size:11px;font-weight:600;color:var(--g900);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem;}
 .route-row{display:grid;grid-template-columns:1fr 38px 1fr;gap:10px;align-items:end;margin-bottom:10px;}
 .dates-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
 .fl{display:flex;flex-direction:column;gap:4px;}
@@ -358,24 +358,28 @@ footer a:hover{color:var(--blue);}
 </div>
 
 <!-- FLIGHT TRACKER -->
-<div class="search-card" style="margin-top:-0.5rem;">
-  <div class="card-label">🛬 Vlucht volgen</div>
-  <div class="tracker-row">
-    <div class="fl" style="flex:1;">
-      <label>Vluchtnummer</label>
-      <input id="flightNum" type="text" placeholder="bijv. KL1234 of BA432">
+<div class="search-card" style="margin-top:-0.5rem;padding:.75rem 1.25rem;">
+  <button class="advanced-toggle" onclick="toggleTracker()" type="button">
+    <span id="trackerLabel">🛬 Vluchten volgen</span>
+  </button>
+  <div id="trackerPanel" style="display:none;margin-top:12px;">
+    <div class="tracker-row">
+      <div class="fl" style="flex:1;">
+        <label>Vluchtnummer</label>
+        <input id="flightNum" type="text" placeholder="bijv. KL1234 of BA432">
+      </div>
+      <div class="fl">
+        <label>Datum</label>
+        <input id="flightDate" type="date">
+      </div>
+      <div class="fl" style="align-self:flex-end;">
+        <button class="btn" id="trackBtn" onclick="trackFlight()" style="padding:9px 16px;font-size:14px;">
+          <span id="trackBtnText">Volg vlucht</span>
+        </button>
+      </div>
     </div>
-    <div class="fl">
-      <label>Datum</label>
-      <input id="flightDate" type="date">
-    </div>
-    <div class="fl" style="align-self:flex-end;">
-      <button class="btn" id="trackBtn" onclick="trackFlight()" style="padding:9px 16px;font-size:14px;">
-        <span id="trackBtnText">Volg vlucht</span>
-      </button>
-    </div>
+    <div id="trackResult" style="display:none;margin-top:1rem;"></div>
   </div>
-  <div id="trackResult" style="display:none;margin-top:1rem;"></div>
 </div>
 
 <!-- STRATEGIES -->
@@ -463,13 +467,17 @@ footer a:hover{color:var(--blue);}
 </div>
 </section>
 
-<div class="tips-card">
-  <div class="sec" style="margin-bottom:1rem;"><h2 class="sec-title">5 tips om zelf goedkoper te vliegen</h2><div class="sec-line"></div></div>
-  <div class="tip"><div class="tip-icon">🕵️</div><div><div class="tip-title">Zoek altijd in incognitomodus</div><div class="tip-body">Browsers slaan je zoekopdrachten op. Luchtvaartmaatschappijen verhogen de prijs bij herhaaldelijk zoeken.</div></div></div>
-  <div class="tip"><div class="tip-icon">🗓️</div><div><div class="tip-title">Dinsdag en woensdag zijn het goedkoopst</div><div class="tip-body">Vliegtickets zijn gemiddeld 15–25% goedkoper op dinsdag of woensdag. Weekenden zijn duurder.</div></div></div>
-  <div class="tip"><div class="tip-icon">⏰</div><div><div class="tip-title">Boek 6 tot 8 weken van tevoren</div><div class="tip-body">Dit is het optimale boekraam voor Europese vluchten. Te vroeg boeken is niet altijd goedkoper.</div></div></div>
-  <div class="tip"><div class="tip-icon">✈️</div><div><div class="tip-title">Overweeg een alternatief vliegveld</div><div class="tip-body">Eindhoven (EIN), Rotterdam (RTM) of Brussel (BRU) zijn vaak goedkoper dan Amsterdam.</div></div></div>
-  <div class="tip"><div class="tip-icon">🌐</div><div><div class="tip-title">Gebruik een VPN voor lagere prijzen</div><div class="tip-body">Boek vanuit India of Brazilië via VPN — soms tot 30% goedkoper. Gebruik de lokale valuta.</div></div></div>
+<div class="tips-card" style="padding:.75rem 1.25rem;">
+  <button class="advanced-toggle" onclick="toggleTips()" type="button">
+    <span id="tipsLabel">💡 5 tips om zelf goedkoper te vliegen</span>
+  </button>
+  <div id="tipsPanel" style="display:none;margin-top:12px;">
+    <div class="tip"><div class="tip-icon">🕵️</div><div><div class="tip-title">Zoek altijd in incognitomodus</div><div class="tip-body">Browsers slaan je zoekopdrachten op. Luchtvaartmaatschappijen verhogen de prijs bij herhaaldelijk zoeken.</div></div></div>
+    <div class="tip"><div class="tip-icon">🗓️</div><div><div class="tip-title">Dinsdag en woensdag zijn het goedkoopst</div><div class="tip-body">Vliegtickets zijn gemiddeld 15–25% goedkoper op dinsdag of woensdag. Weekenden zijn duurder.</div></div></div>
+    <div class="tip"><div class="tip-icon">⏰</div><div><div class="tip-title">Boek 6 tot 8 weken van tevoren</div><div class="tip-body">Dit is het optimale boekraam voor Europese vluchten. Te vroeg boeken is niet altijd goedkoper.</div></div></div>
+    <div class="tip"><div class="tip-icon">✈️</div><div><div class="tip-title">Overweeg een alternatief vliegveld</div><div class="tip-body">Eindhoven (EIN), Rotterdam (RTM) of Brussel (BRU) zijn vaak goedkoper dan Amsterdam.</div></div></div>
+    <div class="tip"><div class="tip-icon">🌐</div><div><div class="tip-title">Gebruik een VPN voor lagere prijzen</div><div class="tip-body">Boek vanuit India of Brazilië via VPN — soms tot 30% goedkoper. Gebruik de lokale valuta.</div></div></div>
+  </div>
 </div>
 
 </main>
@@ -492,6 +500,22 @@ const STRATEGY_PROMPTS = [
   { id:7, title:'Openbaar Vervoer Alternatief', icon:'\ud83d\ude82', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een reisexpert en duurzaamheidsanalist. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep}${ret?', terug '+ret:''} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Beste OV alternatief (trein, bus, ferry of combinatie) met reistijd en kosten per persoon. 2. CO2 uitstoot vlucht vs OV in kg per persoon. 3. Hoeveel CO2 per persoon bespaard door OV te kiezen.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over OV alternatief, kosten én CO2 besparing t.o.v. vliegen","geschatte_besparing_pct":0,"moeite_score":3,"concrete_tips":["Beste OV route met geschatte reistijd en kosten per persoon","CO2 vlucht: circa X kg p.p. — CO2 trein/bus: circa X kg p.p.","Besparing: X kg CO2 per persoon door niet te vliegen (X% minder)"],"beste_optie":"beste OV optie met reistijd, prijs én CO2 voordeel","platforms":["Trainline","Omio","FlixBus","EcoPassenger"]}` },
   { id:8, title:'CO\u2082 Voetafdruk & Te Voet', icon:'\ud83c\udf31', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een duurzaamheidsexpert. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Looproute te voet: afstand in km en looptijd in dagen/weken. 2. CO2 uitstoot vlucht vs trein vs te voet in kg per persoon. 3. Hoeveel CO2 bespaard als men NIET vliegt.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over CO2 vergelijking en loopafstand","geschatte_besparing_pct":0,"moeite_score":5,"concrete_tips":["CO2 vlucht: circa X kg per persoon","CO2 trein: circa X kg — X% minder dan vliegen","Looproute: ca. X km — circa X weken te voet"],"beste_optie":"meest milieuvriendelijke reisoptie met concrete CO2 cijfers","platforms":["ICAO Carbon Calculator","EcoPassenger","Rome2rio"]}` }
 ];
+
+function toggleTips() {
+  const panel = document.getElementById('tipsPanel');
+  const label = document.getElementById('tipsLabel');
+  const open = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  label.textContent = open ? '💡 Verberg tips' : '💡 5 tips om zelf goedkoper te vliegen';
+}
+
+function toggleTracker() {
+  const panel = document.getElementById('trackerPanel');
+  const label = document.getElementById('trackerLabel');
+  const open = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  label.textContent = open ? '🛬 Verberg vluchten volgen' : '🛬 Vluchten volgen';
+}
 
 function toggleAdvanced() {
   const panel = document.getElementById('advancedPanel');

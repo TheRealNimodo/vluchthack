@@ -547,6 +547,9 @@ function acSearch(input,listId){
   if(q.length<2){list.style.display='none';return;}
   const matches=AIRPORTS.filter(a=>a.code.toLowerCase().includes(q)||a.name.toLowerCase().includes(q)||a.city.toLowerCase().includes(q)).slice(0,6);
   if(!matches.length){list.style.display='none';return;}
+  // Auto-select if exact IATA code match
+  const exact=matches.find(a=>a.code.toLowerCase()===q);
+  if(exact){acSelect(input.id,listId,exact.code,exact.city);return;}
   list.innerHTML=matches.map(a=>`<div class="ac-item" onclick="acSelect('${input.id}','${listId}','${a.code}','${a.city}')"><span>${a.city} — ${a.name}</span><span class="ac-code">${a.code}</span></div>`).join('');
   list.style.display='block';
 }
@@ -978,7 +981,15 @@ async function startFullSearch(){
     const data=await searchFlights(origin,dest,dep,ret,cabin,stopover);
     fs=renderFlights(parseFlights(data),dep);
     buildDateGrid(origin,dest,dep,ret||'',counts.adults);
-  }catch(e){console.warn('FlightAPI:',e);document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar — AI-analyse gaat door.';}
+  }catch(e){console.warn('FlightAPI:',e);
+    const o=document.getElementById('origin').value, d=document.getElementById('dest').value;
+    const hasCode = v => /\([A-Z]{3}\)/.test(v) || /\b[A-Z]{3}\b/.test(v);
+    if(!hasCode(o)||!hasCode(d)){
+      document.getElementById('flightsTitle').textContent='⚠ Selecteer een luchthaven uit de suggestielijst voor nauwkeurige resultaten.';
+    } else {
+      document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar — AI-analyse gaat door.';
+    }
+  }
   document.getElementById('progressWrap').style.display='block';
   buildSteps();
   document.getElementById('searchBtnText').textContent='AI analyseert…';

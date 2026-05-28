@@ -84,7 +84,7 @@ main{max-width:820px;margin:0 auto;padding:3rem 1.5rem 6rem;}
 .search-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.75rem;margin-bottom:.75rem;box-shadow:var(--sh);}
 .card-label{font-size:11px;font-weight:600;color:var(--g900);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem;}
 .route-row{display:grid;grid-template-columns:1fr 38px 1fr;gap:10px;align-items:end;margin-bottom:10px;}
-.dates-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.dates-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-bottom:10px;align-items:end;}
 .fl{display:flex;flex-direction:column;gap:4px;}
 .fl label{font-size:11px;font-weight:500;color:var(--g500);letter-spacing:.02em;}
 .ac-wrap{position:relative;}
@@ -255,7 +255,7 @@ footer a:hover{color:var(--blue);}
   .route-row{display:flex;flex-direction:column;gap:8px;}
   .swap{width:100%;border-radius:var(--rxs);height:40px;}
   .swap-label{display:inline;font-size:13px;margin-left:4px;}
-  .dates-row{grid-template-columns:1fr;}
+  .dates-row{grid-template-columns:1fr 1fr;}
   input[type=text],input[type=date],select{font-size:16px !important;}
   .pax-row{grid-template-columns:1fr 1fr;}
   .counter-btn{min-width:44px;min-height:44px;font-size:20px;}
@@ -359,6 +359,13 @@ footer a:hover{color:var(--blue);}
     <div class="fl">
       <label data-nl="Retourdatum (optioneel)" data-en="Return date (optional)">Retourdatum (optioneel)</label>
       <input id="ret" type="date">
+    </div>
+    <div class="fl" style="justify-content:flex-end;">
+      <label style="font-size:11px;font-weight:500;color:var(--g500);">Filter</label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--g700);cursor:pointer;background:var(--g50);border:1px solid var(--g200);border-radius:var(--rxs);padding:9px 11px;">
+        <input type="checkbox" id="directOnly" style="width:auto;accent-color:var(--blue);" onchange="toggleDirectOnly()">
+        Alleen directe vluchten
+      </label>
     </div>
   </div>
   <button class="advanced-toggle" onclick="toggleAdvanced()">
@@ -542,6 +549,13 @@ footer a:hover{color:var(--blue);}
 // ── AIRPORTS ──
 const AIRPORTS=[{code:'AMS',name:'Amsterdam Schiphol',city:'Amsterdam'},{code:'RTM',name:'Rotterdam The Hague',city:'Rotterdam'},{code:'EIN',name:'Eindhoven Airport',city:'Eindhoven'},{code:'BCN',name:'Barcelona El Prat',city:'Barcelona'},{code:'MAD',name:'Madrid Barajas',city:'Madrid'},{code:'LHR',name:'London Heathrow',city:'Londen'},{code:'LGW',name:'London Gatwick',city:'Londen'},{code:'CDG',name:'Paris Charles de Gaulle',city:'Parijs'},{code:'ORY',name:'Paris Orly',city:'Parijs'},{code:'FCO',name:'Rome Fiumicino',city:'Rome'},{code:'ATH',name:'Athene',city:'Athene'},{code:'DXB',name:'Dubai International',city:'Dubai'},{code:'JFK',name:'New York JFK',city:'New York'},{code:'LAX',name:'Los Angeles',city:'Los Angeles'},{code:'BKK',name:'Bangkok Suvarnabhumi',city:'Bangkok'},{code:'SIN',name:'Singapore Changi',city:'Singapore'},{code:'BRU',name:'Brussel Zaventem',city:'Brussel'},{code:'FRA',name:'Frankfurt',city:'Frankfurt'},{code:'MUC',name:'München',city:'München'},{code:'VIE',name:'Wenen',city:'Wenen'},{code:'ZRH',name:'Zürich',city:'Zürich'},{code:'CPH',name:'Kopenhagen',city:'Kopenhagen'},{code:'ARN',name:'Stockholm Arlanda',city:'Stockholm'},{code:'OSL',name:'Oslo Gardermoen',city:'Oslo'},{code:'LIS',name:'Lissabon',city:'Lissabon'},{code:'OPO',name:'Porto',city:'Porto'},{code:'PMI',name:'Mallorca Palma',city:'Palma de Mallorca'},{code:'AYT',name:'Antalya',city:'Antalya'},{code:'HRG',name:'Hurghada',city:'Hurghada'},{code:'CAI',name:'Caïro',city:'Caïro'},{code:'NRT',name:'Tokyo Narita',city:'Tokyo'},{code:'ICN',name:'Seoul Incheon',city:'Seoul'},{code:'PEK',name:'Peking Capital',city:'Peking'},{code:'SYD',name:'Sydney',city:'Sydney'},{code:'YYZ',name:'Toronto Pearson',city:'Toronto'},{code:'MIA',name:'Miami',city:'Miami'},{code:'AGP',name:'Málaga',city:'Málaga'},{code:'ALC',name:'Alicante',city:'Alicante'},{code:'TFS',name:'Tenerife Zuid',city:'Tenerife'},{code:'LPA',name:'Gran Canaria',city:'Gran Canaria'},{code:'FAO',name:'Faro',city:'Faro'},{code:'VCE',name:'Venetië',city:'Venetië'},{code:'MXP',name:'Milaan Malpensa',city:'Milaan'},{code:'DUB',name:'Dublin',city:'Dublin'},{code:'PRG',name:'Praag',city:'Praag'},{code:'BUD',name:'Boedapest',city:'Boedapest'},{code:'WAW',name:'Warschau',city:'Warschau'},{code:'GRU',name:'São Paulo',city:'São Paulo'},{code:'CUR',name:'Curaçao Hato',city:'Willemstad'}];
 let acSelected={};
+function toggleDirectOnly(){
+  const cb=document.getElementById('directOnly');
+  const stopover=document.getElementById('stopover');
+  if(cb.checked){stopover.value='';stopover.disabled=true;stopover.placeholder='Niet beschikbaar bij directe vluchten';}
+  else{stopover.disabled=false;stopover.placeholder='bijv. MAD of Madrid';}
+}
+
 function acSearch(input,listId){
   const q=input.value.toLowerCase().trim(),list=document.getElementById(listId);
   if(q.length<2){list.style.display='none';return;}
@@ -747,12 +761,13 @@ function parseFlights(data){
   if(!its.length)return[];
   const pm={};places.forEach(p=>{if(p.id!==undefined)pm[p.id]=p;});
   const iata=p=>p?(p.display_code||p.iata||p.displayCode||null):null;
+  const directOnly=document.getElementById('directOnly')?.checked||false;
   return its.map(it=>{
     const leg=legs.find(l=>l.id===it.leg_ids?.[0]);if(!leg)return null;
     const carrier=carriers.find(c=>c.id===leg.marketing_carrier_ids?.[0])||{};
     const pricing=it.pricing_options?.[0];
     return{dep:iata(pm[leg.origin_place_id])||'n/b',arr:iata(pm[leg.destination_place_id])||'n/b',depT:leg.departure?.slice(11,16)||'--:--',arrT:leg.arrival?.slice(11,16)||'--:--',stops:leg.stop_count||0,dur:`${Math.floor((leg.duration||0)/60)}u ${(leg.duration||0)%60}m`,price:pricing?.price?.amount||0,airline:carrier.name||carrier.display_code||'Onbekend',url:pricing?.items?.[0]?.url||'#'};
-  }).filter(Boolean).sort((a,b)=>a.price-b.price);
+  }).filter(Boolean).filter(f=>directOnly?f.stops===0:true).sort((a,b)=>a.price-b.price);
 }
 
 function renderFlights(flights,dep){

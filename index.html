@@ -56,7 +56,11 @@ nav{background:var(--white);border-bottom:1px solid var(--g200);padding:0 2rem;d
 .biz-toggle{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--g500);cursor:pointer;background:var(--g100);border:1px solid var(--g200);border-radius:99px;padding:5px 12px;transition:all .15s;white-space:nowrap;}
 .biz-toggle:hover{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
 .biz-toggle.active{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
-.biz-dot{width:8px;height:8px;border-radius:50%;background:var(--g300);transition:background .15s;}
+.lang-toggle{display:flex;align-items:center;gap:4px;padding:5px 10px;background:var(--g100);border:1px solid var(--g200);border-radius:99px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s;}
+.lang-toggle:hover{background:var(--g200) !important;border-color:var(--g300) !important;}
+.lang-opt{font-size:13px;font-weight:600;color:var(--g400);transition:color .15s;}
+.lang-opt.active{color:var(--g900);}
+.lang-sep{color:var(--g300);font-size:12px;}
 .biz-toggle.active .biz-dot{background:var(--amber);}
 
 /* ZAKELIJK BANNER */
@@ -282,16 +286,21 @@ footer a:hover{color:var(--blue);}
   <a class="logo" href="/">✈ Vlucht<em>Hack</em></a>
   <div class="nav-right">
     <div class="nav-stats">
-      <div class="nav-stat"><b>7</b><span>AI-strategieën</span></div>
+      <div class="nav-stat"><b>7</b><span id="ns1">AI-strategieën</span></div>
       <div class="nav-divider"></div>
-      <div class="nav-stat"><b>tot 40%</b><span>besparing mogelijk</span></div>
+      <div class="nav-stat"><b>tot 40%</b><span id="ns2">besparing mogelijk</span></div>
       <div class="nav-divider"></div>
-      <div class="nav-stat"><b>60 sec</b><span>analysetijd</span></div>
+      <div class="nav-stat"><b>60 sec</b><span id="ns3">analysetijd</span></div>
       <div class="nav-divider"></div>
-      <div class="nav-stat"><b>gratis</b><span>geen account nodig</span></div>
+      <div class="nav-stat"><b>gratis</b><span id="ns4">geen account nodig</span></div>
     </div>
+    <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+      <span id="langNL" class="lang-opt active">NL</span>
+      <span class="lang-sep">|</span>
+      <span id="langEN" class="lang-opt">EN</span>
+    </button>
     <button class="biz-toggle" id="bizToggle" onclick="toggleBusiness()">
-      <span class="biz-dot" id="bizDot"></span>Zakelijk reizen
+      <span class="biz-dot" id="bizDot"></span><span id="bizToggleLabel">Zakelijk reizen</span>
     </button>
   </div>
 </nav>
@@ -325,7 +334,7 @@ footer a:hover{color:var(--blue);}
   <div class="card-label">✈ Jouw route</div>
   <div class="route-row">
     <div class="fl">
-      <label>Van</label>
+      <label data-nl="Van" data-en="From">Van</label>
       <div class="ac-wrap">
         <input id="origin" type="text" placeholder="bijv. Amsterdam of AMS" oninput="acSearch(this,'originList')" autocomplete="off">
         <div class="ac-list" id="originList"></div>
@@ -333,7 +342,7 @@ footer a:hover{color:var(--blue);}
     </div>
     <button class="swap" onclick="swapCities()" title="Wissel">⇄</button>
     <div class="fl">
-      <label>Naar</label>
+      <label data-nl="Naar" data-en="To">Naar</label>
       <div class="ac-wrap">
         <input id="dest" type="text" placeholder="bijv. Barcelona of BCN" oninput="acSearch(this,'destList')" autocomplete="off">
         <div class="ac-list" id="destList"></div>
@@ -342,11 +351,11 @@ footer a:hover{color:var(--blue);}
   </div>
   <div class="dates-row">
     <div class="fl">
-      <label>Vertrekdatum</label>
+      <label data-nl="Vertrekdatum" data-en="Departure date">Vertrekdatum</label>
       <input id="dep" type="date">
     </div>
     <div class="fl">
-      <label>Retourdatum (optioneel)</label>
+      <label data-nl="Retourdatum (optioneel)" data-en="Return date (optional)">Retourdatum (optioneel)</label>
       <input id="ret" type="date">
     </div>
   </div>
@@ -357,7 +366,7 @@ footer a:hover{color:var(--blue);}
   <div id="advancedPanel" style="display:none;">
     <div class="pax-row">
       <div class="fl">
-        <label>Volwassenen</label>
+        <label data-nl="Volwassenen" data-en="Adults">Volwassenen</label>
         <div class="counter-row">
           <button class="counter-btn" onclick="changeCount('adults',-1)">−</button>
           <span id="adults-val">1</span>
@@ -365,7 +374,7 @@ footer a:hover{color:var(--blue);}
         </div>
       </div>
       <div class="fl">
-        <label>Kinderen <span style="font-size:10px;color:var(--g400);">(2–11 jr)</span></label>
+        <label data-nl="Kinderen" data-en="Children"><span id="lbl-children">Kinderen</span> <span style="font-size:10px;color:var(--g400);">(2–11 jr)</span></label>
         <div class="counter-row">
           <button class="counter-btn" onclick="changeCount('children',-1)">−</button>
           <span id="children-val">0</span>
@@ -373,7 +382,7 @@ footer a:hover{color:var(--blue);}
         </div>
       </div>
       <div class="fl">
-        <label>Baby's <span style="font-size:10px;color:var(--g400);">(0–1 jr)</span></label>
+        <label data-nl="Baby's" data-en="Infants"><span id="lbl-infants">Baby's</span> <span style="font-size:10px;color:var(--g400);">(0–1 jr)</span></label>
         <div class="counter-row">
           <button class="counter-btn" onclick="changeCount('infants',-1)">−</button>
           <span id="infants-val">0</span>
@@ -381,7 +390,7 @@ footer a:hover{color:var(--blue);}
         </div>
       </div>
       <div class="fl">
-        <label>Cabineklasse</label>
+        <label data-nl="Cabineklasse" data-en="Cabin class">Cabineklasse</label>
         <select id="cabin">
           <option value="Economy">Economy</option>
           <option value="Premium_Economy">Premium Economy</option>
@@ -390,7 +399,7 @@ footer a:hover{color:var(--blue);}
         </select>
       </div>
       <div class="fl" style="grid-column:span 2;">
-        <label>Tussenstop via <span style="font-size:10px;color:var(--g400);">(optioneel)</span></label>
+        <label data-nl="Tussenstop via" data-en="Stopover via"><span id="lbl-stopover">Tussenstop via</span> <span style="font-size:10px;color:var(--g400);">(optioneel)</span></label>
         <input id="stopover" type="text" placeholder="bijv. MAD of Madrid">
       </div>
     </div>
@@ -423,11 +432,11 @@ footer a:hover{color:var(--blue);}
   <div id="trackerPanel" style="display:none;">
     <div class="tracker-row">
       <div class="fl" style="flex:1;">
-        <label>Vluchtnummer</label>
+        <label data-nl="Vluchtnummer" data-en="Flight number">Vluchtnummer</label>
         <input id="flightNum" type="text" placeholder="bijv. KL1234 of BA432">
       </div>
       <div class="fl">
-        <label>Datum</label>
+        <label data-nl="Datum" data-en="Date">Datum</label>
         <input id="flightDate" type="date">
       </div>
       <div class="fl" style="align-self:flex-end;">
@@ -536,8 +545,8 @@ footer a:hover{color:var(--blue);}
 </main>
 
 <footer>
-  VluchtHack &copy; 2026 · AI-aangedreven · Geen account nodig ·
-  <a href="/privacy.html">Privacybeleid</a> ·
+  <span id="footerMain">VluchtHack &copy; 2026 · AI-aangedreven · Geen account nodig</span> ·
+  <a href="/privacy.html" id="footerPrivacy">Privacybeleid</a> ·
   <a href="/faq.html">FAQ</a>
 </footer>
 
@@ -644,6 +653,169 @@ document.addEventListener('click', e => {
     }
   });
 });
+
+// ── TAAL TOGGLE ──
+let lang = 'nl';
+const T = {
+  nl: {
+    heroTag: 'AI vliegticket analyse',
+    heroH1: 'Bespaar slim op<br>jouw volgende <em>vlucht</em>',
+    heroP: 'Vul je route in en ontvang 7 gepersonaliseerde AI-strategieën om goedkoper te boeken.',
+    check1: '7 boekaanbevelingen op maat',
+    check2: 'Geschatte besparing per strategie',
+    check3: 'Directe links naar de goedkoopste sites',
+    check4: 'Klaar in minder dan 60 seconden',
+    exampleBar: '💡 <span><strong>Voorbeeld:</strong> AMS → BCN in juli — VluchtHack vond via de Landsprijs Omzeiler een besparing van €47 per persoon t.o.v. directe boeking op Skyscanner.</span>',
+    cardLabel: '✈ Jouw route',
+    labelFrom: 'Van', labelTo: 'Naar',
+    placeholderFrom: 'bijv. Amsterdam of AMS', placeholderTo: 'bijv. Barcelona of BCN',
+    labelDep: 'Vertrekdatum', labelRet: 'Retourdatum (optioneel)',
+    advancedBtn: '+ Uitgebreid (passagiers, klasse, tussenstop)',
+    labelAdults: 'Volwassenen', labelChildren: 'Kinderen', labelInfants: "Baby's",
+    labelCabin: 'Cabineklasse', labelStopover: 'Tussenstop via',
+    searchBtn: 'Analyseer mijn route',
+    trackerLabel: '🛬 Vluchten volgen',
+    labelFlightNum: 'Vluchtnummer', placeholderFlightNum: 'bijv. KL1234 of BA432',
+    labelFlightDate: 'Datum', trackBtn: 'Volg vlucht',
+    secStrategies: 'Wat analyseert de AI',
+    secDirect: 'Of zoek direct vergelijken',
+    openAll: '🚀 Open alle tegelijk',
+    tipsLabel: '💡 5 tips om zelf goedkoper te vliegen',
+    bizToggle: 'Zakelijk reizen',
+    bizBanner: '💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.',
+    bizTitle: '💼 Zakelijke reisopties',
+    overTitle: 'Over VluchtHack',
+    overBody: 'VluchtHack is een onafhankelijke Nederlandse AI-tool die je helpt slimmer te boeken. We zijn niet verbonden aan luchtvaartmaatschappijen of boekingssites en ontvangen geen commissie. Onze enige focus is jou helpen de beste prijs te vinden.',
+    ns1: 'AI-strategieën', ns2: 'besparing mogelijk', ns3: 'analysetijd', ns4: 'geen account nodig',
+    footerMain: 'VluchtHack © 2026 · AI-aangedreven · Geen account nodig',
+    footerPrivacy: 'Privacybeleid',
+  },
+  en: {
+    heroTag: 'AI flight ticket analysis',
+    heroH1: 'Save smart on<br>your next <em>flight</em>',
+    heroP: 'Enter your route and receive 7 personalised AI strategies to book cheaper.',
+    check1: '7 personalised booking recommendations',
+    check2: 'Estimated savings per strategy',
+    check3: 'Direct links to the cheapest sites',
+    check4: 'Ready in less than 60 seconds',
+    exampleBar: '💡 <span><strong>Example:</strong> AMS → BCN in July — VluchtHack found a saving of €47 per person via the Country Price Bypass strategy vs. direct booking on Skyscanner.</span>',
+    cardLabel: '✈ Your route',
+    labelFrom: 'From', labelTo: 'To',
+    placeholderFrom: 'e.g. Amsterdam or AMS', placeholderTo: 'e.g. Barcelona or BCN',
+    labelDep: 'Departure date', labelRet: 'Return date (optional)',
+    advancedBtn: '+ Advanced (passengers, class, stopover)',
+    labelAdults: 'Adults', labelChildren: 'Children', labelInfants: 'Infants',
+    labelCabin: 'Cabin class', labelStopover: 'Stopover via',
+    searchBtn: 'Analyse my route',
+    trackerLabel: '🛬 Track flights',
+    labelFlightNum: 'Flight number', placeholderFlightNum: 'e.g. KL1234 or BA432',
+    labelFlightDate: 'Date', trackBtn: 'Track flight',
+    secStrategies: 'What the AI analyses',
+    secDirect: 'Or search directly on',
+    openAll: '🚀 Open all at once',
+    tipsLabel: '💡 5 tips to book cheaper yourself',
+    bizToggle: 'Business travel',
+    bizBanner: '💼 <strong>Business mode active</strong> — Business class, flexible tickets, CO₂ reporting and corporate fares are included in the analysis.',
+    bizTitle: '💼 Business travel options',
+    overTitle: 'About VluchtHack',
+    overBody: 'VluchtHack is an independent Dutch AI tool that helps you book smarter. We are not affiliated with airlines or booking sites and receive no commission. Our only focus is helping you find the best price.',
+    ns1: 'AI strategies', ns2: 'savings possible', ns3: 'analysis time', ns4: 'no account needed',
+    footerMain: 'VluchtHack © 2026 · AI-powered · No account needed',
+    footerPrivacy: 'Privacy policy',
+  }
+};
+
+function toggleLang() {
+  lang = lang === 'nl' ? 'en' : 'nl';
+  const t = T[lang];
+  const isEn = lang === 'en';
+  document.getElementById('langNL').classList.toggle('active', !isEn);
+  document.getElementById('langEN').classList.toggle('active', isEn);
+  document.documentElement.lang = lang;
+
+  // Hero
+  document.querySelector('.hero-tag').textContent = t.heroTag;
+  document.querySelector('.hero h1').innerHTML = t.heroH1;
+  document.querySelector('.hero p').textContent = t.heroP;
+  const checkDots = document.querySelectorAll('.check');
+  [t.check1,t.check2,t.check3,t.check4].forEach((txt,i) => {
+    if(checkDots[i]) checkDots[i].childNodes[1].textContent = txt;
+  });
+  document.querySelector('.example-bar').innerHTML = t.exampleBar;
+
+  // Form
+  document.querySelector('.card-label').innerHTML = t.cardLabel;
+  // Nav stats
+  document.getElementById('ns1').textContent = t.ns1;
+  document.getElementById('ns2').textContent = t.ns2;
+  document.getElementById('ns3').textContent = t.ns3;
+  document.getElementById('ns4').textContent = t.ns4;
+
+  // Footer
+  document.getElementById('footerMain').textContent = t.footerMain;
+  document.getElementById('footerPrivacy').textContent = t.footerPrivacy;
+
+  // Vertaal alle labels via data-attributen
+  document.querySelectorAll('label[data-nl]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    // Als label alleen tekst heeft (geen spans)
+    if ([...el.childNodes].every(n => n.nodeType === 3 || n.tagName === 'SPAN')) {
+      const textNodes = [...el.childNodes].filter(n => n.nodeType === 3);
+      if (textNodes.length) textNodes[0].textContent = val;
+      else el.firstChild && (el.firstChild.textContent = val);
+    }
+  });
+  // Update placeholders en knoppen
+  document.getElementById('origin').placeholder = t.placeholderFrom;
+  document.getElementById('dest').placeholder = t.placeholderTo;
+  document.getElementById('flightNum').placeholder = t.placeholderFlightNum;
+  document.getElementById('advancedLabel').textContent = t.advancedBtn;
+  document.getElementById('searchBtnText').textContent = t.searchBtn;
+  document.getElementById('trackerLabel').textContent = t.trackerLabel;
+  document.getElementById('trackBtnText').textContent = t.trackBtn;
+  document.getElementById('tipsLabel').textContent = t.tipsLabel;
+  document.getElementById('bizToggleLabel').textContent = t.bizToggle;
+  document.getElementById('bizBanner').innerHTML = t.bizBanner;
+  document.querySelector('.biz-panel-title').textContent = t.bizTitle;
+
+  // Sections
+  document.querySelectorAll('.sec-title').forEach(el => {
+    if (el.textContent.includes('analyseert') || el.textContent.includes('analyses')) el.textContent = t.secStrategies;
+    if (el.textContent.includes('direct') || el.textContent.includes('search directly')) el.textContent = t.secDirect;
+  });
+  document.querySelector('[onclick="openAllSites()"]').textContent = t.openAll;
+
+  // Over sectie
+  document.querySelectorAll('.sec-title').forEach(el => {
+    if (el.textContent.includes('Over') || el.textContent.includes('About')) el.textContent = t.overTitle;
+  });
+  document.querySelector('.over-card > p').textContent = t.overBody;
+
+  // Over items
+  const overItems = document.querySelectorAll('.over-item .over-title');
+  const overBodies = document.querySelectorAll('.over-item .over-body');
+  if (isEn) {
+    overItems[0]?.setText?.('Independent'); overBodies[0] && (overBodies[0].textContent='No commissions, no ads from booking sites. Purely objective analysis.');
+    overItems[1]?.setText?.('AI-powered'); overBodies[1] && (overBodies[1].textContent='7 strategies run in parallel by Claude AI on your specific route.');
+    overItems[2]?.setText?.('Privacy-first'); overBodies[2] && (overBodies[2].textContent='Your route data is not stored. No account, no tracking.');
+    overItems[3]?.setText?.('Sustainability'); overBodies[3] && (overBodies[3].textContent='We always show the public transport alternative and CO₂ impact of your choice.');
+    if(overItems[0]) overItems[0].textContent='Independent';
+    if(overItems[1]) overItems[1].textContent='AI-powered';
+    if(overItems[2]) overItems[2].textContent='Privacy-first';
+    if(overItems[3]) overItems[3].textContent='Sustainability';
+  } else {
+    if(overItems[0]) overItems[0].textContent='Onafhankelijk';
+    if(overItems[1]) overItems[1].textContent='AI-aangedreven';
+    if(overItems[2]) overItems[2].textContent='Privacy-first';
+    if(overItems[3]) overItems[3].textContent='Duurzaamheid';
+    if(overBodies[0]) overBodies[0].textContent='Geen commissies, geen advertenties van boekingssites. Puur objectieve analyse.';
+    if(overBodies[1]) overBodies[1].textContent='7 strategieën parallel uitgevoerd door Claude AI op jouw specifieke route.';
+    if(overBodies[2]) overBodies[2].textContent='Jouw routegegevens worden niet opgeslagen. Geen account, geen tracking.';
+    if(overBodies[3]) overBodies[3].textContent='We tonen altijd het OV-alternatief en de CO₂-impact van jouw keuze.';
+  }
+
+  if(typeof gtag !== 'undefined') gtag('event','taal_wisselen',{event_category:'gebruik',taal:lang});
+}
 
 // ── ZAKELIJK MODUS ──
 let bizMode = false;

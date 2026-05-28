@@ -157,7 +157,7 @@ input::placeholder{color:var(--g400);}
 .progress-label{font-size:12px;color:var(--g500);margin-bottom:.75rem;}
 
 /* FLIGHT CARDS */
-.flights{display:flex;flex-direction:column;gap:7px;margin-bottom:1.5rem;}
+.flights{display:flex;flex-direction:column;gap:4px;margin-bottom:1rem;}
 .fc{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.5rem .875rem;display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:12px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);}
 .fc.best{border-color:#93c5fd;background:var(--blue-light);}
 .fc-code{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:var(--g900);}
@@ -758,7 +758,7 @@ function renderFlights(flights,dep){
   const now=new Date().toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});
   title.textContent=`${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} ${flights.length===1?'vlucht':'vluchten'}`;
   const ts=document.getElementById('flightTimestamp');ts.style.display='block';ts.textContent=`Prijzen opgehaald om ${now} — kunnen variëren bij boeking`;
-  grid.innerHTML=flights.slice(0,5).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div><a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a></div></div>`).join('');
+  grid.innerHTML=flights.slice(0,3).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div><a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a></div></div>`).join('');
   return`Goedkoopst: €${Math.round(flights[0].price)} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop'}). `+flights.slice(0,3).map(f=>`${f.airline} ${f.dep}→${f.arr} €${Math.round(f.price)}`).join(' | ');
 }
 
@@ -847,7 +847,7 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
   const lbl=document.getElementById('dpgDepLabel');
   if(lbl)lbl.textContent=hasRet?'Vertrekdatum — totaalprijs retour p.p. — klik om te wisselen':'Vertrekdatum — enkele reis p.p. — klik om te wisselen';
   if(hasRet)document.getElementById('retGridWrap').style.display='block';
-  const dates=Array.from({length:7},(_,i)=>addDays(centerDep,i-3));
+  const dates=Array.from({length:11},(_,i)=>addDays(centerDep,i-5));
   const depGrid=document.getElementById('depGrid');depGrid.innerHTML='';
   dates.forEach(date=>{
     const lbl=formatDayLabel(date);
@@ -882,7 +882,7 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
     else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}
   });
   if(!hasRet)return;
-  const retDates=Array.from({length:7},(_,i)=>addDays(centerRet,i-3));
+  const retDates=Array.from({length:11},(_,i)=>addDays(centerRet,i-5));
   const retGrid=document.getElementById('retGrid');retGrid.innerHTML='';
   retDates.forEach(date=>{
     const lbl=formatDayLabel(date);

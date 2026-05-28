@@ -328,7 +328,7 @@ footer a:hover{color:var(--blue);}
   .ac-list{position:fixed;left:1rem;right:1rem;bottom:auto;top:auto;max-height:40vh;z-index:200;}
 
   /* DATUMGRID — scroll indicator */
-  .dpg-scroll{-webkit-mask-image:linear-gradient(to right,black 85%,transparent 100%);mask-image:linear-gradient(to right,black 85%,transparent 100%);}
+  .dpg-scroll{-webkit-mask-image:linear-gradient(to right,black 92%,transparent 100%);mask-image:linear-gradient(to right,black 92%,transparent 100%);}
 
   /* SEARCH BTN — extra bottom margin */
   .btn{min-height:52px;font-size:16px;}
@@ -1046,7 +1046,7 @@ function renderFlights(flights, dep) {
   const grid=document.getElementById('flightsGrid'), title=document.getElementById('flightsTitle');
   if (!flights.length) { title.textContent='Geen vluchten gevonden.'; return ''; }
   const now=new Date().toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});
-  title.textContent=`${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} vluchten`;
+  title.textContent=`${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} ${flights.length===1?'vlucht':'vluchten'}`;
   const ts=document.getElementById('flightTimestamp');
   ts.style.display='block'; ts.textContent=`Prijzen opgehaald om ${now} — kunnen variëren bij boeking`;
   grid.innerHTML=flights.slice(0,5).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div>${f.url!=='#'?`<a class="book-btn" href="${f.url}" target="_blank">Boek →</a>`:''}</div></div>`).join('');
@@ -1129,7 +1129,7 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
   const depLabel=document.querySelector('#datePriceWrap .dpg-label');
   if(depLabel)depLabel.textContent=hasRet?'Vertrekdatum — totaalprijs retour p.p. — klik om te wisselen':'Vertrekdatum — enkele reis p.p. — klik om te wisselen';
   if(hasRet)document.getElementById('retGridWrap').style.display='block';
-  const dates=Array.from({length:11},(_,i)=>addDays(centerDep,i-5));
+  const dates=Array.from({length:7},(_,i)=>addDays(centerDep,i-3));
   const depGrid=document.getElementById('depGrid');depGrid.innerHTML='';
   dates.forEach(date=>{const lbl=formatDayLabel(date);const div=document.createElement('div');div.className=`dpg-day${date===centerDep?' active':''} loading`;div.id=`dep-${date}`;div.innerHTML=`<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;div.onclick=()=>switchDate('dep',date,origin,dest,pax);depGrid.appendChild(div);});
   setTimeout(()=>{const a=depGrid.querySelector('.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},100);
@@ -1140,7 +1140,7 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
   const displayDep=depPrices.map(p=>p===null?null:(hasRet&&baseRetPrice!==null?p+baseRetPrice:p));
   const validDep=displayDep.filter(p=>p!==null);const minDep=Math.min(...validDep),maxDep=Math.max(...validDep);
   dates.forEach((date,i)=>{const el=document.getElementById(`dep-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayDep[i]!==null){pe.textContent=`€${Math.round(displayDep[i])}`;pe.classList.remove('loading-p');if(displayDep[i]===minDep)pe.classList.add('cheap');else if(displayDep[i]===maxDep)pe.classList.add('exp');if(se)se.textContent=hasRet?'retour p.p.':'enkel p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}});
-  if(hasRet){const retDates=Array.from({length:11},(_,i)=>addDays(centerRet,i-5));const retGrid=document.getElementById('retGrid');retGrid.innerHTML='';retDates.forEach(date=>{const lbl=formatDayLabel(date);const div=document.createElement('div');div.className=`dpg-day${date===centerRet?' active':''} loading`;div.id=`ret-${date}`;div.innerHTML=`<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;div.onclick=()=>switchDate('ret',date,origin,dest,pax);retGrid.appendChild(div);});setTimeout(()=>{const a=retGrid.querySelector('.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},150);const retPrices=await Promise.all(retDates.map(d=>fetchDayPrice(dest,origin,d,pax)));retDates.forEach((date,i)=>{if(retPrices[i]!==null)_retPriceMap[date]=retPrices[i];});const baseDepPrice=_depPriceMap[centerDep]||null;const displayRet=retPrices.map(p=>p===null?null:(baseDepPrice!==null?p+baseDepPrice:p));const validRet=displayRet.filter(p=>p!==null),minRet=Math.min(...validRet),maxRet=Math.max(...validRet);retDates.forEach((date,i)=>{const el=document.getElementById(`ret-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayRet[i]!==null){pe.textContent=`€${Math.round(displayRet[i])}`;pe.classList.remove('loading-p');if(displayRet[i]===minRet)pe.classList.add('cheap');else if(displayRet[i]===maxRet)pe.classList.add('exp');if(se)se.textContent='retour p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}}); }
+  if(hasRet){const retDates=Array.from({length:7},(_,i)=>addDays(centerRet,i-3));const retGrid=document.getElementById('retGrid');retGrid.innerHTML='';retDates.forEach(date=>{const lbl=formatDayLabel(date);const div=document.createElement('div');div.className=`dpg-day${date===centerRet?' active':''} loading`;div.id=`ret-${date}`;div.innerHTML=`<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;div.onclick=()=>switchDate('ret',date,origin,dest,pax);retGrid.appendChild(div);});setTimeout(()=>{const a=retGrid.querySelector('.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},150);const retPrices=await Promise.all(retDates.map(d=>fetchDayPrice(dest,origin,d,pax)));retDates.forEach((date,i)=>{if(retPrices[i]!==null)_retPriceMap[date]=retPrices[i];});const baseDepPrice=_depPriceMap[centerDep]||null;const displayRet=retPrices.map(p=>p===null?null:(baseDepPrice!==null?p+baseDepPrice:p));const validRet=displayRet.filter(p=>p!==null),minRet=Math.min(...validRet),maxRet=Math.max(...validRet);retDates.forEach((date,i)=>{const el=document.getElementById(`ret-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayRet[i]!==null){pe.textContent=`€${Math.round(displayRet[i])}`;pe.classList.remove('loading-p');if(displayRet[i]===minRet)pe.classList.add('cheap');else if(displayRet[i]===maxRet)pe.classList.add('exp');if(se)se.textContent='retour p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}}); }
 }
 
 async function switchDate(type,date,origin,dest,pax){
@@ -1188,6 +1188,8 @@ async function startFullSearch() {
   const ls=document.getElementById('liveSection');
   ls.classList.add('show'); ls.scrollIntoView({behavior:'smooth',block:'start'});
   ['flightsWrap','progressWrap','top5Wrap','errorWrap'].forEach(id=>document.getElementById(id).style.display='none');
+  document.getElementById('retGridWrap').style.display='none';
+  document.getElementById('datePriceWrap').style.display='none';
   document.getElementById('flightsGrid').innerHTML='';
   document.getElementById('flightsTitle').textContent='Vluchten ophalen…';
   document.getElementById('flightsWrap').style.display='block';

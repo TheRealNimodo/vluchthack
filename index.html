@@ -190,7 +190,10 @@ details[open] summary{border-bottom:1px solid var(--g100);}
 .tip-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
 .tip-body{font-size:13px;color:var(--g500);line-height:1.6;}
 
-.pax-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.advanced-toggle{background:none;border:none;color:var(--blue);font-size:13px;font-weight:500;cursor:pointer;padding:2px 0;margin-bottom:2px;display:flex;align-items:center;gap:4px;font-family:'Inter',sans-serif;}
+.advanced-toggle:hover{opacity:.75;}
+.pax-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
+.counter-row{height:38px;}
 .counter-row{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--g300);border-radius:var(--rxs);padding:6px 10px;}
 .counter-btn{background:none;border:none;color:var(--blue);font-size:18px;font-weight:600;cursor:pointer;width:20px;line-height:1;padding:0;transition:opacity .15s;}
 .counter-btn:hover{opacity:.7;}
@@ -303,17 +306,12 @@ footer a:hover{color:var(--blue);}
       <label>Retourdatum (optioneel)</label>
       <input id="ret" type="date">
     </div>
-    <div class="fl">
-      <label>Cabineklasse</label>
-      <select id="cabin">
-        <option value="Economy">Economy</option>
-        <option value="Premium_Economy">Premium Economy</option>
-        <option value="Business">Business</option>
-        <option value="First">First Class</option>
-      </select>
-    </div>
   </div>
-  <div class="pax-row">
+  <button class="advanced-toggle" id="advancedToggle" onclick="toggleAdvanced()" type="button">
+    <span id="advancedLabel">+ Uitgebreid (passagiers, klasse, tussenstop)</span>
+  </button>
+  <div id="advancedPanel" style="display:none;">
+  <div class="pax-row" style="margin-top:10px;">
     <div class="fl">
       <label>Volwassenen</label>
       <div class="counter-row">
@@ -339,11 +337,21 @@ footer a:hover{color:var(--blue);}
       </div>
     </div>
     <div class="fl">
+      <label>Cabineklasse</label>
+      <select id="cabin">
+        <option value="Economy">Economy</option>
+        <option value="Premium_Economy">Premium Economy</option>
+        <option value="Business">Business</option>
+        <option value="First">First Class</option>
+      </select>
+    </div>
+    <div class="fl" style="grid-column:span 2;">
       <label>Tussenstop via <span style="font-size:10px;color:var(--g400);">(optioneel)</span></label>
       <input id="stopover" type="text" placeholder="bijv. MAD of Madrid">
     </div>
   </div>
-  <button class="btn" id="searchBtn" onclick="startFullSearch()">
+  </div>
+  <button class="btn" id="searchBtn" onclick="startFullSearch()" style="margin-top:14px;">
     <span id="searchBtnIcon">🔍</span>
     <span id="searchBtnText">Analyseer mijn route</span>
   </button>
@@ -484,6 +492,14 @@ const STRATEGY_PROMPTS = [
   { id:7, title:'Openbaar Vervoer Alternatief', icon:'\ud83d\ude82', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een reisexpert en duurzaamheidsanalist. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep}${ret?', terug '+ret:''} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Beste OV alternatief (trein, bus, ferry of combinatie) met reistijd en kosten per persoon. 2. CO2 uitstoot vlucht vs OV in kg per persoon. 3. Hoeveel CO2 per persoon bespaard door OV te kiezen.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over OV alternatief, kosten én CO2 besparing t.o.v. vliegen","geschatte_besparing_pct":0,"moeite_score":3,"concrete_tips":["Beste OV route met geschatte reistijd en kosten per persoon","CO2 vlucht: circa X kg p.p. — CO2 trein/bus: circa X kg p.p.","Besparing: X kg CO2 per persoon door niet te vliegen (X% minder)"],"beste_optie":"beste OV optie met reistijd, prijs én CO2 voordeel","platforms":["Trainline","Omio","FlixBus","EcoPassenger"]}` },
   { id:8, title:'CO\u2082 Voetafdruk & Te Voet', icon:'\ud83c\udf31', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een duurzaamheidsexpert. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Looproute te voet: afstand in km en looptijd in dagen/weken. 2. CO2 uitstoot vlucht vs trein vs te voet in kg per persoon. 3. Hoeveel CO2 bespaard als men NIET vliegt.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over CO2 vergelijking en loopafstand","geschatte_besparing_pct":0,"moeite_score":5,"concrete_tips":["CO2 vlucht: circa X kg per persoon","CO2 trein: circa X kg — X% minder dan vliegen","Looproute: ca. X km — circa X weken te voet"],"beste_optie":"meest milieuvriendelijke reisoptie met concrete CO2 cijfers","platforms":["ICAO Carbon Calculator","EcoPassenger","Rome2rio"]}` }
 ];
+
+function toggleAdvanced() {
+  const panel = document.getElementById('advancedPanel');
+  const label = document.getElementById('advancedLabel');
+  const open = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  label.textContent = open ? '− Verberg opties' : '+ Uitgebreid (passagiers, klasse, tussenstop)';
+}
 
 // ── PASSAGIERS TELLER ──
 const counts = { adults:1, children:0, infants:0 };

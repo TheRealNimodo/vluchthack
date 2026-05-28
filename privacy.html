@@ -3,61 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacybeleid — VluchtHack</title>
-<meta name="description" content="Privacybeleid van VluchtHack.nl">
+<title>Privacybeleid | VluchtHack</title>
+<meta name="description" content="Privacybeleid van VluchtHack.nl — hoe wij omgaan met jouw gegevens.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vluchthack.nl/privacy.html">
-<!-- Google Analytics GA4 -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S3B3NZ2Z3F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-S3B3NZ2Z3F');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S3B3NZ2Z3F');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 <style>
+:root{--blue:#2563ff;--blue-light:#eff6ff;--g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;--g400:#9ca3af;--g500:#6b7280;--g700:#374151;--g900:#111827;--white:#fff;--r:12px;--rs:8px;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:system-ui,sans-serif;background:#03102b;color:#f4f6ff;min-height:100vh;padding:3rem 1.5rem;}
-main{max-width:700px;margin:0 auto;}
-h1{font-size:2rem;font-weight:800;margin-bottom:2rem;color:#00d4ff;}
-h2{font-size:1.1rem;font-weight:700;margin:2rem 0 .75rem;}
-p,li{font-size:.95rem;line-height:1.75;color:rgba(180,200,255,.85);}
-ul{padding-left:1.5rem;margin-top:.5rem;}
-a{color:#00d4ff;text-decoration:none;}
+body{font-family:'Inter',sans-serif;background:var(--g50);color:var(--g900);min-height:100vh;font-size:15px;line-height:1.6;}
+nav{background:var(--white);border-bottom:1px solid var(--g200);padding:0 2rem;display:flex;align-items:center;height:58px;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;color:var(--g900);text-decoration:none;display:flex;align-items:center;gap:5px;}
+.logo em{color:var(--blue);font-style:normal;}
+main{max-width:680px;margin:0 auto;padding:3rem 1.5rem 6rem;}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--g400);text-decoration:none;margin-bottom:2rem;}
+.back:hover{color:var(--blue);}
+.page-tag{display:inline-block;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:500;padding:4px 14px;border-radius:99px;margin-bottom:1rem;}
+h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:2rem;color:var(--g900);margin-bottom:.5rem;letter-spacing:-.02em;}
+.date{font-size:13px;color:var(--g400);margin-bottom:2.5rem;}
+.card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;}
+h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;color:var(--g900);margin-bottom:.75rem;}
+p{font-size:14px;color:var(--g500);line-height:1.75;margin-bottom:.75rem;}
+p:last-child{margin-bottom:0;}
+ul{font-size:14px;color:var(--g500);line-height:1.75;padding-left:1.25rem;}
+li{margin-bottom:.25rem;}
+a{color:var(--blue);text-decoration:none;}
 a:hover{text-decoration:underline;}
-.back{display:inline-flex;align-items:center;gap:6px;color:rgba(180,200,255,.6);font-size:.9rem;margin-bottom:2rem;text-decoration:none;}
-.back:hover{color:#f4f6ff;}
+footer{background:var(--white);border-top:1px solid var(--g200);text-align:center;padding:1.5rem;font-size:12px;color:var(--g400);}
+footer a{color:var(--g400);text-decoration:none;}
+footer a:hover{color:var(--blue);}
 </style>
 </head>
 <body>
+
+<nav>
+  <a class="logo" href="/">✈ Vlucht<em>Hack</em></a>
+</nav>
+
 <main>
   <a class="back" href="/">← Terug naar VluchtHack</a>
+  <div class="page-tag">Juridisch</div>
   <h1>Privacybeleid</h1>
-  <p>Laatst bijgewerkt: 27 mei 2026</p>
+  <div class="date">Laatst bijgewerkt: 27 mei 2026</div>
 
-  <h2>1. Wie zijn wij</h2>
-  <p>VluchtHack.nl is een gratis tool die AI gebruikt om vliegticketprijzen te analyseren. De website is bereikbaar via <a href="https://vluchthack.nl">vluchthack.nl</a>.</p>
+  <div class="card">
+    <h2>Wie zijn wij</h2>
+    <p>VluchtHack.nl is een gratis AI-tool die vliegticketprijzen analyseert. De website is bereikbaar via <a href="https://vluchthack.nl">vluchthack.nl</a>.</p>
+  </div>
 
-  <h2>2. Welke gegevens verzamelen wij</h2>
-  <p>VluchtHack verzamelt zo min mogelijk gegevens. Wij verzamelen:</p>
-  <ul>
-    <li>Anonieme gebruiksstatistieken via Google Analytics (bijv. paginabezoeken, locatie op landniveau)</li>
-    <li>De door jou ingevulde routegegevens (vertrek, bestemming, datum) worden alleen gebruikt voor de analyse en worden <strong>niet opgeslagen</strong></li>
-  </ul>
+  <div class="card">
+    <h2>Welke gegevens verzamelen wij</h2>
+    <p>VluchtHack verzamelt zo min mogelijk gegevens. Wij verzamelen:</p>
+    <ul>
+      <li>Anonieme gebruiksstatistieken via Google Analytics (paginabezoeken, locatie op landniveau)</li>
+      <li>De door jou ingevulde routegegevens (vertrek, bestemming, datum) — alleen gebruikt voor de analyse en <strong>niet opgeslagen</strong></li>
+    </ul>
+  </div>
 
-  <h2>3. Google Analytics</h2>
-  <p>Wij gebruiken Google Analytics 4 om inzicht te krijgen in het gebruik van onze website. Google Analytics plaatst cookies op je apparaat. De gegevens worden anoniem verwerkt. Je kunt je afmelden via <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out</a>.</p>
+  <div class="card">
+    <h2>Google Analytics</h2>
+    <p>Wij gebruiken Google Analytics 4 om inzicht te krijgen in het gebruik van onze website. Google Analytics plaatst cookies op je apparaat. De gegevens worden anoniem verwerkt.</p>
+    <p>Je kunt je afmelden via <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out</a>.</p>
+  </div>
 
-  <h2>4. Google AdSense</h2>
-  <p>Wij kunnen Google AdSense gebruiken om advertenties te tonen. Google kan cookies plaatsen voor gepersonaliseerde advertenties. Meer informatie: <a href="https://policies.google.com/privacy" target="_blank">Google Privacybeleid</a>.</p>
+  <div class="card">
+    <h2>Google AdSense</h2>
+    <p>Wij kunnen Google AdSense gebruiken om advertenties te tonen. Google kan cookies plaatsen voor gepersonaliseerde advertenties. Meer informatie: <a href="https://policies.google.com/privacy" target="_blank">Google Privacybeleid</a>.</p>
+  </div>
 
-  <h2>5. Cookies</h2>
-  <p>VluchtHack gebruikt functionele cookies van Google Analytics en eventueel Google AdSense. Wij plaatsen zelf geen tracking cookies.</p>
+  <div class="card">
+    <h2>Cookies</h2>
+    <p>VluchtHack gebruikt functionele cookies van Google Analytics en eventueel Google AdSense. Wij plaatsen zelf geen tracking cookies.</p>
+  </div>
 
-  <h2>6. Jouw rechten</h2>
-  <p>Je hebt het recht om je gegevens in te zien, te corrigeren of te verwijderen. Neem contact op via het contactformulier op onze website.</p>
+  <div class="card">
+    <h2>Jouw rechten</h2>
+    <p>Je hebt het recht om je gegevens in te zien, te corrigeren of te verwijderen. Omdat wij geen persoonsgegevens opslaan, zijn er geen gegevens om in te zien of te verwijderen.</p>
+  </div>
 
-  <h2>7. Wijzigingen</h2>
-  <p>Dit privacybeleid kan worden gewijzigd. De meest recente versie staat altijd op deze pagina.</p>
+  <div class="card">
+    <h2>Wijzigingen</h2>
+    <p>Dit privacybeleid kan worden gewijzigd. De meest recente versie staat altijd op deze pagina.</p>
+  </div>
 </main>
+
+<footer>
+  VluchtHack &copy; 2026 · <a href="/">Home</a> · <a href="/privacy.html">Privacybeleid</a> · <a href="/faq.html">FAQ</a>
+</footer>
+
 </body>
 </html>

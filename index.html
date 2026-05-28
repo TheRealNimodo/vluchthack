@@ -21,57 +21,64 @@
 <meta name="twitter:description" content="Bespaar tot 40% op vliegtickets. 7 AI-strategieën analyseren jouw route gratis in 60 seconden.">
 <meta name="twitter:image" content="https://vluchthack.nl/og-image.png">
 <script type="application/ld+json">
-[{"@context":"https://schema.org","@type":"WebApplication","name":"VluchtHack","url":"https://vluchthack.nl","description":"AI-analyse van vliegticketprijzen met 7 professionele strategieën.","applicationCategory":"TravelApplication","operatingSystem":"Web","inLanguage":"nl","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wanneer zijn vliegtickets het goedkoopst?","acceptedAnswer":{"@type":"Answer","text":"Vliegtickets zijn gemiddeld 15-25% goedkoper op dinsdag en woensdag. Het optimale boekraam voor Europese vluchten is 6 tot 8 weken van tevoren."}},{"@type":"Question","name":"Is VluchtHack gratis?","acceptedAnswer":{"@type":"Answer","text":"Ja, VluchtHack is volledig gratis. Je hebt geen account nodig en er zijn geen verborgen kosten."}}]}]
+[
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"VluchtHack",
+    "url":"https://vluchthack.nl",
+    "description":"AI-analyse van vliegticketprijzen met 7 professionele strategieën. Bespaar tot 40% op vliegtickets.",
+    "applicationCategory":"TravelApplication",
+    "operatingSystem":"Web",
+    "inLanguage":"nl",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+    "featureList":["Verborgen routescanner","Prijsmanipulatie detectie","Landsprijs omzeiler","Ideale boekmoment","Tariefregels analyse","Airline vs boekingssite vergelijking","Prijsdaling bewaker"]
+  },
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Wanneer zijn vliegtickets het goedkoopst?","acceptedAnswer":{"@type":"Answer","text":"Vliegtickets zijn gemiddeld 15-25% goedkoper op dinsdag en woensdag. Het optimale boekraam voor Europese vluchten is 6 tot 8 weken van tevoren."}},
+      {"@type":"Question","name":"Hoe bespaar ik op vliegtickets?","acceptedAnswer":{"@type":"Answer","text":"Zoek altijd in incognitomodus, vergelijk meerdere boekingssites, overweeg alternatieve vliegvelden zoals Eindhoven (EIN) of Brussel (BRU), en gebruik een VPN voor lagere landsprijzen."}},
+      {"@type":"Question","name":"Is VluchtHack gratis?","acceptedAnswer":{"@type":"Answer","text":"Ja, VluchtHack is volledig gratis. Je hebt geen account nodig en er zijn geen verborgen kosten."}},
+      {"@type":"Question","name":"Hoe werkt de AI analyse?","acceptedAnswer":{"@type":"Answer","text":"VluchtHack voert 7 professionele strategieën parallel uit op jouw route en geeft binnen 60 seconden gepersonaliseerde aanbevelingen met geschatte besparingen."}}
+    ]
+  }
+]
 </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈</text></svg>">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S3B3NZ2Z3F"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S3B3NZ2Z3F');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap&display=swap" rel="stylesheet">
 <style>
 :root {
-  --blue:#2563ff;--blue-light:#eff6ff;--blue-mid:#dbeafe;
-  --green:#16a34a;--green-light:#f0fdf4;
-  --amber:#d97706;--amber-light:#fffbeb;
-  --g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;--g300:#d1d5db;
-  --g400:#9ca3af;--g500:#6b7280;--g700:#374151;--g800:#1f2937;--g900:#111827;
-  --white:#fff;--r:12px;--rs:8px;--rxs:6px;
+  --blue:#2563ff; --blue-light:#eff6ff; --blue-mid:#dbeafe;
+  --green:#16a34a; --green-light:#f0fdf4;
+  --g50:#f9fafb; --g100:#f3f4f6; --g200:#e5e7eb;
+  --g300:#d1d5db; --g400:#9ca3af; --g500:#6b7280;
+  --g700:#374151; --g800:#1f2937; --g900:#111827;
+  --amber:#d97706; --amber-light:#fffbeb;
+  --white:#fff; --r:12px; --rs:8px; --rxs:6px;
   --sh:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;background:var(--g50);color:var(--g900);min-height:100vh;font-size:15px;line-height:1.6;}
 
-/* NAV */
+/* ── NAV ── */
 nav{background:var(--white);border-bottom:1px solid var(--g200);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;}
-.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;color:var(--g900);display:flex;align-items:center;gap:5px;text-decoration:none;}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;color:var(--g900);display:flex;align-items:center;gap:5px;}
 .logo em{color:var(--blue);font-style:normal;}
-.nav-right{display:flex;align-items:center;gap:12px;}
 .nav-stats{display:flex;align-items:center;}
-.nav-stat{display:flex;flex-direction:column;align-items:center;padding:0 14px;}
+.nav-stat{display:flex;flex-direction:column;align-items:center;padding:0 16px;}
 .nav-stat b{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;color:var(--blue);line-height:1.2;}
 .nav-stat span{font-size:10px;color:var(--g400);white-space:nowrap;}
 .nav-divider{width:1px;height:22px;background:var(--g200);}
 
-/* ZAKELIJK TOGGLE */
-.biz-toggle{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--g500);cursor:pointer;background:var(--g100);border:1px solid var(--g200);border-radius:99px;padding:5px 12px;transition:all .15s;white-space:nowrap;}
-.biz-toggle:hover{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
-.biz-toggle.active{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
-.lang-toggle{display:flex;align-items:center;gap:4px;padding:5px 10px;background:var(--g100);border:1px solid var(--g200);border-radius:99px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s;}
-.lang-toggle:hover{background:var(--g200) !important;border-color:var(--g300) !important;}
-.lang-opt{font-size:13px;font-weight:600;color:var(--g400);transition:color .15s;}
-.lang-opt.active{color:var(--g900);}
-.lang-sep{color:var(--g300);font-size:12px;}
-.biz-toggle.active .biz-dot{background:var(--amber);}
-
-/* ZAKELIJK BANNER */
-.biz-banner{background:var(--amber-light);border-bottom:1px solid #fcd34d;padding:8px 2rem;display:none;align-items:center;gap:10px;font-size:13px;color:var(--amber);}
-.biz-banner.show{display:flex;}
-.biz-banner strong{font-weight:600;}
-
-/* LAYOUT */
+/* ── LAYOUT ── */
 main{max-width:820px;margin:0 auto;padding:3rem 1.5rem 6rem;}
 
-/* HERO */
+/* ── HERO ── */
 .hero{text-align:center;margin-bottom:2.5rem;}
 .hero-tag{display:inline-block;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:500;padding:4px 14px;border-radius:99px;margin-bottom:1rem;}
 .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.03em;color:var(--g900);margin-bottom:.6rem;}
@@ -82,75 +89,29 @@ main{max-width:820px;margin:0 auto;padding:3rem 1.5rem 6rem;}
 .check{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--g700);}
 .check-dot{width:17px;height:17px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green);flex-shrink:0;}
 
-/* EXAMPLE BANNER */
-.example-bar{background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:var(--rs);padding:.75rem 1rem;margin-bottom:1.5rem;font-size:13px;color:var(--blue);display:flex;align-items:center;gap:8px;}
-.example-bar strong{font-weight:600;}
-
-/* SEARCH CARD */
-.search-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.75rem;margin-bottom:.75rem;box-shadow:var(--sh);}
+/* ── SEARCH CARD ── */
+.search-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.75rem;margin-bottom:2rem;box-shadow:var(--sh);}
 .card-label{font-size:11px;font-weight:600;color:var(--g900);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.1rem;}
 .route-row{display:grid;grid-template-columns:1fr 38px 1fr;gap:10px;align-items:end;margin-bottom:10px;}
-.dates-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.dates-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
 .fl{display:flex;flex-direction:column;gap:4px;}
 .fl label{font-size:11px;font-weight:500;color:var(--g500);letter-spacing:.02em;}
-
-/* AIRPORT AUTOCOMPLETE */
-.ac-wrap{position:relative;}
-.ac-list{position:absolute;top:100%;left:0;right:0;background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);box-shadow:0 4px 12px rgba(0,0,0,.1);z-index:50;max-height:200px;overflow-y:auto;display:none;}
-.ac-item{padding:8px 12px;cursor:pointer;font-size:13px;display:flex;justify-content:space-between;align-items:center;}
-.ac-item:hover{background:var(--blue-light);}
-.ac-code{font-weight:600;color:var(--blue);font-size:12px;}
-
 input[type=text],input[type=date],select{background:var(--white);border:1px solid var(--g300);color:var(--g900);border-radius:var(--rxs);padding:9px 11px;font-size:14px;font-family:'Inter',sans-serif;outline:none;width:100%;transition:border-color .15s,box-shadow .15s;}
 input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,255,.1);}
 input::placeholder{color:var(--g400);}
+select option{background:var(--white);}
 .swap{background:var(--g100);border:1px solid var(--g200);color:var(--g500);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .15s;align-self:flex-end;}
-.swap-label{display:none;}
 .swap:hover{background:var(--blue-light);border-color:var(--blue-mid);color:var(--blue);}
 .btn{width:100%;background:var(--blue);border:none;color:var(--white);border-radius:var(--rs);padding:13px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;}
 .btn:hover{opacity:.88;}
 .btn:disabled{opacity:.4;cursor:not-allowed;}
 
-/* PROGRESS BAR */
-.progress-bar-wrap{background:var(--g100);border-radius:99px;height:4px;margin-bottom:8px;overflow:hidden;}
-.progress-bar-fill{height:4px;background:var(--blue);border-radius:99px;transition:width .4s ease;width:0%;}
-.progress-label{font-size:12px;color:var(--g500);margin-bottom:.75rem;}
-
-/* ADVANCED TOGGLE */
-.advanced-toggle{background:none;border:none;color:var(--blue);font-size:13px;font-weight:500;cursor:pointer;padding:2px 0;margin-bottom:2px;display:flex;align-items:center;gap:4px;font-family:'Inter',sans-serif;}
-.advanced-toggle:hover{opacity:.75;}
-.pax-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
-.counter-row{height:38px;display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--g300);border-radius:var(--rxs);padding:6px 10px;}
-.counter-btn{background:none;border:none;color:var(--blue);font-size:18px;font-weight:600;cursor:pointer;width:20px;line-height:1;padding:0;}
-.counter-btn:hover{opacity:.7;}
-#adults-val,#children-val,#infants-val{font-size:14px;font-weight:600;color:var(--g900);min-width:20px;text-align:center;}
-
-/* ZAKELIJK PANEL */
-.biz-panel{display:none;background:var(--amber-light);border:1px solid #fcd34d;border-radius:var(--rs);padding:1rem;margin-top:10px;}
-.biz-panel.show{display:block;}
-.biz-panel-title{font-size:11px;font-weight:600;color:var(--amber);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem;}
-.biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.biz-check{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--g700);}
-.biz-check input[type=checkbox]{width:auto;accent-color:var(--amber);}
-
-/* TRACKER */
-.tracker-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:.75rem 1.25rem;margin-bottom:.75rem;box-shadow:var(--sh);}
-.tracker-row{display:grid;grid-template-columns:1fr 160px auto;gap:10px;align-items:end;margin-top:12px;}
-.track-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1rem;}
-.track-field{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--g100);}
-.track-field:last-child{border-bottom:none;}
-.track-label{color:var(--g500);}
-.track-val{color:var(--g900);font-weight:500;}
-.track-status{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:600;}
-.track-on-time{background:#dcfce7;color:#16a34a;}
-.track-delayed{background:#fef3c7;color:#d97706;}
-
-/* SEC */
+/* ── SECTION HEADER ── */
 .sec{display:flex;align-items:center;gap:10px;margin-bottom:.9rem;}
-.sec-title{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;font-family:'Inter',sans-serif;}
+.sec-title{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.08em;text-transform:uppercase;font-family:'Inter',sans-serif;}
 .sec-line{flex:1;height:1px;background:var(--g200);}
 
-/* STRAT GRID */
+/* ── STRATEGY GRID ── */
 .strat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:2rem;}
 .strat{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.875rem;transition:border-color .15s,box-shadow .15s;}
 .strat:hover{border-color:var(--blue-mid);box-shadow:var(--sh);}
@@ -159,18 +120,18 @@ input::placeholder{color:var(--g400);}
 .strat-t{font-size:12px;font-weight:600;color:var(--g900);margin-bottom:3px;line-height:1.3;}
 .strat-d{font-size:11px;color:var(--g500);line-height:1.5;}
 
-/* CHIPS */
+/* ── SITE CHIPS ── */
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:2.5rem;}
 .chip{display:inline-flex;align-items:center;gap:5px;background:var(--white);border:1px solid var(--g200);color:var(--g700);font-size:13px;padding:6px 13px;border-radius:99px;cursor:pointer;text-decoration:none;transition:all .15s;}
 .chip:hover{background:var(--blue-light);border-color:var(--blue-mid);color:var(--blue);}
 .chip-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);}
 
-/* RESULTS */
+/* ── RESULTS ── */
 .results{display:none;animation:up .3s ease both;}
 .results.show{display:block;}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* FLIGHT CARDS */
+/* Flight cards */
 .flights{display:flex;flex-direction:column;gap:7px;margin-bottom:1.5rem;}
 .fc{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.875rem 1.125rem;display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:16px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);}
 .fc.best{border-color:#93c5fd;background:var(--blue-light);}
@@ -187,15 +148,79 @@ input::placeholder{color:var(--g400);}
 .best-tag{display:inline-block;background:var(--blue);color:var(--white);font-size:10px;font-weight:600;padding:2px 8px;border-radius:99px;margin-top:3px;}
 .book-btn{display:inline-block;margin-top:4px;font-size:11px;color:var(--blue);border:1px solid var(--blue-mid);border-radius:99px;padding:2px 9px;text-decoration:none;transition:all .15s;}
 .book-btn:hover{background:var(--blue);color:var(--white);}
-.fc-timestamp{font-size:10px;color:var(--g400);text-align:right;margin-top:2px;}
 
-/* DATE GRID */
-.dpg-label{font-size:11px;font-weight:500;color:var(--g400);margin-bottom:6px;letter-spacing:.04em;}
-.dpg-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
+/* Progress */
+.steps{display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;}
+.step{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--g200);border-radius:var(--rxs);padding:9px 13px;max-height:60px;overflow:hidden;}
+.step-dot{width:22px;height:22px;border-radius:50%;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.step-name{flex:1;font-size:13px;color:var(--g700);}
+.step-st{font-size:12px;color:var(--g400);}
+
+/* Top 5 */
+.t5{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1.125rem 1.25rem;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.t5-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.t5-rank{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;}
+.t5-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--g900);}
+.t5-body{font-size:13px;color:var(--g600,#4b5563);line-height:1.65;margin-bottom:10px;}
+.t5-box{background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:var(--rxs);padding:10px 12px;}
+.t5-box-lbl{font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;}
+.t5-box-val{font-size:13px;color:var(--g800);}
+.pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;}
+.pill-b{background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-mid);}
+.pill-g{background:var(--green-light);color:var(--green);border:1px solid #bbf7d0;}
+
+/* Details */
+details{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;margin-bottom:7px;}
+details summary{padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}
+details summary::-webkit-details-marker{display:none;}
+details[open] summary{border-bottom:1px solid var(--g100);}
+.tip-row{display:flex;gap:8px;font-size:13px;color:var(--g700);line-height:1.5;margin-bottom:4px;}
+.tip-arrow{color:var(--blue);flex-shrink:0;}
+
+/* Error */
+.err{background:#fef2f2;border:1px solid #fecaca;border-radius:var(--rs);padding:1.25rem;}
+.err-t{font-weight:600;color:#dc2626;margin-bottom:5px;font-size:14px;}
+.err-b{font-size:13px;color:#991b1b;}
+
+/* Tips */
+.tips-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.5rem;margin-top:2.5rem;box-shadow:var(--sh);}
+.tip{display:flex;align-items:flex-start;gap:13px;padding:13px 0;border-bottom:1px solid var(--g100);}
+.tip:last-child{border-bottom:none;padding-bottom:0;}
+.tip:first-of-type{padding-top:0;}
+.tip-icon{font-size:19px;flex-shrink:0;margin-top:1px;}
+.tip-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
+.tip-body{font-size:13px;color:var(--g500);line-height:1.6;}
+
+.advanced-toggle{background:none;border:none;color:var(--blue);font-size:13px;font-weight:500;cursor:pointer;padding:2px 0;margin-bottom:2px;display:flex;align-items:center;gap:4px;font-family:'Inter',sans-serif;}
+.advanced-toggle:hover{opacity:.75;}
+.pax-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
+.counter-row{height:38px;}
+.counter-row{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--g300);border-radius:var(--rxs);padding:6px 10px;}
+.counter-btn{background:none;border:none;color:var(--blue);font-size:18px;font-weight:600;cursor:pointer;width:20px;line-height:1;padding:0;transition:opacity .15s;}
+.counter-btn:hover{opacity:.7;}
+#adults-val,#children-val,#infants-val{font-size:14px;font-weight:600;color:var(--g900);min-width:20px;text-align:center;}
+.tracker-row{display:grid;grid-template-columns:1fr 160px auto;gap:10px;align-items:end;}
+.track-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1rem;}
+.track-field{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--g100);}
+.track-field:last-child{border-bottom:none;}
+.track-label{color:var(--g500);}
+.track-val{color:var(--g900);font-weight:500;}
+.track-status{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:600;}
+.track-on-time{background:#dcfce7;color:#16a34a;}
+.track-delayed{background:#fef3c7;color:#d97706;}
+.track-cancelled{background:#fee2e2;color:#dc2626;}
+@media(max-width:620px){
+  .pax-row{grid-template-columns:repeat(2,1fr);}
+  .tracker-row{grid-template-columns:1fr 1fr;}
+  .tracker-row .fl:last-child{grid-column:1/-1;}
+}
+.dpg-label{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+.dpg-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory;}
 .dpg-scroll::-webkit-scrollbar{display:none;}
-.dpg-day{flex:0 0 auto;background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:8px 12px;text-align:center;cursor:pointer;min-width:72px;transition:all .15s;}
+.dpg-day{flex:0 0 auto;scroll-snap-align:center;background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:8px 12px;text-align:center;cursor:pointer;transition:all .15s;min-width:72px;}
 .dpg-day:hover{border-color:var(--blue-mid);background:var(--blue-light);}
-.dpg-day.active{border:1.5px solid var(--blue);background:var(--blue-light);}
+.dpg-day.active{border-color:var(--blue);background:var(--blue);color:var(--white);}
+.dpg-day.active .dpg-d,.dpg-day.active .dpg-p,.dpg-day.active .dpg-wd{color:var(--white)!important;}
 .dpg-day.loading{opacity:.5;pointer-events:none;}
 .dpg-wd{font-size:10px;color:var(--g400);margin-bottom:2px;}
 .dpg-d{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--g900);margin-bottom:2px;}
@@ -204,134 +229,28 @@ input::placeholder{color:var(--g400);}
 .dpg-p.exp{color:#dc2626;}
 .dpg-p.loading-p{color:var(--g300);}
 .dpg-sub{font-size:10px;color:var(--g400);margin-top:1px;}
-.dpg-day.active .dpg-wd,.dpg-day.active .dpg-d,.dpg-day.active .dpg-sub,.dpg-day.active .dpg-p{color:var(--blue)!important;}
+.dpg-day.active .dpg-sub{color:rgba(255,255,255,.7)!important;}
 
-/* STEPS */
-.steps{display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;}
-.step{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--g200);border-radius:var(--rxs);padding:9px 13px;max-height:60px;overflow:hidden;}
-.step-dot{width:22px;height:22px;border-radius:50%;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
-.step-name{flex:1;font-size:13px;color:var(--g700);}
-.step-st{font-size:12px;color:var(--g400);}
+
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{width:10px;height:10px;border:1.5px solid var(--g200);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;}
 
-/* TOP 5 */
-.t5{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1.125rem 1.25rem;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.04);}
-.t5-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
-.t5-rank{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;}
-.t5-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--g900);}
-.t5-body{font-size:13px;color:#4b5563;line-height:1.65;margin-bottom:10px;}
-.t5-box{background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:var(--rxs);padding:10px 12px;}
-.t5-box-lbl{font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;}
-.t5-box-val{font-size:13px;color:var(--g800);}
-.pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;}
-.pill-b{background:var(--blue-light);color:var(--blue);border:1px solid var(--blue-mid);}
-
-/* DETAILS */
-details{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;margin-bottom:7px;}
-details summary{padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}
-details summary::-webkit-details-marker{display:none;}
-details[open] summary{border-bottom:1px solid var(--g100);}
-.tip-row{display:flex;gap:8px;font-size:13px;color:var(--g700);line-height:1.5;margin-bottom:4px;}
-.tip-arrow{color:var(--blue);flex-shrink:0;}
-
-/* ERR */
-.err{background:#fef2f2;border:1px solid #fecaca;border-radius:var(--rs);padding:1.25rem;}
-.err-t{font-weight:600;color:#dc2626;margin-bottom:5px;font-size:14px;}
-.err-b{font-size:13px;color:#991b1b;}
-
-/* OVER */
-.over-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:1.5rem;margin-top:2.5rem;box-shadow:var(--sh);}
-.over-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
-.over-item{display:flex;gap:10px;align-items:flex-start;}
-.over-icon{font-size:20px;flex-shrink:0;}
-.over-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
-.over-body{font-size:12px;color:var(--g500);line-height:1.5;}
-
-/* TIPS */
-.tips-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:.75rem 1.25rem;margin-top:.75rem;box-shadow:var(--sh);}
-.tip{display:flex;align-items:flex-start;gap:13px;padding:13px 0;border-bottom:1px solid var(--g100);}
-.tip:last-child{border-bottom:none;padding-bottom:0;}
-.tip:first-of-type{padding-top:0;}
-.tip-icon{font-size:19px;flex-shrink:0;margin-top:1px;}
-.tip-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
-.tip-body{font-size:13px;color:var(--g500);line-height:1.6;}
-
-/* FOOTER */
+/* Footer */
 footer{background:var(--white);border-top:1px solid var(--g200);text-align:center;padding:1.5rem;font-size:12px;color:var(--g400);}
 footer a{color:var(--g400);text-decoration:none;}
 footer a:hover{color:var(--blue);}
 
-/* MOBILE */
-/* ── HAMBURGER MENU ── */
-.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;font-size:22px;color:var(--g700);line-height:1;}
-.mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--g200);padding:1rem;z-index:99;flex-direction:column;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,.08);}
-.mobile-menu.open{display:flex;}
-.mobile-menu-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--g200);background:var(--g50);font-size:14px;font-weight:500;color:var(--g700);cursor:pointer;font-family:'Inter',sans-serif;width:100%;}
-.mobile-menu-btn.biz-active{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
-
+/* Mobile */
 @media(max-width:620px){
-  /* NAV */
   nav{padding:0 1rem;}
   .nav-stats{display:none;}
-  .nav-right{display:none;}
-  .hamburger{display:block;}
-  .biz-banner{padding:8px 1rem;font-size:12px;}
-
-  /* LAYOUT */
-  main{padding:1.5rem 1rem 5rem;}
+  main{padding:1.5rem 1rem 4rem;}
   .search-card{padding:1.25rem;}
-
-  /* ROUTE ROW — stacked */
-  .route-row{display:flex;flex-direction:column;gap:8px;}
-  .swap{width:100%;border-radius:var(--rxs);height:40px;font-size:13px;border-radius:var(--rxs);}
-  .swap-label{display:inline;font-size:13px;margin-left:4px;}
-
-  /* DATES — stacked */
-  .dates-row{grid-template-columns:1fr;}
-
-  /* INPUTS — 16px to prevent iOS zoom */
-  input[type=text],input[type=date],select{font-size:16px !important;}
-
-  /* PASSAGIERS — 2 kolommen */
-  .pax-row{grid-template-columns:1fr 1fr;}
-  .counter-btn{min-width:44px;min-height:44px;font-size:20px;}
-  .counter-row{padding:8px 12px;}
-
-  /* STRATEGIE GRID — 1 kolom horizontaal */
-  .strat-grid{grid-template-columns:1fr;}
-  .strat{display:flex;align-items:flex-start;gap:10px;padding:.75rem;}
-  .strat-i{font-size:20px;flex-shrink:0;margin-bottom:0;}
-  .strat-n{margin-bottom:2px;}
-
-  /* FLIGHT CARDS — gestapeld */
-  .fc{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px;padding:.75rem;}
-  .fc-mid{grid-row:1;grid-column:1/3;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--g100);padding-bottom:8px;margin-bottom:0;}
-  .fc-right{grid-column:2;text-align:right;}
-  .best-tag{font-size:10px;padding:2px 8px;}
-
-  /* BOOK BUTTON — 44px touch target */
-  .book-btn{padding:8px 14px;font-size:12px;display:inline-block;margin-top:6px;}
-  .chip{min-height:40px;padding:8px 14px;}
-
-  /* TRACKER */
-  .tracker-row{grid-template-columns:1fr;}
-  .tracker-row .fl:last-child{grid-column:1;}
-
-  /* OVER GRID */
-  .over-grid{grid-template-columns:1fr;}
-
-  /* BIZ GRID */
-  .biz-grid{grid-template-columns:1fr 1fr;}
-
-  /* AUTOCOMPLETE — above keyboard */
-  .ac-list{position:fixed;left:1rem;right:1rem;bottom:auto;top:auto;max-height:40vh;z-index:200;}
-
-  /* DATUMGRID — scroll indicator */
-  .dpg-scroll{-webkit-mask-image:linear-gradient(to right,black 92%,transparent 100%);mask-image:linear-gradient(to right,black 92%,transparent 100%);}
-
-  /* SEARCH BTN — extra bottom margin */
-  .btn{min-height:52px;font-size:16px;}
+  .route-row{grid-template-columns:1fr 36px 1fr;}
+  .dates-row{grid-template-columns:1fr 1fr;}
+  .dates-row .fl:last-child{grid-column:1/-1;}
+  .strat-grid{grid-template-columns:repeat(2,1fr);}
+  .fc{grid-template-columns:auto 1fr auto;}
 }
 </style>
 </head>
@@ -361,17 +280,17 @@ footer a:hover{color:var(--blue);}
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
 </nav>
 
+<div class="biz-banner" id="bizBanner">
+  💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.
+</div>
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-btn" id="mobileLangBtn" onclick="toggleLang();toggleMenu()">
-    🌐 <span id="mobileLangLabel">Schakel naar English</span>
+    🌐 <span id="mobileLangLabel">Switch to English</span>
   </button>
   <button class="mobile-menu-btn" id="mobileBizBtn" onclick="toggleBusiness();toggleMenu()">
     💼 <span id="mobileBizLabel">Zakelijk reizen</span>
   </button>
-</div>
-
-<div class="biz-banner" id="bizBanner">
-  💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.
 </div>
 
 <main>
@@ -389,29 +308,18 @@ footer a:hover{color:var(--blue);}
   </div>
 </div>
 
-<!-- VOORBEELD BANNER -->
-<div class="example-bar">
-  💡 <span><strong>Voorbeeld:</strong> AMS → BCN in juli — VluchtHack vond via de Landsprijs Omzeiler een besparing van €47 per persoon t.o.v. directe boeking op Skyscanner.</span>
-</div>
-
 <!-- SEARCH -->
 <div class="search-card">
   <div class="card-label">✈ Jouw route</div>
   <div class="route-row">
     <div class="fl">
       <label data-nl="Van" data-en="From">Van</label>
-      <div class="ac-wrap">
-        <input id="origin" type="text" placeholder="bijv. Amsterdam of AMS" oninput="acSearch(this,'originList')" autocomplete="off">
-        <div class="ac-list" id="originList"></div>
-      </div>
+      <input id="origin" type="text" placeholder="bijv. AMS of Amsterdam">
     </div>
-    <button class="swap" onclick="swapCities()" title="Wissel">⇄ <span class="swap-label">Wissel</span></button>
+    <button class="swap" onclick="swapCities()" title="Wissel">⇄<span class="swap-label"> Wissel</span></button>
     <div class="fl">
       <label data-nl="Naar" data-en="To">Naar</label>
-      <div class="ac-wrap">
-        <input id="dest" type="text" placeholder="bijv. Barcelona of BCN" oninput="acSearch(this,'destList')" autocomplete="off">
-        <div class="ac-list" id="destList"></div>
-      </div>
+      <input id="dest" type="text" placeholder="bijv. BCN of Barcelona">
     </div>
   </div>
   <div class="dates-row">
@@ -424,65 +332,62 @@ footer a:hover{color:var(--blue);}
       <input id="ret" type="date">
     </div>
   </div>
-
   <button class="advanced-toggle" id="advancedToggle" onclick="toggleAdvanced()" type="button">
     <span id="advancedLabel">+ Uitgebreid (passagiers, klasse, tussenstop)</span>
   </button>
   <div id="advancedPanel" style="display:none;">
-    <div class="pax-row">
-      <div class="fl">
-        <label data-nl="Volwassenen" data-en="Adults">Volwassenen</label>
-        <div class="counter-row">
-          <button class="counter-btn" onclick="changeCount('adults',-1)">−</button>
-          <span id="adults-val">1</span>
-          <button class="counter-btn" onclick="changeCount('adults',1)">+</button>
-        </div>
-      </div>
-      <div class="fl">
-        <label data-nl="Kinderen" data-en="Children"><span id="lbl-children">Kinderen</span> <span style="font-size:10px;color:var(--g400);">(2–11 jr)</span></label>
-        <div class="counter-row">
-          <button class="counter-btn" onclick="changeCount('children',-1)">−</button>
-          <span id="children-val">0</span>
-          <button class="counter-btn" onclick="changeCount('children',1)">+</button>
-        </div>
-      </div>
-      <div class="fl">
-        <label data-nl="Baby's" data-en="Infants"><span id="lbl-infants">Baby's</span> <span style="font-size:10px;color:var(--g400);">(0–1 jr)</span></label>
-        <div class="counter-row">
-          <button class="counter-btn" onclick="changeCount('infants',-1)">−</button>
-          <span id="infants-val">0</span>
-          <button class="counter-btn" onclick="changeCount('infants',1)">+</button>
-        </div>
-      </div>
-      <div class="fl">
-        <label data-nl="Cabineklasse" data-en="Cabin class">Cabineklasse</label>
-        <select id="cabin">
-          <option value="Economy">Economy</option>
-          <option value="Premium_Economy">Premium Economy</option>
-          <option value="Business">Business</option>
-          <option value="First">First Class</option>
-        </select>
-      </div>
-      <div class="fl" style="grid-column:span 2;">
-        <label data-nl="Tussenstop via" data-en="Stopover via"><span id="lbl-stopover">Tussenstop via</span> <span style="font-size:10px;color:var(--g400);">(optioneel)</span></label>
-        <input id="stopover" type="text" placeholder="bijv. MAD of Madrid">
+  <div class="pax-row" style="margin-top:10px;">
+    <div class="fl">
+      <label data-nl="Volwassenen" data-en="Adults">Volwassenen</label>
+      <div class="counter-row">
+        <button class="counter-btn" onclick="changeCount('adults',-1)">−</button>
+        <span id="adults-val">1</span>
+        <button class="counter-btn" onclick="changeCount('adults',1)">+</button>
       </div>
     </div>
+    <div class="fl">
+      <label>Kinderen <span style="font-size:10px;color:var(--g400);">(2–11 jr)</span></label>
+      <div class="counter-row">
+        <button class="counter-btn" onclick="changeCount('children',-1)">−</button>
+        <span id="children-val">0</span>
+        <button class="counter-btn" onclick="changeCount('children',1)">+</button>
+      </div>
+    </div>
+    <div class="fl">
+      <label>Baby's <span style="font-size:10px;color:var(--g400);">(0–1 jr)</span></label>
+      <div class="counter-row">
+        <button class="counter-btn" onclick="changeCount('infants',-1)">−</button>
+        <span id="infants-val">0</span>
+        <button class="counter-btn" onclick="changeCount('infants',1)">+</button>
+      </div>
+    </div>
+    <div class="fl">
+      <label data-nl="Cabineklasse" data-en="Cabin class">Cabineklasse</label>
+      <select id="cabin">
+        <option value="Economy">Economy</option>
+        <option value="Premium_Economy">Premium Economy</option>
+        <option value="Business">Business</option>
+        <option value="First">First Class</option>
+      </select>
+    </div>
+    <div class="fl" style="grid-column:span 2;">
+      <label>Tussenstop via <span style="font-size:10px;color:var(--g400);">(optioneel)</span></label>
+      <input id="stopover" type="text" placeholder="bijv. MAD of Madrid">
+    </div>
   </div>
-
+  </div>
   <!-- ZAKELIJK PANEL -->
   <div class="biz-panel" id="bizPanel">
     <div class="biz-panel-title">💼 Zakelijke reisopties</div>
     <div class="biz-grid">
-      <label class="biz-check"><input type="checkbox" id="bizFlex"> Flexibel ticket (wijzigbaar)</label>
+      <label class="biz-check"><input type="checkbox" id="bizFlex"> Flexibel ticket</label>
       <label class="biz-check"><input type="checkbox" id="bizLounge"> Lounge toegang</label>
       <label class="biz-check"><input type="checkbox" id="bizCo2"> CO₂-rapportage</label>
       <label class="biz-check"><input type="checkbox" id="bizCorporate"> Corporate tarieven</label>
       <label class="biz-check"><input type="checkbox" id="bizReceipt"> Factuur nodig</label>
-      <label class="biz-check"><input type="checkbox" id="bizMiles"> Miles/punten optimaliseren</label>
+      <label class="biz-check"><input type="checkbox" id="bizMiles"> Miles optimaliseren</label>
     </div>
   </div>
-
   <button class="btn" id="searchBtn" onclick="startFullSearch()" style="margin-top:14px;">
     <span id="searchBtnIcon">🔍</span>
     <span id="searchBtnText">Analyseer mijn route</span>
@@ -490,11 +395,11 @@ footer a:hover{color:var(--blue);}
 </div>
 
 <!-- FLIGHT TRACKER -->
-<div class="tracker-card">
+<div class="search-card" style="margin-top:-0.5rem;padding:.75rem 1.25rem;">
   <button class="advanced-toggle" onclick="toggleTracker()" type="button">
     <span id="trackerLabel">🛬 Vluchten volgen</span>
   </button>
-  <div id="trackerPanel" style="display:none;">
+  <div id="trackerPanel" style="display:none;margin-top:12px;">
     <div class="tracker-row">
       <div class="fl" style="flex:1;">
         <label data-nl="Vluchtnummer" data-en="Flight number">Vluchtnummer</label>
@@ -524,8 +429,8 @@ footer a:hover{color:var(--blue);}
   <div class="strat"><div class="strat-n">05</div><div class="strat-i">📋</div><div class="strat-t">Tariefregels Kraker</div><div class="strat-d">Tariefklassen & routelogica die de prijs verlagen</div></div>
   <div class="strat"><div class="strat-n">06</div><div class="strat-i">📊</div><div class="strat-t">Airline vs Boekingssite</div><div class="strat-d">Directe vergelijking op verborgen kosten & marges</div></div>
   <div class="strat"><div class="strat-n">07</div><div class="strat-i">🔔</div><div class="strat-t">Prijsdaling Bewaker</div><div class="strat-d">Volg prijsdalingen zonder ze zelf te veroorzaken</div></div>
-  <div class="strat" style="border-color:#d1fae5;"><div class="strat-n" style="color:#16a34a;">BONUS</div><div class="strat-i">🚂</div><div class="strat-t">Openbaar Vervoer Alternatief</div><div class="strat-d">Kosten, reistijd én CO₂ besparing t.o.v. vliegen</div></div>
-  <div class="strat" style="border-color:#d1fae5;"><div class="strat-n" style="color:#16a34a;">BONUS</div><div class="strat-i">🌱</div><div class="strat-t">CO₂ Voetafdruk & Te Voet</div><div class="strat-d">Looptijd & CO₂ besparing ten opzichte van vliegen</div></div>
+  <div class="strat" style="border-color:#d1fae5;"><div class="strat-n" style="color:#16a34a;">BONUS</div><div class="strat-i">🚂</div><div class="strat-t">Openbaar Vervoer Alternatief</div><div class="strat-d">Kosten, reistijd én CO₂ besparing per trein, bus of ferry t.o.v. vliegen</div></div>
+  <div class="strat" style="border-color:#d1fae5;"><div class="strat-n" style="color:#16a34a;">BONUS</div><div class="strat-i">🌱</div><div class="strat-t">CO₂ Voetafdruk & Te Voet</div><div class="strat-d">Hoelang te voet & hoeveel CO₂ je bespaart ten opzichte van vliegen</div></div>
 </div>
 
 <!-- DIRECT LINKS -->
@@ -541,53 +446,65 @@ footer a:hover{color:var(--blue);}
 
 <!-- RESULTS -->
 <div class="results" id="liveSection">
+
   <div id="flightsWrap" style="display:none;margin-bottom:1.5rem;">
     <div class="sec"><div class="sec-title" id="flightsTitle">Vluchten ophalen…</div><div class="sec-line"></div></div>
+
+    <!-- DATE PRICE GRID -->
     <div id="datePriceWrap" style="display:none;margin-bottom:1rem;">
       <div class="dpg-label">Prijzen rondom jouw datum — klik op een dag om te wisselen</div>
       <div class="dpg-scroll" id="depGrid"></div>
       <div id="retGridWrap" style="display:none;margin-top:6px;">
-        <div class="dpg-label" style="margin-top:6px;">Retourdatum</div>
+        <div class="dpg-label" style="margin-top:6px;">Retourvlucht</div>
         <div class="dpg-scroll" id="retGrid"></div>
       </div>
     </div>
+
     <div class="flights" id="flightsGrid"></div>
-    <div id="flightTimestamp" style="font-size:11px;color:var(--g400);text-align:right;margin-top:4px;display:none;"></div>
   </div>
 
   <div id="progressWrap" style="display:none;margin-bottom:1.5rem;">
     <div class="sec"><div class="sec-title">AI analyseert jouw route</div><div class="sec-line"></div></div>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">0 van 9 strategieën klaar</div>
     <div class="steps" id="stepsList"></div>
   </div>
 
   <div id="top5Wrap" style="display:none;">
     <div class="sec"><div class="sec-title" id="top5Title">🏆 Top 5 beste strategieën</div><div class="sec-line"></div></div>
     <div id="top5List"></div>
-    <div class="sec" style="margin-top:1.5rem;"><div class="sec-title">Alle strategieën — volledige analyse</div><div class="sec-line"></div></div>
+    <div class="sec" style="margin-top:1.5rem;"><div class="sec-title">Alle 7 strategieën</div><div class="sec-line"></div></div>
     <div id="fullAnalysisList"></div>
   </div>
 
   <div id="errorWrap" style="display:none;">
     <div class="err"><div class="err-t">⚠ Er ging iets mis</div><div class="err-b" id="errorBody"></div></div>
   </div>
-</div>
 
-<!-- OVER VLUCHTHACK -->
-<div class="over-card">
-  <div class="sec" style="margin-bottom:0;"><h2 class="sec-title">Over VluchtHack</h2><div class="sec-line"></div></div>
-  <p style="font-size:13px;color:var(--g500);margin-top:.75rem;line-height:1.7;">VluchtHack is een onafhankelijke Nederlandse AI-tool die je helpt slimmer te boeken. We zijn niet verbonden aan luchtvaartmaatschappijen of boekingssites en ontvangen geen commissie. Onze enige focus is jou helpen de beste prijs te vinden.</p>
-  <div class="over-grid">
-    <div class="over-item"><div class="over-icon">🔍</div><div><div class="over-title">Onafhankelijk</div><div class="over-body">Geen commissies, geen advertenties van boekingssites. Puur objectieve analyse.</div></div></div>
-    <div class="over-item"><div class="over-icon">🤖</div><div><div class="over-title">AI-aangedreven</div><div class="over-body">7 strategieën parallel uitgevoerd door Claude AI op jouw specifieke route.</div></div></div>
-    <div class="over-item"><div class="over-icon">🔒</div><div><div class="over-title">Privacy-first</div><div class="over-body">Jouw routegegevens worden niet opgeslagen. Geen account, geen tracking.</div></div></div>
-    <div class="over-item"><div class="over-icon">🌱</div><div><div class="over-title">Duurzaamheid</div><div class="over-body">We tonen altijd het OV-alternatief en de CO₂-impact van jouw keuze.</div></div></div>
-  </div>
 </div>
 
 <!-- TIPS -->
-<div class="tips-card">
+<section aria-label="Veelgestelde vragen" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+<div class="sec" style="margin-bottom:1rem;"><h2 class="sec-title">Veelgestelde vragen</h2><div class="sec-line"></div></div>
+<div style="display:flex;flex-direction:column;gap:8px;">
+  <details style="background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;">
+    <summary style="padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:14px;font-weight:600;color:var(--g900);">Wanneer zijn vliegtickets het goedkoopst?<span style="color:var(--g400);font-size:12px;">▼</span></summary>
+    <div style="padding:.5rem 1.125rem 1rem;font-size:13px;color:var(--g500);line-height:1.65;">Vliegtickets zijn gemiddeld 15–25% goedkoper op dinsdag en woensdag. Het optimale boekraam voor Europese vluchten is 6 tot 8 weken van tevoren boeken.</div>
+  </details>
+  <details style="background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;">
+    <summary style="padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:14px;font-weight:600;color:var(--g900);">Hoe bespaar ik op vliegtickets?<span style="color:var(--g400);font-size:12px;">▼</span></summary>
+    <div style="padding:.5rem 1.125rem 1rem;font-size:13px;color:var(--g500);line-height:1.65;">Zoek altijd in incognitomodus, vergelijk meerdere boekingssites, overweeg alternatieve vliegvelden zoals Eindhoven (EIN) of Brussel (BRU), en gebruik een VPN voor lagere landsprijzen.</div>
+  </details>
+  <details style="background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;">
+    <summary style="padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:14px;font-weight:600;color:var(--g900);">Is VluchtHack gratis?<span style="color:var(--g400);font-size:12px;">▼</span></summary>
+    <div style="padding:.5rem 1.125rem 1rem;font-size:13px;color:var(--g500);line-height:1.65;">Ja, VluchtHack is volledig gratis. Je hebt geen account nodig en er zijn geen verborgen kosten. De AI-analyse wordt volledig gratis uitgevoerd.</div>
+  </details>
+  <details style="background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);overflow:hidden;">
+    <summary style="padding:.875rem 1.125rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;list-style:none;font-size:14px;font-weight:600;color:var(--g900);">Hoe werkt de AI analyse?<span style="color:var(--g400);font-size:12px;">▼</span></summary>
+    <div style="padding:.5rem 1.125rem 1rem;font-size:13px;color:var(--g500);line-height:1.65;">VluchtHack voert 7 professionele strategieën parallel uit op jouw route en geeft binnen 60 seconden gepersonaliseerde aanbevelingen met geschatte besparingen per strategie.</div>
+  </details>
+</div>
+</section>
+
+<div class="tips-card" style="padding:.75rem 1.25rem;">
   <button class="advanced-toggle" onclick="toggleTips()" type="button">
     <span id="tipsLabel">💡 5 tips om zelf goedkoper te vliegen</span>
   </button>
@@ -600,13 +517,6 @@ footer a:hover{color:var(--blue);}
   </div>
 </div>
 
-<!-- HIDDEN FAQ voor SEO -->
-<section aria-label="Veelgestelde vragen" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-  <h2>Veelgestelde vragen</h2>
-  <details><summary>Wanneer zijn vliegtickets het goedkoopst?</summary><div>Vliegtickets zijn gemiddeld 15–25% goedkoper op dinsdag en woensdag. Het optimale boekraam is 6 tot 8 weken van tevoren.</div></details>
-  <details><summary>Is VluchtHack gratis?</summary><div>Ja, VluchtHack is volledig gratis. Je hebt geen account nodig en er zijn geen verborgen kosten.</div></details>
-</section>
-
 </main>
 
 <footer>
@@ -616,364 +526,59 @@ footer a:hover{color:var(--blue);}
 </footer>
 
 <script>
-// ── LUCHTHAVEN AUTOCOMPLETE ──
-const AIRPORTS = [
-  {code:'AMS',name:'Amsterdam Schiphol',city:'Amsterdam'},
-  {code:'RTM',name:'Rotterdam The Hague',city:'Rotterdam'},
-  {code:'EIN',name:'Eindhoven Airport',city:'Eindhoven'},
-  {code:'MST',name:'Maastricht Aachen',city:'Maastricht'},
-  {code:'GRQ',name:'Groningen Airport',city:'Groningen'},
-  {code:'BCN',name:'Barcelona El Prat',city:'Barcelona'},
-  {code:'MAD',name:'Madrid Barajas',city:'Madrid'},
-  {code:'LHR',name:'London Heathrow',city:'Londen'},
-  {code:'LGW',name:'London Gatwick',city:'Londen'},
-  {code:'CDG',name:'Paris Charles de Gaulle',city:'Parijs'},
-  {code:'ORY',name:'Paris Orly',city:'Parijs'},
-  {code:'FCO',name:'Rome Fiumicino',city:'Rome'},
-  {code:'ATH',name:'Athene Eleftherios',city:'Athene'},
-  {code:'DXB',name:'Dubai International',city:'Dubai'},
-  {code:'JFK',name:'New York JFK',city:'New York'},
-  {code:'LAX',name:'Los Angeles',city:'Los Angeles'},
-  {code:'BKK',name:'Bangkok Suvarnabhumi',city:'Bangkok'},
-  {code:'SIN',name:'Singapore Changi',city:'Singapore'},
-  {code:'BRU',name:'Brussel Zaventem',city:'Brussel'},
-  {code:'FRA',name:'Frankfurt',city:'Frankfurt'},
-  {code:'MUC',name:'München',city:'München'},
-  {code:'VIE',name:'Wenen',city:'Wenen'},
-  {code:'ZRH',name:'Zürich',city:'Zürich'},
-  {code:'GVA',name:'Genève',city:'Genève'},
-  {code:'CPH',name:'Kopenhagen',city:'Kopenhagen'},
-  {code:'ARN',name:'Stockholm Arlanda',city:'Stockholm'},
-  {code:'OSL',name:'Oslo Gardermoen',city:'Oslo'},
-  {code:'HEL',name:'Helsinki Vantaa',city:'Helsinki'},
-  {code:'LIS',name:'Lissabon',city:'Lissabon'},
-  {code:'OPO',name:'Porto',city:'Porto'},
-  {code:'PMI',name:'Mallorca Palma',city:'Palma de Mallorca'},
-  {code:'AYT',name:'Antalya',city:'Antalya'},
-  {code:'HRG',name:'Hurghada',city:'Hurghada'},
-  {code:'CAI',name:'Caïro',city:'Caïro'},
-  {code:'CMN',name:'Casablanca',city:'Casablanca'},
-  {code:'NRT',name:'Tokyo Narita',city:'Tokyo'},
-  {code:'HND',name:'Tokyo Haneda',city:'Tokyo'},
-  {code:'ICN',name:'Seoul Incheon',city:'Seoul'},
-  {code:'PEK',name:'Peking Capital',city:'Peking'},
-  {code:'PVG',name:'Shanghai Pudong',city:'Shanghai'},
-  {code:'BOM',name:'Mumbai',city:'Mumbai'},
-  {code:'DEL',name:'New Delhi',city:'New Delhi'},
-  {code:'SYD',name:'Sydney',city:'Sydney'},
-  {code:'MEL',name:'Melbourne',city:'Melbourne'},
-  {code:'YYZ',name:'Toronto Pearson',city:'Toronto'},
-  {code:'ORD',name:'Chicago O\'Hare',city:'Chicago'},
-  {code:'MIA',name:'Miami',city:'Miami'},
-  {code:'GRU',name:'São Paulo',city:'São Paulo'},
-  {code:'EZE',name:'Buenos Aires',city:'Buenos Aires'},
-  {code:'PMI',name:'Palma de Mallorca',city:'Palma'},
-  {code:'AGP',name:'Málaga',city:'Málaga'},
-  {code:'ALC',name:'Alicante',city:'Alicante'},
-  {code:'TFS',name:'Tenerife Zuid',city:'Tenerife'},
-  {code:'LPA',name:'Gran Canaria',city:'Gran Canaria'},
-  {code:'FAO',name:'Faro',city:'Faro'},
-  {code:'VCE',name:'Venetië',city:'Venetië'},
-  {code:'MXP',name:'Milaan Malpensa',city:'Milaan'},
-  {code:'NAP',name:'Napels',city:'Napels'},
-  {code:'DUB',name:'Dublin',city:'Dublin'},
-  {code:'EDI',name:'Edinburgh',city:'Edinburgh'},
-  {code:'PRG',name:'Praag',city:'Praag'},
-  {code:'BUD',name:'Boedapest',city:'Boedapest'},
-  {code:'WAW',name:'Warschau',city:'Warschau'},
-  {code:'KRK',name:'Krakau',city:'Krakau'},
-];
-
-let acSelected = {};
-
-function acSearch(input, listId) {
-  const q = input.value.toLowerCase().trim();
-  const list = document.getElementById(listId);
-  if (q.length < 2) { list.style.display='none'; return; }
-  const matches = AIRPORTS.filter(a =>
-    a.code.toLowerCase().includes(q) ||
-    a.name.toLowerCase().includes(q) ||
-    a.city.toLowerCase().includes(q)
-  ).slice(0, 6);
-  if (!matches.length) { list.style.display='none'; return; }
-  list.innerHTML = matches.map(a =>
-    `<div class="ac-item" onclick="acSelect('${input.id}','${listId}','${a.code}','${a.city}')">
-      <span>${a.city} — ${a.name}</span><span class="ac-code">${a.code}</span>
-    </div>`
-  ).join('');
-  list.style.display = 'block';
-}
-
-function acSelect(inputId, listId, code, city) {
-  document.getElementById(inputId).value = `${city} (${code})`;
-  acSelected[inputId] = code;
-  document.getElementById(listId).style.display = 'none';
-}
-
-document.addEventListener('click', e => {
-  ['originList','destList'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el && !el.contains(e.target) && e.target.id !== (id==='originList'?'origin':'dest')) {
-      el.style.display = 'none';
-    }
-  });
-});
-
-// ── HAMBURGER MENU ──
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const btn = document.getElementById('hamburger');
-  const open = menu.classList.toggle('open');
-  btn.textContent = open ? '✕' : '☰';
-}
-// Sluit menu bij klik buiten
-document.addEventListener('click', e => {
-  const menu = document.getElementById('mobileMenu');
-  const hamburger = document.getElementById('hamburger');
-  if (menu.classList.contains('open') && !menu.contains(e.target) && e.target !== hamburger) {
-    menu.classList.remove('open');
-    hamburger.textContent = '☰';
-  }
-});
-
-// ── TAAL TOGGLE ──
-let lang = 'nl';
-const T = {
-  nl: {
-    heroTag: 'AI vliegticket analyse',
-    heroH1: 'Bespaar slim op<br>jouw volgende <em>vlucht</em>',
-    heroP: 'Vul je route in en ontvang 7 gepersonaliseerde AI-strategieën om goedkoper te boeken.',
-    check1: '7 boekaanbevelingen op maat',
-    check2: 'Geschatte besparing per strategie',
-    check3: 'Directe links naar de goedkoopste sites',
-    check4: 'Klaar in minder dan 60 seconden',
-    exampleBar: '💡 <span><strong>Voorbeeld:</strong> AMS → BCN in juli — VluchtHack vond via de Landsprijs Omzeiler een besparing van €47 per persoon t.o.v. directe boeking op Skyscanner.</span>',
-    cardLabel: '✈ Jouw route',
-    labelFrom: 'Van', labelTo: 'Naar',
-    placeholderFrom: 'bijv. Amsterdam of AMS', placeholderTo: 'bijv. Barcelona of BCN',
-    labelDep: 'Vertrekdatum', labelRet: 'Retourdatum (optioneel)',
-    advancedBtn: '+ Uitgebreid (passagiers, klasse, tussenstop)',
-    labelAdults: 'Volwassenen', labelChildren: 'Kinderen', labelInfants: "Baby's",
-    labelCabin: 'Cabineklasse', labelStopover: 'Tussenstop via',
-    searchBtn: 'Analyseer mijn route',
-    trackerLabel: '🛬 Vluchten volgen',
-    labelFlightNum: 'Vluchtnummer', placeholderFlightNum: 'bijv. KL1234 of BA432',
-    labelFlightDate: 'Datum', trackBtn: 'Volg vlucht',
-    secStrategies: 'Wat analyseert de AI',
-    secDirect: 'Of zoek direct vergelijken',
-    openAll: '🚀 Open alle tegelijk',
-    tipsLabel: '💡 5 tips om zelf goedkoper te vliegen',
-    bizToggle: 'Zakelijk reizen',
-    bizBanner: '💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.',
-    bizTitle: '💼 Zakelijke reisopties',
-    overTitle: 'Over VluchtHack',
-    overBody: 'VluchtHack is een onafhankelijke Nederlandse AI-tool die je helpt slimmer te boeken. We zijn niet verbonden aan luchtvaartmaatschappijen of boekingssites en ontvangen geen commissie. Onze enige focus is jou helpen de beste prijs te vinden.',
-    ns1: 'AI-strategieën', ns2: 'besparing mogelijk', ns3: 'analysetijd', ns4: 'geen account nodig',
-    footerMain: 'VluchtHack © 2026 · AI-aangedreven · Geen account nodig',
-    footerPrivacy: 'Privacybeleid',
-  },
-  en: {
-    heroTag: 'AI flight ticket analysis',
-    heroH1: 'Save smart on<br>your next <em>flight</em>',
-    heroP: 'Enter your route and receive 7 personalised AI strategies to book cheaper.',
-    check1: '7 personalised booking recommendations',
-    check2: 'Estimated savings per strategy',
-    check3: 'Direct links to the cheapest sites',
-    check4: 'Ready in less than 60 seconds',
-    exampleBar: '💡 <span><strong>Example:</strong> AMS → BCN in July — VluchtHack found a saving of €47 per person via the Country Price Bypass strategy vs. direct booking on Skyscanner.</span>',
-    cardLabel: '✈ Your route',
-    labelFrom: 'From', labelTo: 'To',
-    placeholderFrom: 'e.g. Amsterdam or AMS', placeholderTo: 'e.g. Barcelona or BCN',
-    labelDep: 'Departure date', labelRet: 'Return date (optional)',
-    advancedBtn: '+ Advanced (passengers, class, stopover)',
-    labelAdults: 'Adults', labelChildren: 'Children', labelInfants: 'Infants',
-    labelCabin: 'Cabin class', labelStopover: 'Stopover via',
-    searchBtn: 'Analyse my route',
-    trackerLabel: '🛬 Track flights',
-    labelFlightNum: 'Flight number', placeholderFlightNum: 'e.g. KL1234 or BA432',
-    labelFlightDate: 'Date', trackBtn: 'Track flight',
-    secStrategies: 'What the AI analyses',
-    secDirect: 'Or search directly on',
-    openAll: '🚀 Open all at once',
-    tipsLabel: '💡 5 tips to book cheaper yourself',
-    bizToggle: 'Business travel',
-    bizBanner: '💼 <strong>Business mode active</strong> — Business class, flexible tickets, CO₂ reporting and corporate fares are included in the analysis.',
-    bizTitle: '💼 Business travel options',
-    overTitle: 'About VluchtHack',
-    overBody: 'VluchtHack is an independent Dutch AI tool that helps you book smarter. We are not affiliated with airlines or booking sites and receive no commission. Our only focus is helping you find the best price.',
-    ns1: 'AI strategies', ns2: 'savings possible', ns3: 'analysis time', ns4: 'no account needed',
-    footerMain: 'VluchtHack © 2026 · AI-powered · No account needed',
-    footerPrivacy: 'Privacy policy',
-  }
-};
-
-function toggleLang() {
-  lang = lang === 'nl' ? 'en' : 'nl';
-  const t = T[lang];
-  const isEn = lang === 'en';
-  document.getElementById('langNL').classList.toggle('active', !isEn);
-  document.getElementById('langEN').classList.toggle('active', isEn);
-  document.getElementById('mobileLangLabel').textContent = isEn ? 'Schakel naar Nederlands' : 'Switch to English';
-  document.documentElement.lang = lang;
-
-  // Hero
-  document.querySelector('.hero-tag').textContent = t.heroTag;
-  document.querySelector('.hero h1').innerHTML = t.heroH1;
-  document.querySelector('.hero p').textContent = t.heroP;
-  const checkDots = document.querySelectorAll('.check');
-  [t.check1,t.check2,t.check3,t.check4].forEach((txt,i) => {
-    if(checkDots[i]) checkDots[i].childNodes[1].textContent = txt;
-  });
-  document.querySelector('.example-bar').innerHTML = t.exampleBar;
-
-  // Form
-  document.querySelector('.card-label').innerHTML = t.cardLabel;
-  // Nav stats
-  document.getElementById('ns1').textContent = t.ns1;
-  document.getElementById('ns2').textContent = t.ns2;
-  document.getElementById('ns3').textContent = t.ns3;
-  document.getElementById('ns4').textContent = t.ns4;
-
-  // Footer
-  document.getElementById('footerMain').textContent = t.footerMain;
-  document.getElementById('footerPrivacy').textContent = t.footerPrivacy;
-
-  // Vertaal alle labels via data-attributen
-  document.querySelectorAll('label[data-nl]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    // Als label alleen tekst heeft (geen spans)
-    if ([...el.childNodes].every(n => n.nodeType === 3 || n.tagName === 'SPAN')) {
-      const textNodes = [...el.childNodes].filter(n => n.nodeType === 3);
-      if (textNodes.length) textNodes[0].textContent = val;
-      else el.firstChild && (el.firstChild.textContent = val);
-    }
-  });
-  // Update placeholders en knoppen
-  document.getElementById('origin').placeholder = t.placeholderFrom;
-  document.getElementById('dest').placeholder = t.placeholderTo;
-  document.getElementById('flightNum').placeholder = t.placeholderFlightNum;
-  document.getElementById('advancedLabel').textContent = t.advancedBtn;
-  document.getElementById('searchBtnText').textContent = t.searchBtn;
-  document.getElementById('trackerLabel').textContent = t.trackerLabel;
-  document.getElementById('trackBtnText').textContent = t.trackBtn;
-  document.getElementById('tipsLabel').textContent = t.tipsLabel;
-  document.getElementById('bizToggleLabel').textContent = t.bizToggle;
-  document.getElementById('bizBanner').innerHTML = t.bizBanner;
-  document.querySelector('.biz-panel-title').textContent = t.bizTitle;
-
-  // Sections
-  document.querySelectorAll('.sec-title').forEach(el => {
-    if (el.textContent.includes('analyseert') || el.textContent.includes('analyses')) el.textContent = t.secStrategies;
-    if (el.textContent.includes('direct') || el.textContent.includes('search directly')) el.textContent = t.secDirect;
-  });
-  document.querySelector('[onclick="openAllSites()"]').textContent = t.openAll;
-
-  // Over sectie
-  document.querySelectorAll('.sec-title').forEach(el => {
-    if (el.textContent.includes('Over') || el.textContent.includes('About')) el.textContent = t.overTitle;
-  });
-  document.querySelector('.over-card > p').textContent = t.overBody;
-
-  // Over items
-  const overItems = document.querySelectorAll('.over-item .over-title');
-  const overBodies = document.querySelectorAll('.over-item .over-body');
-  if (isEn) {
-    overItems[0]?.setText?.('Independent'); overBodies[0] && (overBodies[0].textContent='No commissions, no ads from booking sites. Purely objective analysis.');
-    overItems[1]?.setText?.('AI-powered'); overBodies[1] && (overBodies[1].textContent='7 strategies run in parallel by Claude AI on your specific route.');
-    overItems[2]?.setText?.('Privacy-first'); overBodies[2] && (overBodies[2].textContent='Your route data is not stored. No account, no tracking.');
-    overItems[3]?.setText?.('Sustainability'); overBodies[3] && (overBodies[3].textContent='We always show the public transport alternative and CO₂ impact of your choice.');
-    if(overItems[0]) overItems[0].textContent='Independent';
-    if(overItems[1]) overItems[1].textContent='AI-powered';
-    if(overItems[2]) overItems[2].textContent='Privacy-first';
-    if(overItems[3]) overItems[3].textContent='Sustainability';
-  } else {
-    if(overItems[0]) overItems[0].textContent='Onafhankelijk';
-    if(overItems[1]) overItems[1].textContent='AI-aangedreven';
-    if(overItems[2]) overItems[2].textContent='Privacy-first';
-    if(overItems[3]) overItems[3].textContent='Duurzaamheid';
-    if(overBodies[0]) overBodies[0].textContent='Geen commissies, geen advertenties van boekingssites. Puur objectieve analyse.';
-    if(overBodies[1]) overBodies[1].textContent='7 strategieën parallel uitgevoerd door Claude AI op jouw specifieke route.';
-    if(overBodies[2]) overBodies[2].textContent='Jouw routegegevens worden niet opgeslagen. Geen account, geen tracking.';
-    if(overBodies[3]) overBodies[3].textContent='We tonen altijd het OV-alternatief en de CO₂-impact van jouw keuze.';
-  }
-
-  if(typeof gtag !== 'undefined') gtag('event','taal_wisselen',{event_category:'gebruik',taal:lang});
-}
-
-// ── ZAKELIJK MODUS ──
-let bizMode = false;
-function toggleBusiness() {
-  bizMode = !bizMode;
-  const toggle = document.getElementById('bizToggle');
-  const banner = document.getElementById('bizBanner');
-  const panel  = document.getElementById('bizPanel');
-  toggle.classList.toggle('active', bizMode);
-  banner.classList.toggle('show', bizMode);
-  panel.classList.toggle('show', bizMode);
-  const mobileBizBtn = document.getElementById('mobileBizBtn');
-  if (mobileBizBtn) {
-    mobileBizBtn.classList.toggle('biz-active', bizMode);
-    document.getElementById('mobileBizLabel').textContent = bizMode ? 'Zakelijk uit' : 'Zakelijk reizen';
-  }
-  if (bizMode) {
-    // Zet Business class als default
-    document.getElementById('cabin').value = 'Business';
-    // Open advanced panel
-    document.getElementById('advancedPanel').style.display = 'block';
-    document.getElementById('advancedLabel').textContent = '− Verberg opties';
-  }
-  if (typeof gtag !== 'undefined') gtag('event', bizMode?'zakelijk_aan':'zakelijk_uit', {event_category:'gebruik'});
-}
-
-// ── TOGGLE FUNCTIES ──
-function toggleTips() {
-  const p=document.getElementById('tipsPanel'), l=document.getElementById('tipsLabel');
-  const open=p.style.display==='none';
-  p.style.display=open?'block':'none';
-  l.textContent=open?'💡 Verberg tips':'💡 5 tips om zelf goedkoper te vliegen';
-}
-function toggleTracker() {
-  const p=document.getElementById('trackerPanel'), l=document.getElementById('trackerLabel');
-  const open=p.style.display==='none';
-  p.style.display=open?'block':'none';
-  l.textContent=open?'🛬 Verberg vluchten volgen':'🛬 Vluchten volgen';
-}
-function toggleAdvanced() {
-  const p=document.getElementById('advancedPanel'), l=document.getElementById('advancedLabel');
-  const open=p.style.display==='none';
-  p.style.display=open?'block':'none';
-  l.textContent=open?'− Verberg opties':'+ Uitgebreid (passagiers, klasse, tussenstop)';
-}
-
-// ── PASSAGIERS ──
-const counts = {adults:1,children:0,infants:0};
-function changeCount(type, delta) {
-  const min=type==='adults'?1:0, max=type==='infants'?counts.adults:9;
-  counts[type]=Math.max(min,Math.min(max,counts[type]+delta));
-  document.getElementById(type+'-val').textContent=counts[type];
-}
-
-// ── STRATEGIE PROMPTS ──
 const STRATEGY_PROMPTS = [
-  { id:0, title:'Verborgen Routescanner', icon:'🗺️', build:(o,d,dep,ret,pax,f)=>`Je bent een professioneel vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax}.\n${f?'Live prijzen: '+f:''}\nAnalyseer verborgen city-tickets, alternatieve luchthavens (150km radius), multi-leg combinaties.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":25,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste optie","platforms":["platform1"]}` },
-  { id:1, title:'Prijsmanipulatie Ontmaskerd', icon:'🛡️', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsexpert. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Referentie: '+f:''}\nAnalyseer prijsmanipulatie via cookies, herhaalzoekopdrachten, IP, browser.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":15,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"methode","platforms":["platform1"]}` },
+  { id:0, title:'Verborgen Routescanner', icon:'🗺️', build:(o,d,dep,ret,pax,f)=>`Je bent een professioneel vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax} passagier(s).\n${f?'Live prijzen: '+f:''}\nAnalyseer verborgen city-tickets, alternatieve luchthavens (150km radius), multi-leg combinaties.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":25,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste optie","platforms":["platform1"]}` },
+  { id:1, title:'Prijsmanipulatie Ontmaskerd', icon:'🛡️', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsexpert. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Referentie: '+f:''}\nAnalyseer prijsmanipulatie via cookies, herhaalzoekopdrachten, IP, browser. Geef exacte stappen.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":15,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"methode","platforms":["platform1"]}` },
   { id:2, title:'Landsprijs Omzeiler', icon:'🌍', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Referentieprijs: '+f:''}\nAnalyseer vanuit welk land/valuta dit ticket goedkoopst is.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":30,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"land/valuta","platforms":["platform1"]}` },
-  { id:3, title:'Ideale Boekmoment Vinder', icon:'⏱️', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Huidige prijs: '+f:''}\nAnalyseer goedkoopste boekdagen, optimaal tijdvenster.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":20,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"ideale timing","platforms":["platform1"]}` },
-  { id:4, title:'Tariefregels Kraker', icon:'📋', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax}.\n${f?'Live tarieven: '+f:''}\nOntleed fare buckets, tariefklassen, open-jaw mogelijkheden.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":18,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"tariefklasse","platforms":["platform1"]}` },
-  { id:5, title:'Airline vs Boekingssite', icon:'📊', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Basisprijs: '+f:''}\nVergelijk airline-website vs Google Flights, Skyscanner, Kayak, Momondo, Kiwi.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":12,"moeite_score":1,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste platform","platforms":["platform1"]}` },
-  { id:6, title:'Prijsdaling Bewaker', icon:'🔔', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Startprijs: '+f:''}\nMaak een prijsvolg-strategie: zoekfrequentie, alert-instellingen.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":22,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"alert-instelling","platforms":["platform1"]}` },
-  { id:7, title:'Openbaar Vervoer Alternatief', icon:'🚂', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een reisexpert. Route: ${o} → ${d} op ${dep}${ret?', terug '+ret:''} voor ${pax}.${f?' Vluchtprijs: '+f:''}\nBereken OV alternatief (trein/bus/ferry): reistijd, kosten, CO2 besparing.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":0,"moeite_score":3,"concrete_tips":["Route met reistijd en kosten","CO2 vlucht vs OV in kg p.p.","Besparing in kg CO2"],"beste_optie":"OV optie","platforms":["Trainline","Omio","FlixBus","EcoPassenger"]}` },
-  { id:8, title:'CO₂ Voetafdruk & Te Voet', icon:'🌱', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een duurzaamheidsexpert. Route: ${o} → ${d} voor ${pax}.${f?' Vluchtprijs: '+f:''}\nBereken: afstand te voet in km, looptijd, CO2 vlucht vs trein vs te voet.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":0,"moeite_score":5,"concrete_tips":["CO2 vlucht circa X kg p.p.","CO2 trein circa X kg — X% minder","Looproute ca. X km — ca. X weken"],"beste_optie":"milieuvriendelijkste optie","platforms":["ICAO Carbon Calculator","EcoPassenger","Rome2rio"]}` }
+  { id:3, title:'Ideale Boekmoment Vinder', icon:'⏱️', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Huidige prijs: '+f:''}\nAnalyseer goedkoopste boekdagen, optimaal tijdvenster, vertrekperiodes.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":20,"moeite_score":2,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"ideale timing","platforms":["platform1"]}` },
+  { id:4, title:'Tariefregels Kraker', icon:'📋', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}, ${pax} passagier(s).\n${f?'Live tarieven: '+f:''}\nOntleed fare buckets, tariefklassen, open-jaw mogelijkheden.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":18,"moeite_score":4,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"tariefklasse","platforms":["platform1"]}` },
+  { id:5, title:'Airline vs Boekingssite', icon:'📊', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Basisprijs: '+f:''}\nVergelijk airline-website vs Google Flights, Skyscanner, Kayak, Momondo, Kiwi op kosten & marges.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":12,"moeite_score":1,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"beste platform","platforms":["platform1"]}` },
+  { id:6, title:'Prijsdaling Bewaker', icon:'🔔', build:(o,d,dep,ret,pax,f)=>`Je bent een vluchtprijsanalist. Route: ${o} → ${d}, vertrek ${dep}${ret?', terug '+ret:''}.\n${f?'Startprijs: '+f:''}\nMaak een prijsvolg-strategie: zoekfrequentie, alert-instellingen, gedragsregels.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen","geschatte_besparing_pct":22,"moeite_score":3,"concrete_tips":["tip1","tip2","tip3"],"beste_optie":"alert-instelling","platforms":["platform1"]}` },
+  { id:7, title:'Openbaar Vervoer Alternatief', icon:'\ud83d\ude82', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een reisexpert en duurzaamheidsanalist. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep}${ret?', terug '+ret:''} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Beste OV alternatief (trein, bus, ferry of combinatie) met reistijd en kosten per persoon. 2. CO2 uitstoot vlucht vs OV in kg per persoon. 3. Hoeveel CO2 per persoon bespaard door OV te kiezen.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over OV alternatief, kosten én CO2 besparing t.o.v. vliegen","geschatte_besparing_pct":0,"moeite_score":3,"concrete_tips":["Beste OV route met geschatte reistijd en kosten per persoon","CO2 vlucht: circa X kg p.p. — CO2 trein/bus: circa X kg p.p.","Besparing: X kg CO2 per persoon door niet te vliegen (X% minder)"],"beste_optie":"beste OV optie met reistijd, prijs én CO2 voordeel","platforms":["Trainline","Omio","FlixBus","EcoPassenger"]}` },
+  { id:8, title:'CO\u2082 Voetafdruk & Te Voet', icon:'\ud83c\udf31', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een duurzaamheidsexpert. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Looproute te voet: afstand in km en looptijd in dagen/weken. 2. CO2 uitstoot vlucht vs trein vs te voet in kg per persoon. 3. Hoeveel CO2 bespaard als men NIET vliegt.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over CO2 vergelijking en loopafstand","geschatte_besparing_pct":0,"moeite_score":5,"concrete_tips":["CO2 vlucht: circa X kg per persoon","CO2 trein: circa X kg — X% minder dan vliegen","Looproute: ca. X km — circa X weken te voet"],"beste_optie":"meest milieuvriendelijke reisoptie met concrete CO2 cijfers","platforms":["ICAO Carbon Calculator","EcoPassenger","Rome2rio"]}` }
 ];
 
-// ── VLUCHT ZOEKEN ──
+function toggleTips() {
+  const panel = document.getElementById('tipsPanel');
+  const label = document.getElementById('tipsLabel');
+  const open = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  label.textContent = open ? '💡 Verberg tips' : '💡 5 tips om zelf goedkoper te vliegen';
+}
+
+function toggleTracker() {
+  const panel = document.getElementById('trackerPanel');
+  const label = document.getElementById('trackerLabel');
+  const open = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  label.textContent = open ? '🛬 Verberg vluchten volgen' : '🛬 Vluchten volgen';
+}
+
+function toggleAdvanced() {
+  const panel = document.getElementById('advancedPanel');
+  const label = document.getElementById('advancedLabel');
+  const open = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  label.textContent = open ? '− Verberg opties' : '+ Uitgebreid (passagiers, klasse, tussenstop)';
+}
+
+// ── PASSAGIERS TELLER ──
+const counts = { adults:1, children:0, infants:0 };
+function changeCount(type, delta) {
+  const min = type === 'adults' ? 1 : 0;
+  const max = type === 'infants' ? counts.adults : 9;
+  counts[type] = Math.max(min, Math.min(max, counts[type] + delta));
+  document.getElementById(type+'-val').textContent = counts[type];
+}
+
 async function searchFlights(origin, dest, dep, ret, cabin, stopover) {
-  const getCode = v => acSelected[v] || (document.getElementById(v).value.match(/\(([A-Z]{3})\)/)?.[1]) || (document.getElementById(v).value.match(/\b([A-Z]{3})\b/)?.[1]) || document.getElementById(v).value.slice(0,3).toUpperCase();
-  const o = getCode('origin'), d = getCode('dest');
-  const adults=counts.adults, children=counts.children, infants=counts.infants;
+  const o = (origin.match(/\b([A-Z]{3})\b/)?.[1] || origin.slice(0,3)).toUpperCase();
+  const d = (dest.match(/\b([A-Z]{3})\b/)?.[1] || dest.slice(0,3)).toUpperCase();
+  const adults = counts.adults, children = counts.children, infants = counts.infants;
   const cls = cabin || 'Economy';
   let url;
   if (stopover && stopover.trim()) {
+    // Multi-trip: AMS → stopover → dest
     const s = (stopover.match(/\b([A-Z]{3})\b/)?.[1] || stopover.slice(0,3)).toUpperCase();
     url = `https://api.flightapi.io/multitrip/VLUCHT_KEY?arp1=${o}&arp2=${s}&arp3=${s}&arp4=${d}&date1=${dep}&date2=${dep}&adults=${adults}&children=${children}&infants=${infants}&cabinclass=${cls}&currency=EUR&trips=2`;
   } else if (ret) {
@@ -991,276 +596,535 @@ async function searchFlights(origin, dest, dep, ret, cabin, stopover) {
 
 // ── VLUCHT TRACKER ──
 async function trackFlight() {
-  const num=document.getElementById('flightNum').value.trim().toUpperCase();
-  const date=document.getElementById('flightDate').value;
+  const num = document.getElementById('flightNum').value.trim().toUpperCase();
+  const date = document.getElementById('flightDate').value;
   if (!num) { alert('Vul een vluchtnummer in, bijv. KL1234'); return; }
   if (!date) { alert('Vul een datum in'); return; }
-  const btn=document.getElementById('trackBtn');
-  const res=document.getElementById('trackResult');
-  btn.disabled=true; document.getElementById('trackBtnText').textContent='Ophalen…'; res.style.display='none';
+  const btn = document.getElementById('trackBtn');
+  const res = document.getElementById('trackResult');
+  btn.disabled = true;
+  document.getElementById('trackBtnText').textContent = 'Ophalen…';
+  res.style.display = 'none';
   try {
-    const match=num.match(/^([A-Z]{2})(\d+)$/);
+    // Extract airline code and flight number
+    const match = num.match(/^([A-Z]{2})(\d+)$/);
     if (!match) throw new Error('Ongeldig formaat. Gebruik bijv. KL1234');
-    const url=`https://api.flightapi.io/airline/VLUCHT_KEY?num=${match[2]}&name=${match[1]}&date=${date.replace(/-/g,'')}`;
-    const r=await fetch('/api/flights?url='+encodeURIComponent(url));
-    const data=await r.json();
-    if (!data||(Array.isArray(data)&&!data.length)) throw new Error('Geen vluchtdata gevonden.');
+    const airline = match[1], flightNo = match[2];
+    const dateFormatted = date.replace(/-/g,'');
+    const url = `https://api.flightapi.io/airline/VLUCHT_KEY?num=${flightNo}&name=${airline}&date=${dateFormatted}`;
+    const r = await fetch('/api/flights?url=' + encodeURIComponent(url));
+    const data = await r.json();
+    if (!data || (Array.isArray(data) && !data.length)) throw new Error('Geen vluchtdata gevonden voor dit vluchtnummer en datum.');
     renderTrackResult(data, num);
   } catch(e) {
-    res.style.display='block';
-    res.innerHTML=`<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--rs);padding:1rem;font-size:13px;color:#dc2626;">⚠ ${e.message}</div>`;
+    res.style.display = 'block';
+    res.innerHTML = `<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--rs);padding:1rem;font-size:13px;color:#dc2626;">⚠ ${e.message}</div>`;
   }
-  btn.disabled=false; document.getElementById('trackBtnText').textContent='Volg vlucht';
+  btn.disabled = false;
+  document.getElementById('trackBtnText').textContent = 'Volg vlucht';
 }
 
 function renderTrackResult(data, flightNum) {
-  const res=document.getElementById('trackResult'); res.style.display='block';
-  const arr=Array.isArray(data)?data:[data];
-  const dep=arr.find(x=>x.departure)?.departure||{};
-  const arr2=arr.find(x=>x.arrival)?.arrival||{};
-  const depTime=dep.departureDateTime?new Date(dep.departureDateTime).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'}):dep.scheduledTime||'—';
-  const arrTime=arr2.arrivalDateTime?new Date(arr2.arrivalDateTime).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'}):arr2.scheduledTime||'—';
-  const terminal=dep.terminal?`Terminal ${dep.terminal}`:'—';
-  const gate=dep.gate||arr2.gate||'—';
-  const baggage=arr2.baggage||'—';
-  const statusTxt=arr2.timeRemaining?`Onderweg — ${arr2.timeRemaining}`:'Geland';
-  res.innerHTML=`<div class="track-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;"><span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:var(--g900);">${flightNum}</span><span class="track-status track-on-time">${statusTxt}</span></div><div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;background:var(--g50);border-radius:var(--rxs);padding:.875rem;margin-bottom:.75rem;"><div><div style="font-size:20px;font-weight:800;color:var(--g900);font-family:'Plus Jakarta Sans',sans-serif;">${dep.airportCode||'—'}</div><div style="font-size:12px;color:var(--g500);">${dep.airportCity||'—'}</div><div style="font-size:13px;font-weight:600;color:var(--blue);">${depTime}</div></div><div style="text-align:center;color:var(--g300);font-size:18px;">→</div><div style="text-align:right;"><div style="font-size:20px;font-weight:800;color:var(--g900);font-family:'Plus Jakarta Sans',sans-serif;">${arr2.airportCode||'—'}</div><div style="font-size:12px;color:var(--g500);">${arr2.airportCity||'—'}</div><div style="font-size:13px;font-weight:600;color:var(--blue);">${arrTime}</div></div></div><div class="track-field"><span class="track-label">Terminal</span><span class="track-val">${terminal}</span></div><div class="track-field"><span class="track-label">Gate</span><span class="track-val">${gate}</span></div><div class="track-field"><span class="track-label">Bagageband</span><span class="track-val">${baggage}</span></div></div>`;
+  const res = document.getElementById('trackResult');
+  res.style.display = 'block';
+  // Data can be array or object
+  const arr = Array.isArray(data) ? data : [data];
+  const dep = arr.find(x => x.departure)?.departure || {};
+  const arr2 = arr.find(x => x.arrival)?.arrival || {};
+  const depTime = dep.departureDateTime ? new Date(dep.departureDateTime).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'}) : dep.scheduledTime || '—';
+  const arrTime = arr2.arrivalDateTime ? new Date(arr2.arrivalDateTime).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'}) : arr2.scheduledTime || '—';
+  const depAirport = dep.airportCode || dep.airport || '—';
+  const arrAirport = arr2.airportCode || arr2.airport || '—';
+  const depCity = dep.airportCity || dep.airport || '—';
+  const arrCity = arr2.airportCity || arr2.airport || '—';
+  const terminal = dep.terminal ? `Terminal ${dep.terminal}` : '—';
+  const gate = dep.gate || arr2.gate || '—';
+  const baggage = arr2.baggage || '—';
+  const timeRem = arr2.timeRemaining || null;
+  const statusCls = timeRem ? 'track-on-time' : 'track-on-time';
+  const statusTxt = timeRem ? `Onderweg — ${timeRem}` : 'Geland';
+  res.innerHTML = `
+    <div class="track-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:var(--g900);">${flightNum}</span>
+        <span class="track-status ${statusCls}">${statusTxt}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;background:var(--g50);border-radius:var(--rxs);padding:.875rem;margin-bottom:.75rem;">
+        <div><div style="font-size:20px;font-weight:800;color:var(--g900);font-family:'Plus Jakarta Sans',sans-serif;">${depAirport}</div><div style="font-size:12px;color:var(--g500);">${depCity}</div><div style="font-size:13px;font-weight:600;color:var(--blue);">${depTime}</div></div>
+        <div style="text-align:center;color:var(--g300);font-size:18px;">→</div>
+        <div style="text-align:right;"><div style="font-size:20px;font-weight:800;color:var(--g900);font-family:'Plus Jakarta Sans',sans-serif;">${arrAirport}</div><div style="font-size:12px;color:var(--g500);">${arrCity}</div><div style="font-size:13px;font-weight:600;color:var(--blue);">${arrTime}</div></div>
+      </div>
+      <div class="track-field"><span class="track-label">Terminal</span><span class="track-val">${terminal}</span></div>
+      <div class="track-field"><span class="track-label">Gate</span><span class="track-val">${gate}</span></div>
+      <div class="track-field"><span class="track-label">Bagageband</span><span class="track-val">${baggage}</span></div>
+    </div>`;
 }
 
-// ── PARSE FLIGHTS ──
 function parseFlights(data) {
-  const its=data.itineraries||[], legs=data.legs||[], carriers=data.carriers||[], places=data.places||[];
+  const its = data.itineraries || [], legs = data.legs || [];
+  const carriers = data.carriers || [], places = data.places || [];
   if (!its.length) return [];
-  const pm={}; places.forEach(p=>{if(p.id!==undefined)pm[p.id]=p;});
-  const iata=p=>p?(p.display_code||p.iata||p.displayCode||null):null;
-  return its.map(it=>{
-    const leg=legs.find(l=>l.id===it.leg_ids?.[0]);
+  const pm = {}; places.forEach(p => { if (p.id !== undefined) pm[p.id] = p; });
+  const iata = p => p ? (p.display_code || p.iata || p.displayCode || null) : null;
+  return its.map(it => {
+    const leg = legs.find(l => l.id === it.leg_ids?.[0]);
     if (!leg) return null;
-    const carrier=carriers.find(c=>c.id===leg.marketing_carrier_ids?.[0])||{};
-    const pricing=it.pricing_options?.[0];
-    return {dep:iata(pm[leg.origin_place_id])||'n/b',arr:iata(pm[leg.destination_place_id])||'n/b',depT:leg.departure?.slice(11,16)||'--:--',arrT:leg.arrival?.slice(11,16)||'--:--',stops:leg.stop_count||0,dur:`${Math.floor((leg.duration||0)/60)}u ${(leg.duration||0)%60}m`,price:pricing?.price?.amount||0,airline:carrier.name||carrier.display_code||'Onbekend',url:pricing?.items?.[0]?.url||'#'};
-  }).filter(Boolean).sort((a,b)=>a.price-b.price);
+    const carrier = carriers.find(c => c.id === leg.marketing_carrier_ids?.[0]) || {};
+    const pricing = it.pricing_options?.[0];
+    return {
+      dep: iata(pm[leg.origin_place_id]) || 'n/b',
+      arr: iata(pm[leg.destination_place_id]) || 'n/b',
+      depT: leg.departure?.slice(11,16) || '--:--',
+      arrT: leg.arrival?.slice(11,16) || '--:--',
+      stops: leg.stop_count || 0,
+      dur: `${Math.floor((leg.duration||0)/60)}u ${(leg.duration||0)%60}m`,
+      price: pricing?.price?.amount || 0,
+      airline: carrier.name || carrier.display_code || 'Onbekend',
+      url: pricing?.items?.[0]?.url || '#'
+    };
+  }).filter(Boolean).sort((a,b) => a.price - b.price);
 }
 
 function renderFlights(flights, dep) {
-  const grid=document.getElementById('flightsGrid'), title=document.getElementById('flightsTitle');
-  if (!flights.length) { title.textContent='Geen vluchten gevonden.'; return ''; }
-  const now=new Date().toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});
-  title.textContent=`${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} ${flights.length===1?'vlucht':'vluchten'}`;
-  const ts=document.getElementById('flightTimestamp');
-  ts.style.display='block'; ts.textContent=`Prijzen opgehaald om ${now} — kunnen variëren bij boeking`;
-  grid.innerHTML=flights.slice(0,5).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div>`<a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a>`</div></div>`).join('');
-  return `Goedkoopst: €${Math.round(flights[0].price)} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop'}). `+flights.slice(0,3).map(f=>`${f.airline} ${f.dep}→${f.arr} €${Math.round(f.price)}`).join(' | ');
+  const grid = document.getElementById('flightsGrid');
+  const title = document.getElementById('flightsTitle');
+  if (!flights.length) { title.textContent = 'Geen vluchten gevonden.'; return ''; }
+  title.textContent = `${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} vluchten gevonden`;
+  grid.innerHTML = flights.slice(0,5).map((f,i) => `
+    <div class="fc${i===0?' best':''}">
+      <div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div>
+      <div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div>
+      <div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div>
+      <div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div>`<a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a>`</div>
+    </div>`).join('');
+  return `Goedkoopst: €${Math.round(flights[0].price)} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop'}). ` +
+         flights.slice(0,3).map(f=>`${f.airline} ${f.dep}→${f.arr} €${Math.round(f.price)}`).join(' | ');
 }
 
-// ── AI ──
 async function callAI(prompt) {
-  const res=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
-  const data=await res.json();
-  if (data.error) throw new Error(data.error.message||data.error);
-  const raw=data.content?.map(b=>b.text||'').join('')||'{}';
+  const res = await fetch('/api/ai', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({messages:[{role:'user',content:prompt}]}) });
+  const data = await res.json();
+  if (data.error) throw new Error(data.error.message || data.error);
+  const raw = data.content?.map(b=>b.text||'').join('') || '{}';
   return JSON.parse(raw.replace(/```json|```/g,'').trim());
 }
 
-// ── STEPS ──
-let doneCount = 0;
 function buildSteps() {
-  doneCount = 0;
-  document.getElementById('progressFill').style.width='0%';
-  document.getElementById('progressLabel').textContent=`0 van ${STRATEGY_PROMPTS.length} strategieën klaar`;
-  document.getElementById('stepsList').innerHTML=STRATEGY_PROMPTS.map(p=>`<div class="step" id="step-${p.id}"><div class="step-dot" id="dot-${p.id}">${p.icon}</div><div class="step-name">${p.title}${p.bonus?'<span style="margin-left:6px;font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;">bonus</span>':''}</div><div class="step-st" id="st-${p.id}">wachten…</div></div>`).join('');
+  document.getElementById('stepsList').innerHTML = STRATEGY_PROMPTS.map(p =>
+    `<div class="step" id="step-${p.id}"><div class="step-dot" id="dot-${p.id}">${p.icon}</div><div class="step-name">${p.title}${p.bonus?'<span style="margin-left:6px;font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;">bonus</span>':''}</div><div class="step-st" id="st-${p.id}">wachten…</div></div>`
+  ).join('');
 }
 
 function setStep(id, state) {
-  const dot=document.getElementById('dot-'+id), st=document.getElementById('st-'+id), item=document.getElementById('step-'+id);
+  const dot = document.getElementById('dot-'+id), st = document.getElementById('st-'+id);
+  const item = document.getElementById('step-'+id);
   if (!dot) return;
-  if (state==='running') { dot.innerHTML='<div class="spinner"></div>'; dot.style.cssText='background:#dbeafe;border-color:#93c5fd;'; st.textContent='bezig…'; st.style.color='#2563ff'; }
-  else if (state==='done') {
-    dot.innerHTML='✓'; dot.style.cssText='background:#dcfce7;border-color:#86efac;font-size:11px;color:#16a34a;'; st.textContent='klaar'; st.style.color='#16a34a';
-    doneCount++;
-    const pct = Math.round(doneCount/STRATEGY_PROMPTS.length*100);
-    document.getElementById('progressFill').style.width=pct+'%';
-    document.getElementById('progressLabel').textContent=`${doneCount} van ${STRATEGY_PROMPTS.length} strategieën klaar`;
-    if(doneCount===STRATEGY_PROMPTS.length){
-      setTimeout(()=>{
-        const pw=document.getElementById('progressWrap');
-        pw.style.transition='opacity .6s ease';
-        pw.style.opacity='0';
-        setTimeout(()=>pw.style.display='none',650);
-      },800);
-    }
-    setTimeout(()=>{ if(item){item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';item.style.opacity='0';item.style.maxHeight='0';item.style.marginBottom='0';item.style.padding='0';item.style.overflow='hidden';}},600);
+  if (state==='running') {
+    dot.innerHTML='<div class="spinner"></div>';
+    dot.style.cssText='background:#dbeafe;border-color:#93c5fd;';
+    st.textContent='bezig…'; st.style.color='#2563ff';
+  } else if (state==='done') {
+    dot.innerHTML='✓';
+    dot.style.cssText='background:#dcfce7;border-color:#86efac;font-size:11px;color:#16a34a;';
+    st.textContent='klaar'; st.style.color='#16a34a';
+    // Fade out and collapse after short delay
+    setTimeout(() => {
+      if (item) {
+        item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';
+        item.style.opacity='0';
+        item.style.maxHeight='0';
+        item.style.marginBottom='0';
+        item.style.padding='0';
+        item.style.overflow='hidden';
+      }
+    }, 600);
   } else {
-    dot.innerHTML='✗'; dot.style.cssText='background:#fee2e2;border-color:#fca5a5;font-size:11px;color:#dc2626;'; st.textContent='fout'; st.style.color='#dc2626';
-    doneCount++;
-    setTimeout(()=>{ if(item){item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';item.style.opacity='0';item.style.maxHeight='0';item.style.marginBottom='0';item.style.padding='0';item.style.overflow='hidden';}},800);
+    dot.innerHTML='✗';
+    dot.style.cssText='background:#fee2e2;border-color:#fca5a5;font-size:11px;color:#dc2626;';
+    st.textContent='fout'; st.style.color='#dc2626';
+    setTimeout(() => {
+      if (item) {
+        item.style.transition='opacity .4s ease, max-height .4s ease, margin .4s ease, padding .4s ease';
+        item.style.opacity='0'; item.style.maxHeight='0';
+        item.style.marginBottom='0'; item.style.padding='0';
+        item.style.overflow='hidden';
+      }
+    }, 800);
   }
 }
 
-// ── TOP 5 ──
-const MEDALS=['🥇 #1','🥈 #2','🥉 #3','✦ #4','✦ #5'];
-const MC=['#f59e0b','#9ca3af','#cd7c32','#2563ff','#7c3aed'];
-function ml(s){if(s<=1)return{l:'Zeer eenvoudig',c:'#16a34a'};if(s<=2)return{l:'Eenvoudig',c:'#16a34a'};if(s<=3)return{l:'Gemiddeld',c:'#d97706'};if(s<=4)return{l:'Vraagt inspanning',c:'#ea580c'};return{l:'Complex',c:'#dc2626'};}
+const MEDALS = ['🥇 #1','🥈 #2','🥉 #3','✦ #4','✦ #5'];
+const MC = ['#f59e0b','#9ca3af','#cd7c32','#2563ff','#7c3aed'];
+function ml(s) {
+  if(s<=1) return {l:'Zeer eenvoudig',c:'#16a34a'};
+  if(s<=2) return {l:'Eenvoudig',c:'#16a34a'};
+  if(s<=3) return {l:'Gemiddeld',c:'#d97706'};
+  if(s<=4) return {l:'Vraagt inspanning',c:'#ea580c'};
+  return {l:'Complex',c:'#dc2626'};
+}
 
 function renderTop5(results) {
-  const regular=results.filter(r=>!r._bonus), bonus=results.filter(r=>r._bonus);
-  const sortedReg=[...regular].sort((a,b)=>((b.geschatte_besparing_pct||10)*.7+(6-(b.moeite_score||3))*4)-((a.geschatte_besparing_pct||10)*.7+(6-(a.moeite_score||3))*4));
-  const top5=sortedReg.slice(0,5), allSorted=[...sortedReg,...bonus];
-  const now=new Date().toLocaleString('nl-NL',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
-  document.getElementById('top5Title').textContent='🏆 Top 5 beste strategieën voor jouw route';
-  document.getElementById('top5List').innerHTML=top5.map((r,i)=>{
-    const c=MC[i]||'#2563ff',m=ml(r.moeite_score||3);
-    return `<div class="t5" style="border-left:3px solid ${c};"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-size:12px;color:${m.c}">⚡ ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
+  const regular = results.filter(r => !r._bonus);
+  const bonus   = results.filter(r =>  r._bonus);
+  const sortedReg = [...regular].sort((a,b) => ((b.geschatte_besparing_pct||10)*.7 + (6-(b.moeite_score||3))*4) - ((a.geschatte_besparing_pct||10)*.7 + (6-(a.moeite_score||3))*4));
+  const top5 = sortedReg.slice(0,5);
+  const allSorted = [...sortedReg, ...bonus];
+
+  document.getElementById('top5Title').textContent = '\ud83c\udfc6 Top 5 beste strategieën voor jouw route';
+  document.getElementById('top5List').innerHTML = top5.map((r,i) => {
+    const c=MC[i]||'#2563ff', m=ml(r.moeite_score||3);
+    return `<div class="t5" style="border-left:3px solid ${c};"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:${c}">${MEDALS[i]}</span><span class="t5-title">${r._title}</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill pill-b">\ud83d\udcb0 ~${Math.round(r.geschatte_besparing_pct||10)}% besparing</span><span style="font-size:12px;color:${m.c}">\u26a1 ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
   }).join('');
+
   if (bonus.length) {
-    document.getElementById('top5List').innerHTML+='<div style="margin-top:1.25rem;"><div class="sec"><div class="sec-title">🌱 Bonus — duurzame alternatieven</div><div class="sec-line"></div></div></div>'+
-    bonus.map((r,i)=>{const m=ml(r.moeite_score||3);return `<div class="t5" style="border-left:3px solid #16a34a;margin-top:8px;"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:#16a34a;">#${top5.length+i+1}</span><span class="t5-title">${r._title}</span><span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;">bonus</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;}).join('');
+    document.getElementById('top5List').innerHTML += '<div style="margin-top:1.25rem;"><div class="sec"><div class="sec-title">\ud83c\udf31 Bonus — duurzame alternatieven</div><div class="sec-line"></div></div></div>' +
+    bonus.map((r,i) => {
+      const m = ml(r.moeite_score||3);
+      return `<div class="t5" style="border-left:3px solid #16a34a;margin-top:8px;"><div class="t5-head"><span style="font-size:21px">${r._icon}</span><div style="flex:1"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px"><span class="t5-rank" style="color:#16a34a;">#${top5.length+i+1}</span><span class="t5-title">${r._title}</span><span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;">bonus</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-size:12px;color:${m.c}">\u26a1 ${m.l}</span></div></div></div><p class="t5-body">${r.samenvatting||''}</p><div class="t5-box"><div class="t5-box-lbl">Beste aanpak</div><div class="t5-box-val">${r.beste_optie||''}</div></div></div>`;
+    }).join('');
   }
-  document.getElementById('top5List').innerHTML+=`<div style="font-size:11px;color:var(--g400);text-align:right;margin-top:8px;">Analyse uitgevoerd op ${now} · Prijzen kunnen variëren</div>`;
-  document.getElementById('fullAnalysisList').innerHTML=allSorted.map(r=>{
-    const tips=Array.isArray(r.concrete_tips)?r.concrete_tips:[], plats=Array.isArray(r.platforms)?r.platforms:[], m=ml(r.moeite_score||3);
-    return `<details><summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span>${r._bonus?'<span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;margin-right:4px">bonus</span>':''}<span style="font-size:11px;color:var(--g400);margin-left:6px">▼</span></summary><div style="padding:.875rem 1.125rem"><p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">→</span><span>${t}</span></div>`).join('')}</div>`:''}${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:#4b5563;border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''}<div style="margin-top:8px;font-size:12px;color:${m.c}">⚡ Moeite: ${m.l}</div></div></details>`;
+
+  document.getElementById('fullAnalysisList').innerHTML = allSorted.map(r => {
+    const tips = Array.isArray(r.concrete_tips)?r.concrete_tips:[];
+    const plats = Array.isArray(r.platforms)?r.platforms:[];
+    const m = ml(r.moeite_score||3);
+    return `<details><summary><span style="font-size:16px">${r._icon}</span><span style="font-size:13px;font-weight:600;color:var(--g900);flex:1">${r._title}</span>${r._bonus?'<span style="font-size:10px;background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;border-radius:99px;padding:1px 7px;margin-right:4px">bonus</span>':''}<span style="font-size:11px;color:var(--g400);margin-left:6px">\u25bc</span></summary><div style="padding:.875rem 1.125rem"><p style="font-size:13px;color:var(--g500);line-height:1.65;margin-bottom:10px">${r.samenvatting||''}</p>${tips.length?`<div style="margin-bottom:10px"><div style="font-size:10px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Concrete tips</div>${tips.map(t=>`<div class="tip-row"><span class="tip-arrow">\u2192</span><span>${t}</span></div>`).join('')}</div>`:''}${plats.length?`<div style="display:flex;gap:5px;flex-wrap:wrap">${plats.map(p=>`<span style="font-size:12px;background:var(--g100);border:1px solid var(--g200);color:var(--g600,#4b5563);border-radius:99px;padding:2px 10px">${p}</span>`).join('')}</div>`:''}<div style="margin-top:8px;font-size:12px;color:${m.c}">\u26a1 Moeite: ${m.l}</div></div></details>`;
   }).join('');
 }
 
-// ── DATE GRID ──
-const WD=['zo','ma','di','wo','do','vr','za'];
-function addDays(ds,n){const d=new Date(ds);d.setDate(d.getDate()+n);const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;}
-function formatDayLabel(ds){const d=new Date(ds);return{wd:WD[d.getDay()],day:d.getDate()+' '+['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'][d.getMonth()]};}
-async function fetchDayPrice(origin,dest,dep,pax){
-  try{const o=(origin.match(/\b([A-Z]{3})\b/)?.[1]||origin.slice(0,3)).toUpperCase(),d=(dest.match(/\b([A-Z]{3})\b/)?.[1]||dest.slice(0,3)).toUpperCase();const url=`https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${o}/${d}/${dep}/${pax}/0/0/Economy/EUR`;const res=await fetch('/api/flights?url='+encodeURIComponent(url));if(!res.ok)return null;const data=await res.json();if(data.message||data.error)return null;const its=(data.itineraries||[]).sort((a,b)=>(a.pricing_options?.[0]?.price?.amount||9999)-(b.pricing_options?.[0]?.price?.amount||9999));return its[0]?.pricing_options?.[0]?.price?.amount||null;}catch{return null;}
-}
-let _retPriceMap={},_depPriceMap={};
-async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
-  const hasRet=!!centerRet;_retPriceMap={};_depPriceMap={};
-  document.getElementById('datePriceWrap').style.display='block';
-  const depLabel=document.querySelector('#datePriceWrap .dpg-label');
-  if(depLabel)depLabel.textContent=hasRet?'Vertrekdatum — totaalprijs retour p.p. — klik om te wisselen':'Vertrekdatum — enkele reis p.p. — klik om te wisselen';
-  if(hasRet)document.getElementById('retGridWrap').style.display='block';
-  const dates=Array.from({length:7},(_,i)=>addDays(centerDep,i-3));
-  const depGrid=document.getElementById('depGrid');depGrid.innerHTML='';
-  dates.forEach(date=>{const lbl=formatDayLabel(date);const div=document.createElement('div');div.className=`dpg-day${date===centerDep?' active':''} loading`;div.id=`dep-${date}`;div.innerHTML=`<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;div.onclick=()=>switchDate('dep',date,origin,dest,pax);depGrid.appendChild(div);});
-  setTimeout(()=>{const a=depGrid.querySelector('.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},100);
-  const depPrices=await Promise.all(dates.map(d=>fetchDayPrice(origin,dest,d,pax)));
-  dates.forEach((date,i)=>{if(depPrices[i]!==null)_depPriceMap[date]=depPrices[i];});
-  let baseRetPrice=null;
-  if(hasRet){baseRetPrice=await fetchDayPrice(dest,origin,centerRet,pax);if(baseRetPrice!==null)_retPriceMap[centerRet]=baseRetPrice;}
-  const displayDep=depPrices.map(p=>p===null?null:(hasRet&&baseRetPrice!==null?p+baseRetPrice:p));
-  const validDep=displayDep.filter(p=>p!==null);
-  // Verberg datumgrid als minder dan 3 dagen prijsdata hebben
-  if(validDep.length < 3){
-    document.getElementById('datePriceWrap').style.display='none';
-    let noDataMsg = document.getElementById('dpgNoData');
-    if(!noDataMsg){ noDataMsg=document.createElement('div'); noDataMsg.id='dpgNoData'; document.getElementById('flightsWrap').insertBefore(noDataMsg, document.getElementById('datePriceWrap')); }
-    noDataMsg.style.cssText='font-size:12px;color:var(--g400);margin-bottom:1rem;';
-    noDataMsg.textContent='Onvoldoende prijsdata beschikbaar voor het datumoverzicht voor deze route.';
-  } else {
-  document.getElementById('datePriceWrap').style.display='block';
-  const minDep=Math.min(...validDep),maxDep=Math.max(...validDep);
-  dates.forEach((date,i)=>{const el=document.getElementById(`dep-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayDep[i]!==null){pe.textContent=`€${Math.round(displayDep[i])}`;pe.classList.remove('loading-p');if(displayDep[i]===minDep)pe.classList.add('cheap');else if(displayDep[i]===maxDep)pe.classList.add('exp');if(se)se.textContent=hasRet?'retour p.p.':'enkel p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}});
-  } // end else
-  if(hasRet){const retDates=Array.from({length:7},(_,i)=>addDays(centerRet,i-3));const retGrid=document.getElementById('retGrid');retGrid.innerHTML='';retDates.forEach(date=>{const lbl=formatDayLabel(date);const div=document.createElement('div');div.className=`dpg-day${date===centerRet?' active':''} loading`;div.id=`ret-${date}`;div.innerHTML=`<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;div.onclick=()=>switchDate('ret',date,origin,dest,pax);retGrid.appendChild(div);});setTimeout(()=>{const a=retGrid.querySelector('.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},150);const retPrices=await Promise.all(retDates.map(d=>fetchDayPrice(dest,origin,d,pax)));retDates.forEach((date,i)=>{if(retPrices[i]!==null)_retPriceMap[date]=retPrices[i];});const baseDepPrice=_depPriceMap[centerDep]||null;const displayRet=retPrices.map(p=>p===null?null:(baseDepPrice!==null?p+baseDepPrice:p));const validRet=displayRet.filter(p=>p!==null),minRet=Math.min(...validRet),maxRet=Math.max(...validRet);retDates.forEach((date,i)=>{const el=document.getElementById(`ret-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayRet[i]!==null){pe.textContent=`€${Math.round(displayRet[i])}`;pe.classList.remove('loading-p');if(displayRet[i]===minRet)pe.classList.add('cheap');else if(displayRet[i]===maxRet)pe.classList.add('exp');if(se)se.textContent='retour p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}}); }
+// ── DATE PRICE GRID ──
+const WD = ['zo','ma','di','wo','do','vr','za'];
+
+function addDays(dateStr, days) {
+  const d = new Date(dateStr); d.setDate(d.getDate() + days);
+  const pad = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 }
 
-async function switchDate(type,date,origin,dest,pax){
-  const grid=document.getElementById(type==='dep'?'depGrid':'retGrid');
-  grid.querySelectorAll('.dpg-day').forEach(el=>el.classList.remove('active'));
-  const target=document.getElementById(`${type}-${date}`);
-  if(target){target.classList.add('active');target.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
-  document.getElementById(type==='dep'?'dep':'ret').value=date;
-  const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value, hasRet=!!ret;
-  if(hasRet){
-    if(type==='dep'){const newDepPrice=_depPriceMap[date]||null;document.getElementById('retGrid').querySelectorAll('.dpg-day').forEach(el=>{const retDate=el.id.replace('ret-','');const retP=_retPriceMap[retDate]||null;const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(pe&&retP!==null&&newDepPrice!==null){pe.textContent=`€${Math.round(retP+newDepPrice)}`;if(se)se.textContent='retour p.p.';}});}
-    else{let newRetPrice=_retPriceMap[date]||null;if(newRetPrice===null){newRetPrice=await fetchDayPrice(dest,origin,date,pax);if(newRetPrice!==null)_retPriceMap[date]=newRetPrice;}document.getElementById('depGrid').querySelectorAll('.dpg-day').forEach(el=>{const depDate=el.id.replace('dep-','');const depP=_depPriceMap[depDate]||null;const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(pe&&depP!==null&&newRetPrice!==null){pe.textContent=`€${Math.round(depP+newRetPrice)}`;if(se)se.textContent='retour p.p.';}});}
+function formatDayLabel(dateStr) {
+  const d = new Date(dateStr);
+  return { wd: WD[d.getDay()], day: d.getDate() + ' ' + ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'][d.getMonth()] };
+}
+
+async function fetchDayPrice(origin, dest, dep, pax) {
+  try {
+    const o = (origin.match(/\b([A-Z]{3})\b/)?.[1] || origin.slice(0,3)).toUpperCase();
+    const d = (dest.match(/\b([A-Z]{3})\b/)?.[1] || dest.slice(0,3)).toUpperCase();
+    const url = `https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${o}/${d}/${dep}/${pax}/0/0/Economy/EUR`;
+    const res = await fetch('/api/flights?url=' + encodeURIComponent(url));
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data.message || data.error) return null;
+    const its = (data.itineraries || []).sort((a,b) => (a.pricing_options?.[0]?.price?.amount||9999) - (b.pricing_options?.[0]?.price?.amount||9999));
+    return its[0]?.pricing_options?.[0]?.price?.amount || null;
+  } catch { return null; }
+}
+
+let _retPriceMap = {}, _depPriceMap = {};
+
+async function buildDateGrid(origin, dest, centerDep, centerRet, pax) {
+  const hasRet = !!centerRet;
+  _retPriceMap = {}; _depPriceMap = {};
+  document.getElementById('datePriceWrap').style.display = 'block';
+  const depLabel = document.querySelector('#datePriceWrap .dpg-label');
+  if (depLabel) depLabel.textContent = hasRet
+    ? 'Vertrekdatum — totaalprijs retour p.p. — klik om te wisselen'
+    : 'Vertrekdatum — enkele reis p.p. — klik om te wisselen';
+  if (hasRet) document.getElementById('retGridWrap').style.display = 'block';
+
+  const dates = Array.from({length:11}, (_,i) => addDays(centerDep, i-5));
+  const depGrid = document.getElementById('depGrid');
+  depGrid.innerHTML = '';
+  dates.forEach(date => {
+    const lbl = formatDayLabel(date);
+    const div = document.createElement('div');
+    div.className = `dpg-day${date===centerDep?' active':''} loading`;
+    div.id = `dep-${date}`;
+    div.innerHTML = `<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;
+    div.onclick = () => switchDate('dep', date, origin, dest, pax);
+    depGrid.appendChild(div);
+  });
+  setTimeout(() => { const a=depGrid.querySelector('.active'); if(a) a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 100);
+
+  const depPrices = await Promise.all(dates.map(d => fetchDayPrice(origin, dest, d, pax)));
+  dates.forEach((date,i) => { if(depPrices[i]!==null) _depPriceMap[date]=depPrices[i]; });
+  let baseRetPrice = null;
+  if (hasRet) { baseRetPrice = await fetchDayPrice(dest, origin, centerRet, pax); if(baseRetPrice!==null) _retPriceMap[centerRet]=baseRetPrice; }
+
+  const displayDep = depPrices.map(p => p===null?null : (hasRet&&baseRetPrice!==null ? p+baseRetPrice : p));
+  const validDep = displayDep.filter(p=>p!==null);
+  const minDep=Math.min(...validDep), maxDep=Math.max(...validDep);
+  dates.forEach((date,i) => {
+    const el=document.getElementById(`dep-${date}`); if(!el) return;
+    el.classList.remove('loading');
+    const pe=el.querySelector('.dpg-p'), se=el.querySelector('.dpg-sub');
+    if(displayDep[i]!==null){
+      pe.textContent=`€${Math.round(displayDep[i])}`; pe.classList.remove('loading-p');
+      if(displayDep[i]===minDep) pe.classList.add('cheap');
+      else if(displayDep[i]===maxDep) pe.classList.add('exp');
+      if(se) se.textContent = hasRet ? 'retour p.p.' : 'enkel p.p.';
+    } else { pe.textContent='n/b'; pe.classList.remove('loading-p'); if(se) se.textContent=''; }
+  });
+
+  if (hasRet) {
+    const retDates = Array.from({length:11}, (_,i) => addDays(centerRet, i-5));
+    const retGrid = document.getElementById('retGrid');
+    retGrid.innerHTML = '';
+    retDates.forEach(date => {
+      const lbl = formatDayLabel(date);
+      const div = document.createElement('div');
+      div.className = `dpg-day${date===centerRet?' active':''} loading`;
+      div.id = `ret-${date}`;
+      div.innerHTML = `<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;
+      div.onclick = () => switchDate('ret', date, origin, dest, pax);
+      retGrid.appendChild(div);
+    });
+    setTimeout(() => { const a=retGrid.querySelector('.active'); if(a) a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }, 150);
+    const retPrices = await Promise.all(retDates.map(d => fetchDayPrice(dest, origin, d, pax)));
+    retDates.forEach((date,i) => { if(retPrices[i]!==null) _retPriceMap[date]=retPrices[i]; });
+    const baseDepPrice = _depPriceMap[centerDep]||null;
+    const displayRet = retPrices.map(p => p===null?null : (baseDepPrice!==null ? p+baseDepPrice : p));
+    const validRet=displayRet.filter(p=>p!==null), minRet=Math.min(...validRet), maxRet=Math.max(...validRet);
+    retDates.forEach((date,i) => {
+      const el=document.getElementById(`ret-${date}`); if(!el) return;
+      el.classList.remove('loading');
+      const pe=el.querySelector('.dpg-p'), se=el.querySelector('.dpg-sub');
+      if(displayRet[i]!==null){
+        pe.textContent=`€${Math.round(displayRet[i])}`; pe.classList.remove('loading-p');
+        if(displayRet[i]===minRet) pe.classList.add('cheap');
+        else if(displayRet[i]===maxRet) pe.classList.add('exp');
+        if(se) se.textContent='retour p.p.';
+      } else { pe.textContent='n/b'; pe.classList.remove('loading-p'); if(se) se.textContent=''; }
+    });
   }
-  document.getElementById('flightsTitle').textContent='Vluchten ophalen voor nieuwe datum…';
-  document.getElementById('flightsGrid').innerHTML='';
-  try{const data=await searchFlights(origin,dest,dep,ret,document.getElementById('cabin').value,document.getElementById('stopover').value.trim());renderFlights(parseFlights(data),dep);}
-  catch(e){document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar voor deze datum.';}
+}
+async function switchDate(type, date, origin, dest, pax) {
+  const grid = document.getElementById(type === 'dep' ? 'depGrid' : 'retGrid');
+  grid.querySelectorAll('.dpg-day').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById(`${type}-${date}`);
+  if (target) { target.classList.add('active'); target.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
+  document.getElementById(type === 'dep' ? 'dep' : 'ret').value = date;
+
+  const dep = document.getElementById('dep').value;
+  const ret = document.getElementById('ret').value;
+  const hasRet = !!ret;
+
+  // Update prices in the OTHER grid to reflect new total
+  if (hasRet) {
+    if (type === 'dep') {
+      // Heen dag gewijzigd → update retour grid met nieuwe basisprijs heen
+      const newDepPrice = _depPriceMap[date] || null;
+      document.getElementById('retGrid').querySelectorAll('.dpg-day').forEach(el => {
+        const retDate = el.id.replace('ret-','');
+        const retP = _retPriceMap[retDate] || null;
+        const pe = el.querySelector('.dpg-p'), se = el.querySelector('.dpg-sub');
+        if (pe && retP !== null && newDepPrice !== null) {
+          pe.textContent = `€${Math.round(retP + newDepPrice)}`;
+          if (se) se.textContent = 'retour p.p.';
+        }
+      });
+    } else {
+      // Retour dag gewijzigd → fetch nieuwe retourprijs, update dep grid
+      let newRetPrice = _retPriceMap[date] || null;
+      if (newRetPrice === null) {
+        newRetPrice = await fetchDayPrice(dest, origin, date, pax);
+        if (newRetPrice !== null) _retPriceMap[date] = newRetPrice;
+      }
+      document.getElementById('depGrid').querySelectorAll('.dpg-day').forEach(el => {
+        const depDate = el.id.replace('dep-','');
+        const depP = _depPriceMap[depDate] || null;
+        const pe = el.querySelector('.dpg-p'), se = el.querySelector('.dpg-sub');
+        if (pe && depP !== null && newRetPrice !== null) {
+          pe.textContent = `€${Math.round(depP + newRetPrice)}`;
+          if (se) se.textContent = 'retour p.p.';
+        }
+      });
+    }
+  }
+
+  // Vluchten herladen
+  document.getElementById('flightsTitle').textContent = 'Vluchten ophalen voor nieuwe datum…';
+  document.getElementById('flightsGrid').innerHTML = '';
+  try {
+    const data = await searchFlights(origin, dest, dep, ret, document.getElementById('cabin').value, document.getElementById('stopover').value.trim());
+    renderFlights(parseFlights(data), dep);
+  } catch(e) {
+    document.getElementById('flightsTitle').textContent = 'Vluchtprijzen niet beschikbaar voor deze datum.';
+  }
 }
 
-// ── HOOFDZOEKOPDRACHT ──
 async function startFullSearch() {
   const origin=document.getElementById('origin').value.trim(), dest=document.getElementById('dest').value.trim();
-  if (!origin||!dest){alert('Vul vertrek en bestemming in.');return;}
   const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value;
-  if (!dep){alert('Vul een vertrekdatum in.');return;}
-  const cabin=document.getElementById('cabin').value, stopover=document.getElementById('stopover').value.trim();
-  const paxContext=`${counts.adults} volwassene(n)${counts.children?' '+counts.children+' kind(eren)':''}${counts.infants?' '+counts.infants+' baby(s)':''}`;
-  const cabinContext=cabin==='Economy'?'Economy':cabin==='Premium_Economy'?'Premium Economy':cabin==='Business'?'Business Class':'First Class';
-
-  // Zakelijke context
-  let bizContext = '';
-  if (bizMode) {
-    const checks = [];
-    if(document.getElementById('bizFlex').checked) checks.push('flexibel/wijzigbaar ticket');
-    if(document.getElementById('bizLounge').checked) checks.push('lounge toegang');
-    if(document.getElementById('bizCo2').checked) checks.push('CO₂-rapportage voor zakelijke reiskosten');
-    if(document.getElementById('bizCorporate').checked) checks.push('corporate tarieven');
-    if(document.getElementById('bizMiles').checked) checks.push('miles/punten optimalisatie');
-    if(checks.length) bizContext = ` Zakelijke eisen: ${checks.join(', ')}.`;
-  }
-
-  if(typeof gtag!=='undefined') gtag('event','analyse_gestart',{event_category:'gebruik',event_label:origin+' → '+dest,zakelijk:bizMode});
+  const cabin=document.getElementById('cabin').value;
+  const stopover=document.getElementById('stopover').value.trim();
+  const paxStr=`${counts.adults} volw.${counts.children?' '+counts.children+' kind':''}${counts.infants?' '+counts.infants+' baby':''}`;
+  if (!origin||!dest) { alert('Vul vertrek en bestemming in.'); return; }
+  if (!dep) { alert('Vul een vertrekdatum in.'); return; }
+  if (typeof gtag!=='undefined') gtag('event','analyse_gestart',{event_category:'gebruik',event_label:origin+' → '+dest,cabin,pax:paxStr});
   const btn=document.getElementById('searchBtn');
-  btn.disabled=true; document.getElementById('searchBtnText').textContent='Bezig…';
+  btn.disabled=true;
+  document.getElementById('searchBtnText').textContent='Bezig…';
   const ls=document.getElementById('liveSection');
-  ls.classList.add('show'); ls.scrollIntoView({behavior:'smooth',block:'start'});
+  ls.classList.add('show');
+  ls.scrollIntoView({behavior:'smooth',block:'start'});
   ['flightsWrap','progressWrap','top5Wrap','errorWrap'].forEach(id=>document.getElementById(id).style.display='none');
-  document.getElementById('retGridWrap').style.display='none';
-  document.getElementById('datePriceWrap').style.display='none';
   document.getElementById('flightsGrid').innerHTML='';
   document.getElementById('flightsTitle').textContent='Vluchten ophalen…';
   document.getElementById('flightsWrap').style.display='block';
   let fs='';
-  try{
+  try {
     document.getElementById('searchBtnText').textContent='Vluchten ophalen…';
-    const data=await searchFlights(origin,dest,dep,ret,cabin,stopover);
-    fs=renderFlights(parseFlights(data),dep);
-    buildDateGrid(origin,dest,dep,ret||'',counts.adults);
-  }catch(e){console.warn('FlightAPI:',e);document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar — AI-analyse gaat door.';}
+    const data = await searchFlights(origin,dest,dep,ret,cabin,stopover);
+    fs = renderFlights(parseFlights(data), dep);
+    buildDateGrid(origin, dest, dep, ret||'', counts.adults);
+  } catch(e) {
+    console.warn('FlightAPI:',e);
+    document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar — AI-analyse gaat door.';
+  }
   document.getElementById('progressWrap').style.display='block';
   buildSteps();
   document.getElementById('searchBtnText').textContent='AI analyseert…';
-  const fullPax=paxContext+', '+cabinContext+bizContext;
+  const paxContext=`${counts.adults} volwassene(n)${counts.children?' '+counts.children+' kind(eren)':''}${counts.infants?' '+counts.infants+' baby(s)':''}`;
+  const cabinContext=cabin==='Economy'?'Economy':cabin==='Premium_Economy'?'Premium Economy':cabin==='Business'?'Business Class':'First Class';
   const results=[];
-  for(const s of STRATEGY_PROMPTS){
+  for (const s of STRATEGY_PROMPTS) {
     setStep(s.id,'running');
-    try{
-      const j=await callAI(s.build(origin,dest,dep,ret,fullPax,fs));
-      j._title=s.title;j._icon=s.icon;j._id=s.id;j._bonus=!!s.bonus;
-      if(typeof j.geschatte_besparing_pct!=='number')j.geschatte_besparing_pct=10;
-      if(typeof j.moeite_score!=='number')j.moeite_score=3;
-      results.push(j);setStep(s.id,'done');
-    }catch(e){console.warn(s.title,e);setStep(s.id,'error');}
+    try {
+      const j=await callAI(s.build(origin,dest,dep,ret,paxContext+', '+cabinContext,fs));
+      j._title=s.title; j._icon=s.icon; j._id=s.id; j._bonus=!!s.bonus;
+      if (typeof j.geschatte_besparing_pct!=='number') j.geschatte_besparing_pct=10;
+      if (typeof j.moeite_score!=='number') j.moeite_score=3;
+      results.push(j); setStep(s.id,'done');
+    } catch(e) { console.warn(s.title,e); setStep(s.id,'error'); }
   }
-  if(!results.length){document.getElementById('errorWrap').style.display='block';document.getElementById('errorBody').textContent='Alle AI-analyses zijn mislukt. Controleer de API-sleutels.';btn.disabled=false;document.getElementById('searchBtnText').textContent='Analyseer mijn route';return;}
+  if (!results.length) {
+    document.getElementById('errorWrap').style.display='block';
+    document.getElementById('errorBody').textContent='Alle AI-analyses zijn mislukt. Controleer de API-sleutels.';
+    btn.disabled=false; document.getElementById('searchBtnText').textContent='Analyseer mijn route'; return;
+  }
   renderTop5(results);
   document.getElementById('top5Wrap').style.display='block';
   document.getElementById('top5Wrap').scrollIntoView({behavior:'smooth',block:'start'});
-  btn.disabled=false;document.getElementById('searchBtnText').textContent='Analyseer mijn route';
+  btn.disabled=false; document.getElementById('searchBtnText').textContent='Analyseer mijn route';
 }
 
-function swapCities(){
-  const o=document.getElementById('origin'),d=document.getElementById('dest');
-  [o.value,d.value]=[d.value,o.value];
-  [acSelected['origin'],acSelected['dest']]=[acSelected['dest'],acSelected['origin']];
-}
-function fmt(s){return s?s.replace(/-/g,''):'';}
-function openSite(site){
-  const getCode=v=>acSelected[v]||(document.getElementById(v).value.match(/\(([A-Z]{3})\)/)?.[1])||(document.getElementById(v).value.match(/\b([A-Z]{3})\b/)?.[1])||document.getElementById(v).value.slice(0,3).toUpperCase();
-  const o=getCode('origin'),d=getCode('dest');
-  const dep=document.getElementById('dep').value,ret=document.getElementById('ret').value;
+function swapCities() { const o=document.getElementById('origin'),d=document.getElementById('dest'); [o.value,d.value]=[d.value,o.value]; }
+function fmt(s){ return s?s.replace(/-/g,''):''; }
+function openSite(site) {
+  const o=(document.getElementById('origin').value.match(/([A-Z]{3})/)?.[1]||document.getElementById('origin').value.slice(0,3)).toUpperCase();
+  const d=(document.getElementById('dest').value.match(/([A-Z]{3})/)?.[1]||document.getElementById('dest').value.slice(0,3)).toUpperCase();
+  const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value;
   const urls={google:`https://www.google.com/flights?q=vluchten+van+${o}+naar+${d}`,skyscanner:`https://www.skyscanner.nl/transport/vluchten/${o.toLowerCase()}/${d.toLowerCase()}/${fmt(dep)}/${fmt(ret)}/`,kayak:`https://www.kayak.nl/flights/${o}-${d}/${dep}/${ret}/`,momondo:`https://www.momondo.nl/vlucht-zoeken/${o}-${d}/${dep}/${ret}/`,kiwi:`https://www.kiwi.com/nl/search/results/${o}/${d}/${dep}/${ret}/`};
-  if(urls[site])window.open(urls[site],'_blank');
+  if(urls[site]) window.open(urls[site],'_blank');
 }
-function openAllSites(){['google','skyscanner','kayak','momondo','kiwi'].forEach((s,i)=>setTimeout(()=>openSite(s),i*300));}
+function openAllSites() { ['google','skyscanner','kayak','momondo','kiwi'].forEach((s,i)=>setTimeout(()=>openSite(s),i*300)); }
 
-const pad=n=>String(n).padStart(2,'0'),today=new Date();
+const pad=n=>String(n).padStart(2,'0'), today=new Date();
 document.getElementById('dep').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
 document.getElementById('flightDate').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
-const rr=new Date(today);rr.setDate(rr.getDate()+7);
-document.getElementById('ret').value=`${rr.getFullYear()}-${pad(rr.getMonth()+1)}-${pad(rr.getDate())}`;
+const r=new Date(today); r.setDate(r.getDate()+7);
+document.getElementById('ret').value=`${r.getFullYear()}-${pad(r.getMonth()+1)}-${pad(r.getDate())}`;
+
+// ── HAMBURGER MENU ──
+function toggleMenu() {
+  const menu=document.getElementById('mobileMenu'), btn=document.getElementById('hamburger');
+  const open=menu.classList.toggle('open');
+  btn.textContent=open?'✕':'☰';
+}
+document.addEventListener('click', e => {
+  const menu=document.getElementById('mobileMenu'), h=document.getElementById('hamburger');
+  if(menu&&menu.classList.contains('open')&&!menu.contains(e.target)&&e.target!==h){
+    menu.classList.remove('open'); h.textContent='☰';
+  }
+});
+
+// ── TAAL TOGGLE ──
+let lang='nl';
+const T={
+  nl:{ns1:'AI-strategieën',ns2:'besparing mogelijk',ns3:'analysetijd',ns4:'geen account nodig',
+      heroTag:'AI vliegticket analyse',heroH1:'Bespaar slim op<br>jouw volgende <em>vlucht</em>',
+      heroP:'Vul je route in en ontvang 7 gepersonaliseerde AI-strategieën om goedkoper te boeken.',
+      searchBtn:'Analyseer mijn route',trackerLabel:'🛬 Vluchten volgen',trackBtn:'Volg vlucht',
+      advancedBtn:'+ Uitgebreid (passagiers, klasse, tussenstop)',
+      placeholderFrom:'bijv. Amsterdam of AMS',placeholderTo:'bijv. Barcelona of BCN',
+      placeholderFlight:'bijv. KL1234 of BA432',
+      tipsLabel:'💡 5 tips om zelf goedkoper te vliegen',
+      bizToggle:'Zakelijk reizen',mobileLang:'Switch to English',mobileBiz:'Zakelijk reizen',
+      footerMain:'VluchtHack © 2026 · AI-aangedreven · Geen account nodig',footerPrivacy:'Privacybeleid',
+      bizBanner:'💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.'},
+  en:{ns1:'AI strategies',ns2:'savings possible',ns3:'analysis time',ns4:'no account needed',
+      heroTag:'AI flight ticket analysis',heroH1:'Save smart on<br>your next <em>flight</em>',
+      heroP:'Enter your route and receive 7 personalised AI strategies to book cheaper.',
+      searchBtn:'Analyse my route',trackerLabel:'🛬 Track flights',trackBtn:'Track flight',
+      advancedBtn:'+ Advanced (passengers, class, stopover)',
+      placeholderFrom:'e.g. Amsterdam or AMS',placeholderTo:'e.g. Barcelona or BCN',
+      placeholderFlight:'e.g. KL1234 or BA432',
+      tipsLabel:'💡 5 tips to book cheaper yourself',
+      bizToggle:'Business travel',mobileLang:'Schakel naar Nederlands',mobileBiz:'Business travel',
+      footerMain:'VluchtHack © 2026 · AI-powered · No account needed',footerPrivacy:'Privacy policy',
+      bizBanner:'💼 <strong>Business mode active</strong> — Business class, flexible tickets, CO₂ reporting and corporate fares are included in the analysis.'}
+};
+function toggleLang(){
+  lang=lang==='nl'?'en':'nl';
+  const t=T[lang],isEn=lang==='en';
+  document.documentElement.lang=lang;
+  document.getElementById('langNL').classList.toggle('active',!isEn);
+  document.getElementById('langEN').classList.toggle('active',isEn);
+  document.getElementById('ns1').textContent=t.ns1;
+  document.getElementById('ns2').textContent=t.ns2;
+  document.getElementById('ns3').textContent=t.ns3;
+  document.getElementById('ns4').textContent=t.ns4;
+  document.querySelector('.hero-tag').textContent=t.heroTag;
+  document.querySelector('.hero h1').innerHTML=t.heroH1;
+  document.querySelector('.hero p').textContent=t.heroP;
+  document.getElementById('searchBtnText').textContent=t.searchBtn;
+  document.getElementById('trackerLabel').textContent=t.trackerLabel;
+  document.getElementById('trackBtnText').textContent=t.trackBtn;
+  document.getElementById('advancedLabel').textContent=t.advancedBtn;
+  document.getElementById('origin').placeholder=t.placeholderFrom;
+  document.getElementById('dest').placeholder=t.placeholderTo;
+  document.getElementById('flightNum').placeholder=t.placeholderFlight;
+  document.getElementById('tipsLabel').textContent=t.tipsLabel;
+  document.getElementById('bizToggleLabel').textContent=t.bizToggle;
+  document.getElementById('mobileLangLabel').textContent=t.mobileLang;
+  document.getElementById('mobileBizLabel').textContent=t.mobileBiz;
+  document.getElementById('bizBanner').innerHTML=t.bizBanner;
+  document.getElementById('footerMain').textContent=t.footerMain;
+  document.getElementById('footerPrivacy').textContent=t.footerPrivacy;
+  document.querySelectorAll('label[data-nl]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    const textNodes=[...el.childNodes].filter(n=>n.nodeType===3);
+    if(textNodes.length)textNodes[0].textContent=val;
+  });
+  if(typeof gtag!=='undefined')gtag('event','taal_wisselen',{event_category:'gebruik',taal:lang});
+}
+
+// ── ZAKELIJK MODUS ──
+let bizMode=false;
+function toggleBusiness(){
+  bizMode=!bizMode;
+  const t=document.getElementById('bizToggle'),b=document.getElementById('bizBanner'),p=document.getElementById('bizPanel');
+  t.classList.toggle('active',bizMode);
+  b.classList.toggle('show',bizMode);
+  p.classList.toggle('show',bizMode);
+  document.getElementById('bizToggleLabel').textContent=T[lang].bizToggle;
+  const mb=document.getElementById('mobileBizBtn');
+  if(mb)mb.classList.toggle('biz-active',bizMode);
+  document.getElementById('mobileBizLabel').textContent=bizMode?'Zakelijk uit':T[lang].mobileBiz;
+  if(bizMode){
+    document.getElementById('cabin').value='Business';
+    document.getElementById('advancedPanel').style.display='block';
+    document.getElementById('advancedLabel').textContent='− Verberg opties';
+  }
+  if(typeof gtag!=='undefined')gtag('event',bizMode?'zakelijk_aan':'zakelijk_uit',{event_category:'gebruik'});
+}
+
+// ── TOGGLE FUNCTIES ──
+function toggleTips(){const p=document.getElementById('tipsPanel'),l=document.getElementById('tipsLabel');const open=p.style.display==='none';p.style.display=open?'block':'none';l.textContent=open?'💡 Verberg tips':T[lang].tipsLabel;}
+function toggleTracker(){const p=document.getElementById('trackerPanel'),l=document.getElementById('trackerLabel');const open=p.style.display==='none';p.style.display=open?'block':'none';l.textContent=open?'🛬 Verberg vluchten volgen':T[lang].trackerLabel;}
+function toggleAdvanced(){const p=document.getElementById('advancedPanel'),l=document.getElementById('advancedLabel');const open=p.style.display==='none';p.style.display=open?'block':'none';l.textContent=open?'− Verberg opties':T[lang].advancedBtn;}
+
 </script>
 </body>
 </html>

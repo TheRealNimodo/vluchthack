@@ -158,20 +158,20 @@ input::placeholder{color:var(--g400);}
 
 /* FLIGHT CARDS */
 .flights{display:flex;flex-direction:column;gap:4px;margin-bottom:1rem;}
-.fc{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.15rem .875rem;display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:12px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.fc{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.25rem .875rem;display:grid;grid-template-columns:auto 1fr auto 1fr auto;gap:12px;align-items:center;box-shadow:0 1px 2px rgba(0,0,0,.04);}
 .fc.best{border-color:#93c5fd;background:var(--blue-light);}
-.fc-code{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:var(--g900);}
+.fc-code{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:var(--g900);display:flex;align-items:center;gap:6px;}
 .fc-time{font-size:11px;color:var(--g500);}
 .fc-mid{text-align:center;}
 .fc-arrow{color:var(--g300);font-size:13px;}
 .fc-stop{font-size:10px;color:var(--g500);}
 .fc-dur{font-size:10px;color:var(--g500);}
-.fc-right{text-align:right;}
-.fc-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:var(--blue);}
+.fc-right{text-align:right;white-space:nowrap;display:flex;align-items:center;gap:4px;justify-content:flex-end;flex-wrap:wrap;}
+.fc-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:var(--blue);}
 .fc-pp{font-size:10px;color:var(--g400);}
 .fc-air{font-size:10px;color:var(--g500);}
-.best-tag{display:inline-block;background:var(--blue);color:var(--white);font-size:9px;font-weight:600;padding:1px 7px;border-radius:99px;margin-top:2px;}
-.book-btn{display:inline-block;margin-top:3px;font-size:11px;color:var(--blue);border:1px solid var(--blue-mid);border-radius:99px;padding:2px 9px;text-decoration:none;transition:all .15s;}
+.best-tag{display:inline-block;background:var(--blue);color:var(--white);font-size:9px;font-weight:600;padding:1px 6px;border-radius:99px;}
+.book-btn{display:inline-block;margin-top:2px;font-size:11px;color:var(--blue);border:1px solid var(--blue-mid);border-radius:99px;padding:2px 9px;text-decoration:none;transition:all .15s;}
 .book-btn:hover{background:var(--blue);color:var(--white);}
 
 /* DATE GRID */
@@ -758,7 +758,7 @@ function renderFlights(flights,dep){
   const now=new Date().toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});
   title.textContent=`${flights[0].dep} → ${flights[0].arr} · ${dep} · ${flights.length} ${flights.length===1?'vlucht':'vluchten'}`;
   const ts=document.getElementById('flightTimestamp');ts.style.display='block';ts.textContent=`Prijzen opgehaald om ${now} — kunnen variëren bij boeking`;
-  grid.innerHTML=flights.slice(0,3).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}</div><div class="fc-time">${f.depT}</div>${i===0?'<div class="best-tag">Goedkoopst</div>':''}</div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><div class="fc-price">€${Math.round(f.price)}</div><div class="fc-pp">p.p.</div><div class="fc-air">${f.airline}</div><a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a></div></div>`).join('');
+  grid.innerHTML=flights.slice(0,3).map((f,i)=>`<div class="fc${i===0?' best':''}"><div><div class="fc-code">${f.dep}${i===0?'<span class="best-tag">Goedkoopst</span>':''}</div><div class="fc-time">${f.depT}</div></div><div class="fc-mid"><div class="fc-arrow">→</div><div class="fc-stop">${f.stops===0?'Direct':f.stops+' stop'}</div><div class="fc-dur">${f.dur}</div></div><div><div class="fc-code">${f.arr}</div><div class="fc-time">${f.arrT}</div></div><div class="fc-right"><span class="fc-price">€${Math.round(f.price)}</span> <span class="fc-pp">p.p.</span> · <span class="fc-air">${f.airline}</span> · <a class="book-btn" href="https://www.google.com/flights?q=vluchten+van+${f.dep}+naar+${f.arr}" target="_blank">Zoek & Boek →</a></div></div>`).join('');
   return`Goedkoopst: €${Math.round(flights[0].price)} (${flights[0].airline}, ${flights[0].stops===0?'direct':flights[0].stops+' stop'}). `+flights.slice(0,3).map(f=>`${f.airline} ${f.dep}→${f.arr} €${Math.round(f.price)}`).join(' | ');
 }
 
@@ -1024,6 +1024,15 @@ document.getElementById('dep').value=`${today.getFullYear()}-${pad(today.getMont
 document.getElementById('flightDate').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
 const rr=new Date(today);rr.setDate(rr.getDate()+7);
 document.getElementById('ret').value=`${rr.getFullYear()}-${pad(rr.getMonth()+1)}-${pad(rr.getDate())}`;
+
+document.getElementById('dep').addEventListener('change', function() {
+  const depVal = this.value;
+  if (!depVal) return;
+  const retEl = document.getElementById('ret');
+  const next = new Date(depVal);
+  next.setDate(next.getDate() + 1);
+  retEl.value = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}`;
+});
 </script>
 </body>
 </html>

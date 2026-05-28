@@ -190,7 +190,26 @@ details[open] summary{border-bottom:1px solid var(--g100);}
 .tip-title{font-size:13px;font-weight:600;color:var(--g900);margin-bottom:2px;}
 .tip-body{font-size:13px;color:var(--g500);line-height:1.6;}
 
-/* Date price grid */
+.pax-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.counter-row{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--g300);border-radius:var(--rxs);padding:6px 10px;}
+.counter-btn{background:none;border:none;color:var(--blue);font-size:18px;font-weight:600;cursor:pointer;width:20px;line-height:1;padding:0;transition:opacity .15s;}
+.counter-btn:hover{opacity:.7;}
+#adults-val,#children-val,#infants-val{font-size:14px;font-weight:600;color:var(--g900);min-width:20px;text-align:center;}
+.tracker-row{display:grid;grid-template-columns:1fr 160px auto;gap:10px;align-items:end;}
+.track-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1rem;}
+.track-field{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--g100);}
+.track-field:last-child{border-bottom:none;}
+.track-label{color:var(--g500);}
+.track-val{color:var(--g900);font-weight:500;}
+.track-status{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:600;}
+.track-on-time{background:#dcfce7;color:#16a34a;}
+.track-delayed{background:#fef3c7;color:#d97706;}
+.track-cancelled{background:#fee2e2;color:#dc2626;}
+@media(max-width:620px){
+  .pax-row{grid-template-columns:repeat(2,1fr);}
+  .tracker-row{grid-template-columns:1fr 1fr;}
+  .tracker-row .fl:last-child{grid-column:1/-1;}
+}
 .dpg-label{font-size:11px;font-weight:600;color:var(--g400);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
 .dpg-scroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory;}
 .dpg-scroll::-webkit-scrollbar{display:none;}
@@ -285,19 +304,70 @@ footer a:hover{color:var(--blue);}
       <input id="ret" type="date">
     </div>
     <div class="fl">
-      <label>Passagiers</label>
-      <select id="pax">
-        <option value="1">1 volwassene</option>
-        <option value="2">2 volwassenen</option>
-        <option value="3">3 volwassenen</option>
-        <option value="4">4 volwassenen</option>
+      <label>Cabineklasse</label>
+      <select id="cabin">
+        <option value="Economy">Economy</option>
+        <option value="Premium_Economy">Premium Economy</option>
+        <option value="Business">Business</option>
+        <option value="First">First Class</option>
       </select>
+    </div>
+  </div>
+  <div class="pax-row">
+    <div class="fl">
+      <label>Volwassenen</label>
+      <div class="counter-row">
+        <button class="counter-btn" onclick="changeCount('adults',-1)">−</button>
+        <span id="adults-val">1</span>
+        <button class="counter-btn" onclick="changeCount('adults',1)">+</button>
+      </div>
+    </div>
+    <div class="fl">
+      <label>Kinderen <span style="font-size:10px;color:var(--g400);">(2–11 jr)</span></label>
+      <div class="counter-row">
+        <button class="counter-btn" onclick="changeCount('children',-1)">−</button>
+        <span id="children-val">0</span>
+        <button class="counter-btn" onclick="changeCount('children',1)">+</button>
+      </div>
+    </div>
+    <div class="fl">
+      <label>Baby's <span style="font-size:10px;color:var(--g400);">(0–1 jr)</span></label>
+      <div class="counter-row">
+        <button class="counter-btn" onclick="changeCount('infants',-1)">−</button>
+        <span id="infants-val">0</span>
+        <button class="counter-btn" onclick="changeCount('infants',1)">+</button>
+      </div>
+    </div>
+    <div class="fl">
+      <label>Tussenstop via <span style="font-size:10px;color:var(--g400);">(optioneel)</span></label>
+      <input id="stopover" type="text" placeholder="bijv. MAD of Madrid">
     </div>
   </div>
   <button class="btn" id="searchBtn" onclick="startFullSearch()">
     <span id="searchBtnIcon">🔍</span>
     <span id="searchBtnText">Analyseer mijn route</span>
   </button>
+</div>
+
+<!-- FLIGHT TRACKER -->
+<div class="search-card" style="margin-top:-0.5rem;">
+  <div class="card-label">🛬 Vlucht volgen</div>
+  <div class="tracker-row">
+    <div class="fl" style="flex:1;">
+      <label>Vluchtnummer</label>
+      <input id="flightNum" type="text" placeholder="bijv. KL1234 of BA432">
+    </div>
+    <div class="fl">
+      <label>Datum</label>
+      <input id="flightDate" type="date">
+    </div>
+    <div class="fl" style="align-self:flex-end;">
+      <button class="btn" id="trackBtn" onclick="trackFlight()" style="padding:9px 16px;font-size:14px;">
+        <span id="trackBtnText">Volg vlucht</span>
+      </button>
+    </div>
+  </div>
+  <div id="trackResult" style="display:none;margin-top:1rem;"></div>
 </div>
 
 <!-- STRATEGIES -->
@@ -415,18 +485,102 @@ const STRATEGY_PROMPTS = [
   { id:8, title:'CO\u2082 Voetafdruk & Te Voet', icon:'\ud83c\udf31', bonus:true, build:(o,d,dep,ret,pax,f)=>`Je bent een duurzaamheidsexpert. Iemand overweegt te vliegen van ${o} naar ${d} op ${dep} voor ${pax} persoon/personen.${f?' Vluchtprijs ter referentie: '+f:''}\nBereken: 1. Looproute te voet: afstand in km en looptijd in dagen/weken. 2. CO2 uitstoot vlucht vs trein vs te voet in kg per persoon. 3. Hoeveel CO2 bespaard als men NIET vliegt.\nAntwoord ALLEEN als geldig JSON:\n{"samenvatting":"2-3 zinnen over CO2 vergelijking en loopafstand","geschatte_besparing_pct":0,"moeite_score":5,"concrete_tips":["CO2 vlucht: circa X kg per persoon","CO2 trein: circa X kg — X% minder dan vliegen","Looproute: ca. X km — circa X weken te voet"],"beste_optie":"meest milieuvriendelijke reisoptie met concrete CO2 cijfers","platforms":["ICAO Carbon Calculator","EcoPassenger","Rome2rio"]}` }
 ];
 
-async function searchFlights(origin, dest, dep, ret, pax) {
+// ── PASSAGIERS TELLER ──
+const counts = { adults:1, children:0, infants:0 };
+function changeCount(type, delta) {
+  const min = type === 'adults' ? 1 : 0;
+  const max = type === 'infants' ? counts.adults : 9;
+  counts[type] = Math.max(min, Math.min(max, counts[type] + delta));
+  document.getElementById(type+'-val').textContent = counts[type];
+}
+
+async function searchFlights(origin, dest, dep, ret, cabin, stopover) {
   const o = (origin.match(/\b([A-Z]{3})\b/)?.[1] || origin.slice(0,3)).toUpperCase();
   const d = (dest.match(/\b([A-Z]{3})\b/)?.[1] || dest.slice(0,3)).toUpperCase();
-  const url = ret
-    ? `https://api.flightapi.io/roundtrip/VLUCHT_KEY/${o}/${d}/${dep}/${ret}/${pax}/0/0/Economy/EUR`
-    : `https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${o}/${d}/${dep}/${pax}/0/0/Economy/EUR`;
+  const adults = counts.adults, children = counts.children, infants = counts.infants;
+  const cls = cabin || 'Economy';
+  let url;
+  if (stopover && stopover.trim()) {
+    // Multi-trip: AMS → stopover → dest
+    const s = (stopover.match(/\b([A-Z]{3})\b/)?.[1] || stopover.slice(0,3)).toUpperCase();
+    url = `https://api.flightapi.io/multitrip/VLUCHT_KEY?arp1=${o}&arp2=${s}&arp3=${s}&arp4=${d}&date1=${dep}&date2=${dep}&adults=${adults}&children=${children}&infants=${infants}&cabinclass=${cls}&currency=EUR&trips=2`;
+  } else if (ret) {
+    url = `https://api.flightapi.io/roundtrip/VLUCHT_KEY/${o}/${d}/${dep}/${ret}/${adults}/${children}/${infants}/${cls}/EUR`;
+  } else {
+    url = `https://api.flightapi.io/onewaytrip/VLUCHT_KEY/${o}/${d}/${dep}/${adults}/${children}/${infants}/${cls}/EUR`;
+  }
   const res = await fetch('/api/flights?url=' + encodeURIComponent(url));
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
   if (data.message) throw new Error(data.message);
   if (data.error) throw new Error(data.error);
   return data;
+}
+
+// ── VLUCHT TRACKER ──
+async function trackFlight() {
+  const num = document.getElementById('flightNum').value.trim().toUpperCase();
+  const date = document.getElementById('flightDate').value;
+  if (!num) { alert('Vul een vluchtnummer in, bijv. KL1234'); return; }
+  if (!date) { alert('Vul een datum in'); return; }
+  const btn = document.getElementById('trackBtn');
+  const res = document.getElementById('trackResult');
+  btn.disabled = true;
+  document.getElementById('trackBtnText').textContent = 'Ophalen…';
+  res.style.display = 'none';
+  try {
+    // Extract airline code and flight number
+    const match = num.match(/^([A-Z]{2})(\d+)$/);
+    if (!match) throw new Error('Ongeldig formaat. Gebruik bijv. KL1234');
+    const airline = match[1], flightNo = match[2];
+    const dateFormatted = date.replace(/-/g,'');
+    const url = `https://api.flightapi.io/airline/VLUCHT_KEY?num=${flightNo}&name=${airline}&date=${dateFormatted}`;
+    const r = await fetch('/api/flights?url=' + encodeURIComponent(url));
+    const data = await r.json();
+    if (!data || (Array.isArray(data) && !data.length)) throw new Error('Geen vluchtdata gevonden voor dit vluchtnummer en datum.');
+    renderTrackResult(data, num);
+  } catch(e) {
+    res.style.display = 'block';
+    res.innerHTML = `<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:var(--rs);padding:1rem;font-size:13px;color:#dc2626;">⚠ ${e.message}</div>`;
+  }
+  btn.disabled = false;
+  document.getElementById('trackBtnText').textContent = 'Volg vlucht';
+}
+
+function renderTrackResult(data, flightNum) {
+  const res = document.getElementById('trackResult');
+  res.style.display = 'block';
+  // Data can be array or object
+  const arr = Array.isArray(data) ? data : [data];
+  const dep = arr.find(x => x.departure)?.departure || {};
+  const arr2 = arr.find(x => x.arrival)?.arrival || {};
+  const depTime = dep.departureDateTime ? new Date(dep.departureDateTime).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'}) : dep.scheduledTime || '—';
+  const arrTime = arr2.arrivalDateTime ? new Date(arr2.arrivalDateTime).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'}) : arr2.scheduledTime || '—';
+  const depAirport = dep.airportCode || dep.airport || '—';
+  const arrAirport = arr2.airportCode || arr2.airport || '—';
+  const depCity = dep.airportCity || dep.airport || '—';
+  const arrCity = arr2.airportCity || arr2.airport || '—';
+  const terminal = dep.terminal ? `Terminal ${dep.terminal}` : '—';
+  const gate = dep.gate || arr2.gate || '—';
+  const baggage = arr2.baggage || '—';
+  const timeRem = arr2.timeRemaining || null;
+  const statusCls = timeRem ? 'track-on-time' : 'track-on-time';
+  const statusTxt = timeRem ? `Onderweg — ${timeRem}` : 'Geland';
+  res.innerHTML = `
+    <div class="track-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:var(--g900);">${flightNum}</span>
+        <span class="track-status ${statusCls}">${statusTxt}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;background:var(--g50);border-radius:var(--rxs);padding:.875rem;margin-bottom:.75rem;">
+        <div><div style="font-size:20px;font-weight:800;color:var(--g900);font-family:'Plus Jakarta Sans',sans-serif;">${depAirport}</div><div style="font-size:12px;color:var(--g500);">${depCity}</div><div style="font-size:13px;font-weight:600;color:var(--blue);">${depTime}</div></div>
+        <div style="text-align:center;color:var(--g300);font-size:18px;">→</div>
+        <div style="text-align:right;"><div style="font-size:20px;font-weight:800;color:var(--g900);font-family:'Plus Jakarta Sans',sans-serif;">${arrAirport}</div><div style="font-size:12px;color:var(--g500);">${arrCity}</div><div style="font-size:13px;font-weight:600;color:var(--blue);">${arrTime}</div></div>
+      </div>
+      <div class="track-field"><span class="track-label">Terminal</span><span class="track-val">${terminal}</span></div>
+      <div class="track-field"><span class="track-label">Gate</span><span class="track-val">${gate}</span></div>
+      <div class="track-field"><span class="track-label">Bagageband</span><span class="track-val">${baggage}</span></div>
+    </div>`;
 }
 
 function parseFlights(data) {
@@ -715,7 +869,7 @@ async function switchDate(type, date, origin, dest, pax) {
   document.getElementById('flightsTitle').textContent = 'Vluchten ophalen voor nieuwe datum…';
   document.getElementById('flightsGrid').innerHTML = '';
   try {
-    const data = await searchFlights(origin, dest, dep, ret, pax);
+    const data = await searchFlights(origin, dest, dep, ret, document.getElementById('cabin').value, document.getElementById('stopover').value.trim());
     renderFlights(parseFlights(data), dep);
   } catch(e) {
     document.getElementById('flightsTitle').textContent = 'Vluchtprijzen niet beschikbaar voor deze datum.';
@@ -724,10 +878,13 @@ async function switchDate(type, date, origin, dest, pax) {
 
 async function startFullSearch() {
   const origin=document.getElementById('origin').value.trim(), dest=document.getElementById('dest').value.trim();
-  const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value, pax=document.getElementById('pax').value;
+  const dep=document.getElementById('dep').value, ret=document.getElementById('ret').value;
+  const cabin=document.getElementById('cabin').value;
+  const stopover=document.getElementById('stopover').value.trim();
+  const paxStr=`${counts.adults} volw.${counts.children?' '+counts.children+' kind':''}${counts.infants?' '+counts.infants+' baby':''}`;
   if (!origin||!dest) { alert('Vul vertrek en bestemming in.'); return; }
   if (!dep) { alert('Vul een vertrekdatum in.'); return; }
-  if (typeof gtag!=='undefined') gtag('event','analyse_gestart',{event_category:'gebruik',event_label:origin+' → '+dest});
+  if (typeof gtag!=='undefined') gtag('event','analyse_gestart',{event_category:'gebruik',event_label:origin+' → '+dest,cabin,pax:paxStr});
   const btn=document.getElementById('searchBtn');
   btn.disabled=true;
   document.getElementById('searchBtnText').textContent='Bezig…';
@@ -741,22 +898,23 @@ async function startFullSearch() {
   let fs='';
   try {
     document.getElementById('searchBtnText').textContent='Vluchten ophalen…';
-    const data = await searchFlights(origin,dest,dep,ret,pax);
+    const data = await searchFlights(origin,dest,dep,ret,cabin,stopover);
     fs = renderFlights(parseFlights(data), dep);
-    // Build date price grid in background (non-blocking)
-    buildDateGrid(origin, dest, dep, ret||'', pax);
+    buildDateGrid(origin, dest, dep, ret||'', counts.adults);
   } catch(e) {
     console.warn('FlightAPI:',e);
-    document.getElementById('flightsTitle').textContent=`Vluchtprijzen niet beschikbaar — AI-analyse gaat door.`;
+    document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar — AI-analyse gaat door.';
   }
   document.getElementById('progressWrap').style.display='block';
   buildSteps();
   document.getElementById('searchBtnText').textContent='AI analyseert…';
+  const paxContext=`${counts.adults} volwassene(n)${counts.children?' '+counts.children+' kind(eren)':''}${counts.infants?' '+counts.infants+' baby(s)':''}`;
+  const cabinContext=cabin==='Economy'?'Economy':cabin==='Premium_Economy'?'Premium Economy':cabin==='Business'?'Business Class':'First Class';
   const results=[];
   for (const s of STRATEGY_PROMPTS) {
     setStep(s.id,'running');
     try {
-      const j=await callAI(s.build(origin,dest,dep,ret,pax,fs));
+      const j=await callAI(s.build(origin,dest,dep,ret,paxContext+', '+cabinContext,fs));
       j._title=s.title; j._icon=s.icon; j._id=s.id; j._bonus=!!s.bonus;
       if (typeof j.geschatte_besparing_pct!=='number') j.geschatte_besparing_pct=10;
       if (typeof j.moeite_score!=='number') j.moeite_score=3;
@@ -787,6 +945,7 @@ function openAllSites() { ['google','skyscanner','kayak','momondo','kiwi'].forEa
 
 const pad=n=>String(n).padStart(2,'0'), today=new Date();
 document.getElementById('dep').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+document.getElementById('flightDate').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
 const r=new Date(today); r.setDate(r.getDate()+7);
 document.getElementById('ret').value=`${r.getFullYear()}-${pad(r.getMonth()+1)}-${pad(r.getDate())}`;
 </script>

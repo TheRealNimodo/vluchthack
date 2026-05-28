@@ -1150,16 +1150,15 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
   // Verberg datumgrid als minder dan 3 dagen prijsdata hebben
   if(validDep.length < 3){
     document.getElementById('datePriceWrap').style.display='none';
-    const noDataMsg = document.getElementById('dpgNoData') || document.createElement('div');
-    noDataMsg.id='dpgNoData';
+    let noDataMsg = document.getElementById('dpgNoData');
+    if(!noDataMsg){ noDataMsg=document.createElement('div'); noDataMsg.id='dpgNoData'; document.getElementById('flightsWrap').insertBefore(noDataMsg, document.getElementById('datePriceWrap')); }
     noDataMsg.style.cssText='font-size:12px;color:var(--g400);margin-bottom:1rem;';
     noDataMsg.textContent='Onvoldoende prijsdata beschikbaar voor het datumoverzicht voor deze route.';
-    document.getElementById('flightsWrap').insertBefore(noDataMsg, document.getElementById('datePriceWrap'));
-    return;
-  }
+  } else {
   document.getElementById('datePriceWrap').style.display='block';
   const minDep=Math.min(...validDep),maxDep=Math.max(...validDep);
   dates.forEach((date,i)=>{const el=document.getElementById(`dep-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayDep[i]!==null){pe.textContent=`€${Math.round(displayDep[i])}`;pe.classList.remove('loading-p');if(displayDep[i]===minDep)pe.classList.add('cheap');else if(displayDep[i]===maxDep)pe.classList.add('exp');if(se)se.textContent=hasRet?'retour p.p.':'enkel p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}});
+  } // end else
   if(hasRet){const retDates=Array.from({length:7},(_,i)=>addDays(centerRet,i-3));const retGrid=document.getElementById('retGrid');retGrid.innerHTML='';retDates.forEach(date=>{const lbl=formatDayLabel(date);const div=document.createElement('div');div.className=`dpg-day${date===centerRet?' active':''} loading`;div.id=`ret-${date}`;div.innerHTML=`<div class="dpg-wd">${lbl.wd}</div><div class="dpg-d">${lbl.day}</div><div class="dpg-p loading-p">—</div><div class="dpg-sub">laden…</div>`;div.onclick=()=>switchDate('ret',date,origin,dest,pax);retGrid.appendChild(div);});setTimeout(()=>{const a=retGrid.querySelector('.active');if(a)a.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},150);const retPrices=await Promise.all(retDates.map(d=>fetchDayPrice(dest,origin,d,pax)));retDates.forEach((date,i)=>{if(retPrices[i]!==null)_retPriceMap[date]=retPrices[i];});const baseDepPrice=_depPriceMap[centerDep]||null;const displayRet=retPrices.map(p=>p===null?null:(baseDepPrice!==null?p+baseDepPrice:p));const validRet=displayRet.filter(p=>p!==null),minRet=Math.min(...validRet),maxRet=Math.max(...validRet);retDates.forEach((date,i)=>{const el=document.getElementById(`ret-${date}`);if(!el)return;el.classList.remove('loading');const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');if(displayRet[i]!==null){pe.textContent=`€${Math.round(displayRet[i])}`;pe.classList.remove('loading-p');if(displayRet[i]===minRet)pe.classList.add('cheap');else if(displayRet[i]===maxRet)pe.classList.add('exp');if(se)se.textContent='retour p.p.';}else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}}); }
 }
 

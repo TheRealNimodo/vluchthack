@@ -22,7 +22,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S3B3NZ2Z3F"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S3B3NZ2Z3F');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap&font-display=swap" rel="stylesheet">
 <style>
 :root{
   --blue:#2563ff;--blue-light:#eff6ff;--blue-mid:#dbeafe;
@@ -68,7 +68,7 @@ nav{background:var(--white);border-bottom:1px solid var(--g200);padding:0 2rem;d
 main{max-width:820px;margin:0 auto;padding:3rem 1.5rem 6rem;}
 
 /* HERO */
-.hero{text-align:center;margin-bottom:2rem;}
+.hero{text-align:center;margin-bottom:.75rem;}
 .hero-tag{display:inline-block;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:500;padding:4px 14px;border-radius:99px;margin-bottom:1rem;}
 .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.03em;color:var(--g900);margin-bottom:.6rem;}
 .hero h1 em{color:var(--blue);font-style:normal;}
@@ -116,7 +116,7 @@ input::placeholder{color:var(--g400);}
 .biz-check input[type=checkbox]{width:auto;accent-color:var(--amber);}
 
 /* TRACKER */
-.tracker-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:.75rem 1.25rem;margin-bottom:.75rem;box-shadow:var(--sh);}
+.tracker-card{background:var(--g50);border:1px solid var(--g200);border-radius:var(--r);padding:.75rem 1.25rem;margin-bottom:.75rem;}
 .tracker-row{display:grid;grid-template-columns:1fr 160px auto;gap:10px;align-items:end;margin-top:12px;}
 .track-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1rem;}
 .track-field{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--g100);}
@@ -134,6 +134,7 @@ input::placeholder{color:var(--g400);}
 /* STRAT GRID */
 .strat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:2rem;}
 .strat{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:.875rem;transition:border-color .15s,box-shadow .15s;}
+.strat{cursor:pointer;}
 .strat:hover{border-color:var(--blue-mid);box-shadow:var(--sh);}
 .strat-n{font-size:10px;font-weight:600;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
 .strat-i{font-size:18px;margin-bottom:5px;}
@@ -319,16 +320,10 @@ footer a:hover{color:var(--blue);}
 <div class="hero">
   <div class="hero-tag" id="heroTag">AI vliegticket analyse</div>
   <h1 id="heroH1">Bespaar slim op<br>jouw volgende <em>vlucht</em></h1>
-  <p id="heroP">Vul je route in en ontvang 7 gepersonaliseerde AI-strategieën om goedkoper te boeken.</p>
-  <div class="checks">
-    <div class="check"><div class="check-dot">✓</div>7 boekaanbevelingen op maat</div>
-    <div class="check"><div class="check-dot">✓</div>Geschatte besparing per strategie</div>
-    <div class="check"><div class="check-dot">✓</div>Directe links naar de goedkoopste sites</div>
-    <div class="check"><div class="check-dot">✓</div>Klaar in minder dan 60 seconden</div>
-  </div>
+  <p id="heroP">7 AI-strategieën analyseren jouw route en vinden de goedkoopste manier om te boeken.</p>
 </div>
 
-<div class="example-bar">
+<div class="example-bar" id="exampleBar">
   💡 <span><strong>Voorbeeld:</strong> AMS → BCN in juli — VluchtHack vond via de Landsprijs Omzeiler een besparing van €47 per persoon t.o.v. directe boeking op Skyscanner.</span>
 </div>
 
@@ -455,13 +450,13 @@ footer a:hover{color:var(--blue);}
 
 <div class="sec"><h2 class="sec-title" id="secStrategies">Wat analyseert de AI</h2><div class="sec-line"></div></div>
 <div class="strat-grid">
-  <div class="strat"><div class="strat-n">01</div><div class="strat-i">🗺️</div><div class="strat-t">Verborgen Routescanner</div><div class="strat-d">Alternatieve luchthavens & multi-leg combinaties</div></div>
-  <div class="strat"><div class="strat-n">02</div><div class="strat-i">🛡️</div><div class="strat-t">Prijsmanipulatie Ontmaskerd</div><div class="strat-d">Vermijd prijsinflatie via cookies & herhaalzoekopdrachten</div></div>
-  <div class="strat"><div class="strat-n">03</div><div class="strat-i">🌍</div><div class="strat-t">Landsprijs Omzeiler</div><div class="strat-d">Goedkoper boeken vanuit een ander land of valuta</div></div>
-  <div class="strat"><div class="strat-n">04</div><div class="strat-i">⏱️</div><div class="strat-t">Ideale Boekmoment Vinder</div><div class="strat-d">Beste dag & tijdvenster om te boeken</div></div>
-  <div class="strat"><div class="strat-n">05</div><div class="strat-i">📋</div><div class="strat-t">Tariefregels Kraker</div><div class="strat-d">Tariefklassen & routelogica die de prijs verlagen</div></div>
-  <div class="strat"><div class="strat-n">06</div><div class="strat-i">📊</div><div class="strat-t">Airline vs Boekingssite</div><div class="strat-d">Directe vergelijking op verborgen kosten & marges</div></div>
-  <div class="strat"><div class="strat-n">07</div><div class="strat-i">🔔</div><div class="strat-t">Prijsdaling Bewaker</div><div class="strat-d">Volg prijsdalingen zonder ze zelf te veroorzaken</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">01</div><div class="strat-i">🗺️</div><div class="strat-t">Verborgen Routescanner</div><div class="strat-d">Alternatieve luchthavens & multi-leg combinaties</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">02</div><div class="strat-i">🛡️</div><div class="strat-t">Prijsmanipulatie Ontmaskerd</div><div class="strat-d">Vermijd prijsinflatie via cookies & herhaalzoekopdrachten</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">03</div><div class="strat-i">🌍</div><div class="strat-t">Landsprijs Omzeiler</div><div class="strat-d">Goedkoper boeken vanuit een ander land of valuta</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">04</div><div class="strat-i">⏱️</div><div class="strat-t">Ideale Boekmoment Vinder</div><div class="strat-d">Beste dag & tijdvenster om te boeken</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">05</div><div class="strat-i">📋</div><div class="strat-t">Tariefregels Kraker</div><div class="strat-d">Tariefklassen & routelogica die de prijs verlagen</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">06</div><div class="strat-i">📊</div><div class="strat-t">Airline vs Boekingssite</div><div class="strat-d">Directe vergelijking op verborgen kosten & marges</div></div>
+  <div class="strat" title="Klik om te analyseren" onclick="document.querySelector('.search-card').scrollIntoView({behavior:'smooth'})"><div class="strat-n">07</div><div class="strat-i">🔔</div><div class="strat-t">Prijsdaling Bewaker</div><div class="strat-d">Volg prijsdalingen zonder ze zelf te veroorzaken</div></div>
   <div class="strat" style="border-color:#d1fae5"><div class="strat-n" style="color:#16a34a">BONUS</div><div class="strat-i">🚂</div><div class="strat-t">Openbaar Vervoer Alternatief</div><div class="strat-d">Kosten, reistijd én CO₂ besparing t.o.v. vliegen</div></div>
   <div class="strat" style="border-color:#d1fae5"><div class="strat-n" style="color:#16a34a">BONUS</div><div class="strat-i">🌱</div><div class="strat-t">Te Voet</div><div class="strat-d">Looptijd & CO₂ besparing ten opzichte van vliegen</div></div>
 </div>
@@ -502,6 +497,11 @@ footer a:hover{color:var(--blue);}
     <div class="sec" style="margin-top:1.5rem;"><div class="sec-title">Alle strategieën — volledige analyse</div><div class="sec-line"></div></div>
     <div id="fullAnalysisList"></div>
   </div>
+  <div id="resetWrap" style="display:none;text-align:center;margin-top:1.5rem;">
+    <button onclick="scrollToTop()" style="background:var(--white);border:1px solid var(--g200);color:var(--blue);font-size:14px;font-weight:500;padding:10px 24px;border-radius:99px;cursor:pointer;font-family:'Inter',sans-serif;">
+      ↑ Nieuwe route analyseren
+    </button>
+  </div>
   <div id="errorWrap" style="display:none;">
     <div class="err"><div class="err-t">⚠ Er ging iets mis</div><div class="err-b" id="errorBody"></div></div>
   </div>
@@ -533,7 +533,7 @@ footer a:hover{color:var(--blue);}
 
 <section style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-label="FAQ">
   <h2>Veelgestelde vragen</h2>
-  <p><strong>Wanneer zijn vliegtickets het goedkoopst?</strong> Vliegtickets zijn gemiddeld 15–25% goedkoper op dinsdag en woensdag. Het optimale boekraam is 6 tot 8 weken van tevoren.</p>
+  <p><strong>Wanneer zijn vliegtickets het goedkoopst?</strong> Op dinsdag en woensdag, 6-8 weken van tevoren.</p>
   <p><strong>Is VluchtHack gratis?</strong> Ja, volledig gratis. Geen account nodig.</p>
 </section>
 
@@ -546,6 +546,7 @@ footer a:hover{color:var(--blue);}
 </footer>
 
 <script>
+
 // ── AIRPORTS ──
 const AIRPORTS=[{code:'AMS',name:'Amsterdam Schiphol',city:'Amsterdam'},{code:'RTM',name:'Rotterdam The Hague',city:'Rotterdam'},{code:'EIN',name:'Eindhoven Airport',city:'Eindhoven'},{code:'BCN',name:'Barcelona El Prat',city:'Barcelona'},{code:'MAD',name:'Madrid Barajas',city:'Madrid'},{code:'LHR',name:'London Heathrow',city:'Londen'},{code:'LGW',name:'London Gatwick',city:'Londen'},{code:'CDG',name:'Paris Charles de Gaulle',city:'Parijs'},{code:'ORY',name:'Paris Orly',city:'Parijs'},{code:'FCO',name:'Rome Fiumicino',city:'Rome'},{code:'ATH',name:'Athene',city:'Athene'},{code:'DXB',name:'Dubai International',city:'Dubai'},{code:'JFK',name:'New York JFK',city:'New York'},{code:'LAX',name:'Los Angeles',city:'Los Angeles'},{code:'BKK',name:'Bangkok Suvarnabhumi',city:'Bangkok'},{code:'SIN',name:'Singapore Changi',city:'Singapore'},{code:'BRU',name:'Brussel Zaventem',city:'Brussel'},{code:'FRA',name:'Frankfurt',city:'Frankfurt'},{code:'MUC',name:'München',city:'München'},{code:'VIE',name:'Wenen',city:'Wenen'},{code:'ZRH',name:'Zürich',city:'Zürich'},{code:'CPH',name:'Kopenhagen',city:'Kopenhagen'},{code:'ARN',name:'Stockholm Arlanda',city:'Stockholm'},{code:'OSL',name:'Oslo Gardermoen',city:'Oslo'},{code:'LIS',name:'Lissabon',city:'Lissabon'},{code:'OPO',name:'Porto',city:'Porto'},{code:'PMI',name:'Mallorca Palma',city:'Palma de Mallorca'},{code:'AYT',name:'Antalya',city:'Antalya'},{code:'HRG',name:'Hurghada',city:'Hurghada'},{code:'CAI',name:'Caïro',city:'Caïro'},{code:'NRT',name:'Tokyo Narita',city:'Tokyo'},{code:'ICN',name:'Seoul Incheon',city:'Seoul'},{code:'PEK',name:'Peking Capital',city:'Peking'},{code:'SYD',name:'Sydney',city:'Sydney'},{code:'YYZ',name:'Toronto Pearson',city:'Toronto'},{code:'MIA',name:'Miami',city:'Miami'},{code:'AGP',name:'Málaga',city:'Málaga'},{code:'ALC',name:'Alicante',city:'Alicante'},{code:'TFS',name:'Tenerife Zuid',city:'Tenerife'},{code:'LPA',name:'Gran Canaria',city:'Gran Canaria'},{code:'FAO',name:'Faro',city:'Faro'},{code:'VCE',name:'Venetië',city:'Venetië'},{code:'MXP',name:'Milaan Malpensa',city:'Milaan'},{code:'DUB',name:'Dublin',city:'Dublin'},{code:'PRG',name:'Praag',city:'Praag'},{code:'BUD',name:'Boedapest',city:'Boedapest'},{code:'WAW',name:'Warschau',city:'Warschau'},{code:'GRU',name:'São Paulo',city:'São Paulo'},{code:'CUR',name:'Curaçao Hato',city:'Willemstad'}];
 let acSelected={};
@@ -863,7 +864,8 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
   _retPriceMap={};_depPriceMap={};
   const old=document.getElementById('dpgNoData');if(old)old.remove();
   const lbl=document.getElementById('dpgDepLabel');
-  if(lbl)lbl.textContent=hasRet?'Vertrekdatum — totaalprijs retour p.p. — klik om te wisselen':'Vertrekdatum — enkele reis p.p. — klik om te wisselen';
+  const directOnly=document.getElementById('directOnly')?.checked||false;
+  if(lbl)lbl.textContent=(hasRet?'Vertrekdatum — totaalprijs retour p.p.':'Vertrekdatum — enkele reis p.p.')+(directOnly?' (direct only)':'')+' — klik om te wisselen';
   if(hasRet)document.getElementById('retGridWrap').style.display='block';
   const dates=Array.from({length:11},(_,i)=>addDays(centerDep,i-5));
   const depGrid=document.getElementById('depGrid');depGrid.innerHTML='';
@@ -897,7 +899,7 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
     el.classList.remove('loading');
     const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');
     if(displayDep[i]!==null){pe.textContent=`€${Math.round(displayDep[i])}`;pe.classList.remove('loading-p');if(displayDep[i]===minDep)pe.classList.add('cheap');else if(displayDep[i]===maxDep)pe.classList.add('exp');if(se)se.textContent=hasRet?'retour p.p.':'enkel p.p.';}
-    else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}
+    else{pe.textContent='—';pe.style.color='var(--g300)';pe.classList.remove('loading-p');if(se)se.textContent='';}
   });
   if(!hasRet)return;
   const retDates=Array.from({length:11},(_,i)=>addDays(centerRet,i-5));
@@ -924,7 +926,7 @@ async function buildDateGrid(origin,dest,centerDep,centerRet,pax){
     el.classList.remove('loading');
     const pe=el.querySelector('.dpg-p'),se=el.querySelector('.dpg-sub');
     if(displayRet[i]!==null){pe.textContent=`€${Math.round(displayRet[i])}`;pe.classList.remove('loading-p');if(displayRet[i]===minRet)pe.classList.add('cheap');else if(displayRet[i]===maxRet)pe.classList.add('exp');if(se)se.textContent='retour p.p.';}
-    else{pe.textContent='n/b';pe.classList.remove('loading-p');if(se)se.textContent='';}
+    else{pe.textContent='—';pe.style.color='var(--g300)';pe.classList.remove('loading-p');if(se)se.textContent='';}
   });
 }
 
@@ -963,7 +965,9 @@ async function switchDate(type,date,origin,dest,pax){
 async function startFullSearch(){
   const origin=document.getElementById('origin').value.trim(),dest=document.getElementById('dest').value.trim();
   if(!origin||!dest){alert('Vul vertrek en bestemming in.');return;}
-  const dep=document.getElementById('dep').value,ret=document.getElementById('ret').value;
+  const dep=document.getElementById('dep').value;
+  if(dep && dep < new Date().toISOString().slice(0,10)){alert('Vertrekdatum ligt in het verleden. Kies een toekomstige datum.');return;}
+  const ret=document.getElementById('ret').value;
   if(!dep){alert('Vul een vertrekdatum in.');return;}
   const cabin=document.getElementById('cabin').value,stopover=document.getElementById('stopover').value.trim();
   const paxTxt=`${counts.adults} volwassene(n)${counts.children?' '+counts.children+' kind':''}${counts.infants?' '+counts.infants+' baby':''}`;
@@ -984,7 +988,8 @@ async function startFullSearch(){
   btn.disabled=true;document.getElementById('searchBtnText').textContent='Bezig…';
   const ls=document.getElementById('liveSection');
   ls.classList.add('show');ls.scrollIntoView({behavior:'smooth',block:'start'});
-  ['flightsWrap','progressWrap','top5Wrap','errorWrap'].forEach(id=>document.getElementById(id).style.display='none');
+  const eb=document.getElementById('exampleBar');if(eb)eb.style.display='none';
+  ['flightsWrap','progressWrap','top5Wrap','errorWrap','resetWrap'].forEach(id=>document.getElementById(id).style.display='none');
   document.getElementById('retGridWrap').style.display='none';
   document.getElementById('datePriceWrap').style.display='none';
   document.getElementById('flightsGrid').innerHTML='';
@@ -997,9 +1002,8 @@ async function startFullSearch(){
     fs=renderFlights(parseFlights(data),dep);
     buildDateGrid(origin,dest,dep,ret||'',counts.adults);
   }catch(e){console.warn('FlightAPI:',e);
-    const o=document.getElementById('origin').value, d=document.getElementById('dest').value;
     const hasCode = v => /\([A-Z]{3}\)/.test(v) || /\b[A-Z]{3}\b/.test(v);
-    if(!hasCode(o)||!hasCode(d)){
+    if(!hasCode(origin)||!hasCode(dest)){
       document.getElementById('flightsTitle').textContent='⚠ Selecteer een luchthaven uit de suggestielijst voor nauwkeurige resultaten.';
     } else {
       document.getElementById('flightsTitle').textContent='Vluchtprijzen niet beschikbaar — AI-analyse gaat door.';
@@ -1026,10 +1030,15 @@ async function startFullSearch(){
   }
   renderTop5(results);
   document.getElementById('top5Wrap').style.display='block';
+  document.getElementById('resetWrap').style.display='block';
   document.getElementById('top5Wrap').scrollIntoView({behavior:'smooth',block:'start'});
   btn.disabled=false;document.getElementById('searchBtnText').textContent=T[lang].searchBtn;
 }
 
+function scrollToTop(){
+  document.querySelector('.search-card').scrollIntoView({behavior:'smooth'});
+  document.getElementById('origin').focus();
+}
 function swapCities(){
   const o=document.getElementById('origin'),d=document.getElementById('dest');
   [o.value,d.value]=[d.value,o.value];
@@ -1037,6 +1046,8 @@ function swapCities(){
 }
 function fmt(s){return s?s.replace(/-/g,''):''}
 function openSite(site){
+  const rawO=document.getElementById('origin').value.trim(), rawD=document.getElementById('dest').value.trim();
+  if(!rawO||!rawD){alert('Vul eerst een vertrek en bestemming in.');return;}
   const getCode=v=>acSelected[v]||(document.getElementById(v).value.match(/\(([A-Z]{3})\)/)?.[1])||(document.getElementById(v).value.match(/\b([A-Z]{3})\b/)?.[1])||document.getElementById(v).value.slice(0,3).toUpperCase();
   const o=getCode('origin'),d=getCode('dest');
   const dep=document.getElementById('dep').value,ret=document.getElementById('ret').value;
@@ -1045,20 +1056,39 @@ function openSite(site){
 }
 function openAllSites(){['google','skyscanner','kayak','momondo','kiwi'].forEach((s,i)=>setTimeout(()=>openSite(s),i*300));}
 
-const pad=n=>String(n).padStart(2,'0'),today=new Date();
-document.getElementById('dep').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
-document.getElementById('flightDate').value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
-const rr=new Date(today);rr.setDate(rr.getDate()+7);
-document.getElementById('ret').value=`${rr.getFullYear()}-${pad(rr.getMonth()+1)}-${pad(rr.getDate())}`;
+const pad=n=>String(n).padStart(2,'0');
 
-document.getElementById('dep').addEventListener('change', function() {
-  const depVal = this.value;
-  if (!depVal) return;
-  const retEl = document.getElementById('ret');
-  const next = new Date(depVal);
-  next.setDate(next.getDate() + 1);
-  retEl.value = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}`;
+document.addEventListener('DOMContentLoaded', function() {
+  const today=new Date();
+  const todayStr=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+  const depEl=document.getElementById('dep');
+  const retEl=document.getElementById('ret');
+  const flightDateEl=document.getElementById('flightDate');
+  if(depEl){depEl.value=todayStr;depEl.min=todayStr;}
+  if(flightDateEl)flightDateEl.value=todayStr;
+  if(retEl){const rr=new Date(today);rr.setDate(rr.getDate()+7);retEl.value=`${rr.getFullYear()}-${pad(rr.getMonth()+1)}-${pad(rr.getDate())}`;}
+
+  if(depEl)depEl.addEventListener('change', function() {
+    const depVal = this.value;
+    if (!depVal) return;
+    const retEl = document.getElementById('ret');
+    if(!retEl) return;
+    const next = new Date(depVal);
+    next.setDate(next.getDate() + 1);
+    retEl.value = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}`;
+    retEl.min = depVal;
+  });
+
+  if(retEl)retEl.addEventListener('change', function() {
+    const dep = document.getElementById('dep').value;
+    if (dep && this.value && this.value <= dep) {
+      const next = new Date(dep); next.setDate(next.getDate() + 1);
+      this.value = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}`;
+      alert('Retourdatum moet na de vertrekdatum liggen.');
+    }
+  });
 });
+
 </script>
 </body>
 </html>

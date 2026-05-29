@@ -116,7 +116,7 @@ input::placeholder{color:var(--g400);}
 .biz-check input[type=checkbox]{width:auto;accent-color:var(--amber);}
 
 /* TRACKER */
-.tracker-card{background:var(--g50);border:1px solid var(--g200);border-radius:var(--r);padding:.75rem 1.25rem;margin-bottom:.75rem;}
+.tracker-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--r);padding:.75rem 1.25rem;margin-top:2rem;margin-bottom:.75rem;box-shadow:var(--sh);}
 .tracker-row{display:grid;grid-template-columns:1fr 160px auto;gap:10px;align-items:end;margin-top:12px;}
 .track-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rs);padding:1rem;}
 .track-field{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--g100);}
@@ -283,11 +283,11 @@ footer a:hover{color:var(--blue);}
     <div class="nav-stats">
       <div class="nav-stat"><b>7</b><span id="ns1">AI-strategieën</span></div>
       <div class="nav-divider"></div>
-      <div class="nav-stat"><b>tot 40%</b><span id="ns2">besparing mogelijk</span></div>
+      <div class="nav-stat"><b id="ns2b">tot 40%</b><span id="ns2">besparing mogelijk</span></div>
       <div class="nav-divider"></div>
       <div class="nav-stat"><b>60 sec</b><span id="ns3">analysetijd</span></div>
       <div class="nav-divider"></div>
-      <div class="nav-stat"><b>gratis</b><span id="ns4">geen account nodig</span></div>
+      <div class="nav-stat"><b id="ns4b">gratis</b><span id="ns4">geen account nodig</span></div>
     </div>
     <button class="lang-toggle" onclick="toggleLang()">
       <span id="langNL" class="lang-opt active">NL</span>
@@ -424,28 +424,6 @@ footer a:hover{color:var(--blue);}
   </button>
 </div>
 
-<div class="tracker-card">
-  <button class="advanced-toggle" onclick="toggleTracker()">
-    <span id="trackerLabel">🛬 Vluchten volgen</span>
-  </button>
-  <div id="trackerPanel" style="display:none;">
-    <div class="tracker-row">
-      <div class="fl">
-        <label data-nl="Vluchtnummer" data-en="Flight number">Vluchtnummer</label>
-        <input id="flightNum" type="text" placeholder="bijv. KL1234 of BA432">
-      </div>
-      <div class="fl">
-        <label data-nl="Datum" data-en="Date">Datum</label>
-        <input id="flightDate" type="date">
-      </div>
-      <div class="fl" style="align-self:flex-end">
-        <button class="btn" id="trackBtn" onclick="trackFlight()" style="padding:9px 16px;font-size:14px;">
-          <span id="trackBtnText">Volg vlucht</span>
-        </button>
-      </div>
-    </div>
-    <div id="trackResult" style="display:none;margin-top:1rem;"></div>
-  </div>
 </div>
 
 <div class="sec"><h2 class="sec-title" id="secStrategies">Wat analyseert de AI</h2><div class="sec-line"></div></div>
@@ -461,7 +439,7 @@ footer a:hover{color:var(--blue);}
   <div class="strat" style="border-color:#d1fae5"><div class="strat-n" style="color:#16a34a">BONUS</div><div class="strat-i">🌱</div><div class="strat-t">Te Voet</div><div class="strat-d">Looptijd & CO₂ besparing ten opzichte van vliegen</div></div>
 </div>
 
-<div class="sec"><h2 class="sec-title" id="secDirect">Of zoek direct vergelijken</h2><div class="sec-line"></div></div>
+<div class="sec"><h2 class="sec-title" id="secDirect">Direct vergelijken</h2><div class="sec-line"></div></div>
 <div class="chips">
   <a class="chip" onclick="openSite('google')"><span class="chip-dot"></span>Google Flights</a>
   <a class="chip" onclick="openSite('skyscanner')"><span class="chip-dot"></span>Skyscanner</a>
@@ -507,14 +485,38 @@ footer a:hover{color:var(--blue);}
   </div>
 </div>
 
+<div class="sec" style="margin-top:2rem;"><h2 class="sec-title" id="secOver">Over VluchtHack</h2><div class="sec-line"></div></div>
 <div class="over-card">
-  <div class="sec"><h2 class="sec-title" id="secOver">Over VluchtHack</h2><div class="sec-line"></div></div>
   <p id="overBody" style="font-size:13px;color:var(--g500);margin-top:.75rem;line-height:1.7;">VluchtHack is een onafhankelijke Nederlandse AI-tool die je helpt slimmer te boeken. We zijn niet verbonden aan luchtvaartmaatschappijen of boekingssites en ontvangen geen commissie. Onze enige focus is jou helpen de beste prijs te vinden.</p>
   <div class="over-grid">
     <div class="over-item"><div class="over-icon">🔍</div><div><div class="over-title" id="over1t">Onafhankelijk</div><div class="over-body" id="over1b">Geen commissies, geen advertenties van boekingssites. Puur objectieve analyse.</div></div></div>
     <div class="over-item"><div class="over-icon">🤖</div><div><div class="over-title" id="over2t">AI-aangedreven</div><div class="over-body" id="over2b">7 strategieën parallel uitgevoerd door Claude AI op jouw specifieke route.</div></div></div>
     <div class="over-item"><div class="over-icon">🔒</div><div><div class="over-title" id="over3t">Privacy-first</div><div class="over-body" id="over3b">Jouw routegegevens worden niet opgeslagen. Geen account, geen tracking.</div></div></div>
     <div class="over-item"><div class="over-icon">🌱</div><div><div class="over-title" id="over4t">Duurzaamheid</div><div class="over-body" id="over4b">We tonen altijd het OV-alternatief en de CO₂-impact van jouw keuze.</div></div></div>
+  </div>
+</div>
+
+<div class="tracker-card">
+  <button class="advanced-toggle" onclick="toggleTracker()">
+    <span id="trackerLabel">🛬 Vluchten volgen</span>
+  </button>
+  <div id="trackerPanel" style="display:none;">
+    <div class="tracker-row">
+      <div class="fl">
+        <label data-nl="Vluchtnummer" data-en="Flight number">Vluchtnummer</label>
+        <input id="flightNum" type="text" placeholder="bijv. KL1234 of BA432">
+      </div>
+      <div class="fl">
+        <label data-nl="Datum" data-en="Date">Datum</label>
+        <input id="flightDate" type="date">
+      </div>
+      <div class="fl" style="align-self:flex-end">
+        <button class="btn" id="trackBtn" onclick="trackFlight()" style="padding:9px 16px;font-size:14px;">
+          <span id="trackBtnText">Volg vlucht</span>
+        </button>
+      </div>
+    </div>
+    <div id="trackResult" style="display:none;margin-top:1rem;"></div>
   </div>
 </div>
 
@@ -594,7 +596,7 @@ document.addEventListener('click',e=>{
 // ── TAAL ──
 let lang='nl';
 const T={
-  nl:{ns1:'AI-strategieën',ns2:'besparing mogelijk',ns3:'analysetijd',ns4:'geen account nodig',
+  nl:{ns1:'AI-strategieën',ns2:'besparing mogelijk',ns3:'analysetijd',ns4:'geen account nodig',ns2b:'tot 40%',ns4b:'gratis',
       heroTag:'AI vliegticket analyse',heroH1:'Bespaar slim op<br>jouw volgende <em>vlucht</em>',
       heroP:'Vul je route in en ontvang 7 gepersonaliseerde AI-strategieën om goedkoper te boeken.',
       searchBtn:'Analyseer mijn route',trackerLabel:'🛬 Vluchten volgen',trackBtn:'Volg vlucht',
@@ -604,13 +606,13 @@ const T={
       bizLabel:'Zakelijk reizen',mobileLang:'Switch to English',
       footerMain:'VluchtHack © 2026 · AI-aangedreven · Geen account nodig',footerPrivacy:'Privacybeleid',
       bizBanner:'💼 <strong>Zakelijke modus actief</strong> — Business class, flexibele tickets, CO₂-rapportage en corporate tarieven worden meegenomen in de analyse.',
-      secStr:'Wat analyseert de AI',secDir:'Of zoek direct vergelijken',secOver:'Over VluchtHack',
+      secStr:'Wat analyseert de AI',secDir:'Direct vergelijken',secOver:'Over VluchtHack',
       overBody:'VluchtHack is een onafhankelijke Nederlandse AI-tool die je helpt slimmer te boeken. We zijn niet verbonden aan luchtvaartmaatschappijen of boekingssites en ontvangen geen commissie.',
       over1t:'Onafhankelijk',over1b:'Geen commissies, geen advertenties van boekingssites. Puur objectieve analyse.',
       over2t:'AI-aangedreven',over2b:'7 strategieën parallel uitgevoerd door Claude AI op jouw specifieke route.',
       over3t:'Privacy-first',over3b:'Jouw routegegevens worden niet opgeslagen. Geen account, geen tracking.',
       over4t:'Duurzaamheid',over4b:'We tonen altijd het OV-alternatief en de CO₂-impact van jouw keuze.'},
-  en:{ns1:'AI strategies',ns2:'savings possible',ns3:'analysis time',ns4:'no account needed',
+  en:{ns1:'AI strategies',ns2:'savings possible',ns3:'analysis time',ns4:'no account needed',ns2b:'up to 40%',ns4b:'free',
       heroTag:'AI flight ticket analysis',heroH1:'Save smart on<br>your next <em>flight</em>',
       heroP:'Enter your route and receive 7 personalised AI strategies to book cheaper.',
       searchBtn:'Analyse my route',trackerLabel:'🛬 Track flights',trackBtn:'Track flight',
@@ -620,7 +622,7 @@ const T={
       bizLabel:'Business travel',mobileLang:'Schakel naar Nederlands',
       footerMain:'VluchtHack © 2026 · AI-powered · No account needed',footerPrivacy:'Privacy policy',
       bizBanner:'💼 <strong>Business mode active</strong> — Business class, flexible tickets, CO₂ reporting and corporate fares are included in the analysis.',
-      secStr:'What the AI analyses',secDir:'Or search directly on',secOver:'About VluchtHack',
+      secStr:'What the AI analyses',secDir:'Compare directly',secOver:'About VluchtHack',
       overBody:'VluchtHack is an independent Dutch AI tool that helps you book smarter. We are not affiliated with airlines or booking sites and receive no commission.',
       over1t:'Independent',over1b:'No commissions, no ads from booking sites. Purely objective analysis.',
       over2t:'AI-powered',over2b:'7 strategies run in parallel by Claude AI on your specific route.',
@@ -633,7 +635,7 @@ function toggleLang(){
   document.documentElement.lang=lang;
   document.getElementById('langNL').classList.toggle('active',!isEn);
   document.getElementById('langEN').classList.toggle('active',isEn);
-  ['ns1','ns2','ns3','ns4','tipsLabel','footerMain','footerPrivacy'].forEach(id=>document.getElementById(id).textContent=t[id]);
+  ['ns1','ns2','ns3','ns4','ns2b','ns4b','tipsLabel','footerMain','footerPrivacy'].forEach(id=>document.getElementById(id).textContent=t[id]);
   document.getElementById('heroTag').textContent=t.heroTag;
   document.getElementById('heroH1').innerHTML=t.heroH1;
   document.getElementById('heroP').textContent=t.heroP;
